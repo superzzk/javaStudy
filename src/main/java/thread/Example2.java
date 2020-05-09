@@ -1,9 +1,12 @@
 package thread;
 
+/**
+ * 主线程在子线程结束之后才会结束
+ * */
 class Example2 extends Thread{
     Example2()
     {
-        super("my extending thread");
+        super("my extending thread");               //thread name
         System.out.println("my thread created" + this);
         start();
     }

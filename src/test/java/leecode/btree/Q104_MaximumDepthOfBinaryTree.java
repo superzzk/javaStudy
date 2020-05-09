@@ -1,4 +1,4 @@
-package leecode;
+package leecode.btree;
 
 /**
  * 104

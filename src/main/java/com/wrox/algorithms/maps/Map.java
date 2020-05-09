@@ -1,5 +1,5 @@
 package com.wrox.algorithms.maps;
-
+import com.wrox.algorithms.iteration.Iterable;
 public interface Map extends Iterable {
     public Object get(Object key);
     public Object set(Object key, Object value);

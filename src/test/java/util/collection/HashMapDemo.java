@@ -3,6 +3,7 @@ package util.collection;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @program: javaStudy
@@ -29,6 +30,18 @@ public class HashMapDemo {
         System.out.println(egg);   //输出1
         System.out.println(map.get("egg"));   //输出3，将原值1覆盖
         System.out.println(map.get("niu"));   //输出1
+    }
+
+    @Test
+    public void tt(){
+        HashSet<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(2);
+        StringBuilder sb = new StringBuilder();
+        for(int i : set){
+            sb.append(i + ",");
+        }
+        System.out.println(sb);
     }
 }
 

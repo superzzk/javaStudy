@@ -1,39 +1,8 @@
 package algorithm.sort;
 
+import java.util.Arrays;
+
 public class QuickSort {
-    private static void quickSort(int[] arr, int low, int high){
-        int i,j,temp,t;
-        if(low>high){
-            return;
-        }
-        i=low;
-        j=high;
-        //temp就是基准位
-        temp = arr[low];
-
-        while (i<j) {
-            //先看右边，依次往左递减
-            while (temp<=arr[j]&&i<j) {
-                j--;
-            }
-            //再看左边，依次往右递增
-            while (temp>=arr[i]&&i<j) {
-                i++;
-            }
-            //如果满足条件则交换
-            if (i<j) {
-                swap(arr, i, j);
-            }
-
-        }
-        //最后将基准为与i和j相等位置的数字交换
-        arr[low] = arr[i];
-        arr[i] = temp;
-        //递归调用左半数组
-        quickSort(arr, low, j-1);
-        //递归调用右半数组
-        quickSort(arr, j+1, high);
-    }
 
     private static void quickSort_1(int[] data, int start, int end) {
         if (data == null || start < 0 || end > data.length - 1) {
@@ -66,31 +35,61 @@ public class QuickSort {
     }
 
     private static void swap(int[] data, int i, int j){
+        if(i==j)
+            return;
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
     }
 
-    public static void quickSort_2(int[] data, int start, int end) {
-        if (data == null || start >= end) return;
-        int i = start, j = end;
-        int pivotKey = data[start];
-        while (i < j) {
-            while (i < j && data[j] >= pivotKey) j--;
-            if (i < j) data[i++] = data[j];
-            while (i < j && data[i] <= pivotKey) i++;
-            if (i < j) data[j--] = data[i];
-        }
-        data[i] = pivotKey;
-        quickSort_2(data, start, i - 1);
-        quickSort_2(data, i + 1, end);
-    }
 
     public static void main(String[] args){
+        test2();
+    }
+
+    private static void test1(){
         int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
-        quickSort_1(arr, 0, arr.length-1);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+        qsort(arr, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    private static void qsort(int[] nums, int start, int end){
+        if(start<0 || end >nums.length-1)
+            return;
+        if(start == end)
+            return;
+        int num = nums[start];
+        int index = start;
+        for(int i=start+1;i<end;i++){
+            if(nums[i]<num){
+                index++;
+                swap(nums,i,index);
+            }
         }
+        swap(nums, start, index);
+        qsort(nums, start, index);
+        qsort(nums, index+1, end);
+    }
+
+
+    private static void test2(){
+        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
+        qsort2(arr, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
+    }
+    private static void qsort2(int[] nums, int start, int end){
+        if(start>=end)
+            return;
+        int left = start;
+        int right = end-1;
+        while(left < right){
+            while(nums[left]<nums[end]) left++;
+            while(nums[right]>nums[end]) right--;
+            if(left<right)
+                swap(nums, left, right);
+        }
+        swap(nums,left,end);
+        qsort2(nums, start, left - 1);
+        qsort2(nums,left+1,end);
     }
 }

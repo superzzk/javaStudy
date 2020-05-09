@@ -1,4 +1,4 @@
-package leecode;
+package leecode.array;
 
 /**
  * 80
