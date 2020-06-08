@@ -3,15 +3,7 @@ package util.collection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -79,6 +71,7 @@ public class CollectionsTest {
         Collections.shuffle(students_2, new Random(5));
 
         Assert.assertEquals(students_1, students_2);
+
     }
 
 }

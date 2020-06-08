@@ -2,34 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ebcfd9-6c40-4b28-88f2-4965bdf519e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/basic/builtin/LongTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datetime/DateDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/java8/stream/SortDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/java8/stream/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/thread/synchronization/synchronousqueue/SynchronousQueueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/regex/GroupDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/regex/RegexDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/Heap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/Q416.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/Q692.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/array/Q347.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/array/Q973.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/regex/LinkGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/tree/bfs/method1/BinaryTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/tree/bfs/method2/BinaryTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/apache/commons/lang3/time/DateParserDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/apache/commons/lang3/time/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[110]平衡二叉树.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[112]路径总和.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[113]路径总和 II.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[116]填充每个节点的下一个右侧节点指针.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[145]二叉树的后序遍历.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[222]完全二叉树的节点个数.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[94]二叉树的中序遍历.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[96]不同的二叉搜索树.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[96]不同的二叉搜索树.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/all.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/bu-tong-de-er-cha-sou-suo-shu-by-leetcode.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p__1_leq_i_leq_n_.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p__F_3,7__=_G_2__cdot_G_4__.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___C_0_=_1,_qquad_C_{n+1}_=_frac{2_2n+1_}{n+2}C_n_qquad__qquad__4___.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___F_i,_n__=_G_i-1__cdot_G_n-i__qquad__qquad__2___.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___G_0__=_1,_qquad_G_1__=_1__.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___G_n__=_sum_{i=1}^{n}G_i-1__cdot_G_n-i__qquad__qquad__3___.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___G_n__=_sum_{i=1}^{n}_F_i,_n__qquad__qquad__1___.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p___node.right,;;_parent_level_+_1__.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p__sum_{i=2}^{n}_i_=_frac{_2+n__n-1_}{2}_.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/p__text__node.left,_;;_parent_level_+_1__.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/tian-chong-mei-ge-jie-dian-de-xia-yi-ge-you-ce-j-3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/library/fastjson/TimeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/util/datetime/LocaleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/util/datetime/TImeZoneDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algorithm/sort/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithm/sort/QuickSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrox/algorithms/maps/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrox/algorithms/maps/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrox/algorithms/sets/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrox/algorithms/sets/Set.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/Example1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/Example1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/Example2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/Example2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/Example3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/leecode/Q104_MaximumDepthOfBinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leecode/btree/Q104_MaximumDepthOfBinaryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/leecode/Q80_RemoveDuplicatesFromSortedArrayII.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leecode/array/Q80_RemoveDuplicatesFromSortedArrayII.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/leecode/array/Q215.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leecode/array/Q215.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/collection/HashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/HashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datetime/DateDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/datetime/DateDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datetime/DateTimeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/datetime/DateTimeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/DelayQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/DelayQueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo1/DelayObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo1/DelayObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo1/DelayQueueConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo1/DelayQueueConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo1/DelayQueueProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo1/DelayQueueProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo2/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo2/Cache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo2/DelayItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo2/DelayItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/concurrent/delayed_queue/demo2/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/delayed_queue/demo2/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/regex/GroupDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/regex/GroupDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/util/collection/CollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/CollectionsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/javaStudy.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/javaStudy.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/algorithm/sort/QuickSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/algorithm/sort/QuickSort.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/basic/reflection/demo1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/basic/reflection/demo1/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/datetime/DateTimeDemo.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/designpattern/singleton/MyClassLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/designpattern/singleton/MyClassLoader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/designpattern/singleton/destroy/PreventSerialize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/designpattern/singleton/destroy/PreventSerialize.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/java8/completable_future/CompletableFutureDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/java8/completable_future/CompletableFutureDemo.class" afterDir="false" />
@@ -48,12 +73,23 @@
       <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore$Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore$Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$Buffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$Buffer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/Consumer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/DelayQueueTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo1/DelayObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo1/DelayQueueConsumer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo1/DelayQueueProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo1/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo2/Cache$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo2/Cache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo2/DelayItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/delayed_queue/demo2/Pair.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/locks/LockConditionTest$Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/concurrent/locks/LockConditionTest$Consumer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/locks/LockConditionTest$Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/concurrent/locks/LockConditionTest$Producer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/locks/MyFairLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/concurrent/locks/MyFairLock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/util/concurrent/locks/MyNonfairLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/concurrent/locks/MyNonfairLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/javaStudy.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/javaStudy.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/META-INF/javaStudy.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/config.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/Q104_MaximumDepthOfBinaryTree$Solution.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/Q104_MaximumDepthOfBinaryTree$Solution2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/Q104_MaximumDepthOfBinaryTree$TreeNode.class" beforeDir="false" />
@@ -65,6 +101,7 @@
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/bfs/Maze2$WideBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leecode/bfs/Maze2$WideBlock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/bfs/Maze2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leecode/bfs/Maze2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leecode/concurrent/Q1115$FooBar3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leecode/concurrent/Q1115$FooBar3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/util/collection/CollectionsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/util/collection/CollectionsTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/util/collection/HashMapDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/util/collection/HashMapDemo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,13 +135,16 @@
     </option>
   </component>
   <component name="ProjectId" id="1aWZE1EnEETsBR2LOOwl5zIUjgI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -117,7 +157,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="leetcode.id" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -125,6 +165,7 @@
       <recent name="designpattern.factory.factory_method" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="util.concurrent.delayed_queue" />
       <recent name="util" />
       <recent name="collection" />
       <recent name="guava" />
@@ -144,7 +185,7 @@
       <recent name="F:\Code\javaStudy\src\main\java\designpattern" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DateDemo">
+  <component name="RunManager" selected="JUnit.Main.test_timeOut">
     <configuration name="Agent" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -160,12 +201,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="datetime.DateDemo" />
+    <configuration name="BinaryTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="algorithm.tree.bfs.method2.BinaryTree" />
       <module name="javaStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="datetime.*" />
+          <option name="PATTERN" value="algorithm.tree.bfs.method2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -186,54 +227,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Example3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="thread.Example3" />
+    <configuration name="DateParserDemo.parserDemo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="javaStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="thread.*" />
+          <option name="PATTERN" value="apache.commons.lang3.time.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="apache.commons.lang3.time" />
+      <option name="MAIN_CLASS_NAME" value="apache.commons.lang3.time.DateParserDemo" />
+      <option name="METHOD_NAME" value="parserDemo" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExtendingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="thread.ExtendingExample" />
+    <configuration name="DateParserDemo.testParseLongShort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="javaStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="thread.*" />
+          <option name="PATTERN" value="apache.commons.lang3.time.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="apache.commons.lang3.time" />
+      <option name="MAIN_CLASS_NAME" value="apache.commons.lang3.time.DateParserDemo" />
+      <option name="METHOD_NAME" value="testParseLongShort" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LongTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="basic.builtin.LongTest" />
+    <configuration name="Main.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="javaStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="basic.builtin.*" />
+          <option name="PATTERN" value="util.concurrent.delayed_queue.demo1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="util.concurrent.delayed_queue.demo1" />
+      <option name="MAIN_CLASS_NAME" value="util.concurrent.delayed_queue.demo1.Main" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegexDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.regex.RegexDemo" />
+    <configuration name="Main.test_timeOut" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="javaStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="util.regex.*" />
+          <option name="PATTERN" value="util.concurrent.delayed_queue.demo1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="util.concurrent.delayed_queue.demo1" />
+      <option name="MAIN_CLASS_NAME" value="util.concurrent.delayed_queue.demo1.Main" />
+      <option name="METHOD_NAME" value="test_timeOut" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,19 +294,19 @@
     <list>
       <item itemvalue="Application.Agent" />
       <item itemvalue="Application.DifferentClassLoaderTest" />
-      <item itemvalue="Application.ExtendingExample" />
-      <item itemvalue="Application.Example3" />
-      <item itemvalue="Application.RegexDemo" />
-      <item itemvalue="Application.LongTest" />
-      <item itemvalue="Application.DateDemo" />
+      <item itemvalue="JUnit.DateParserDemo.testParseLongShort" />
+      <item itemvalue="JUnit.DateParserDemo.parserDemo" />
+      <item itemvalue="Application.BinaryTree" />
+      <item itemvalue="JUnit.Main.test1" />
+      <item itemvalue="JUnit.Main.test_timeOut" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DateDemo" />
-        <item itemvalue="Application.LongTest" />
-        <item itemvalue="Application.RegexDemo" />
-        <item itemvalue="Application.Example3" />
-        <item itemvalue="Application.ExtendingExample" />
+        <item itemvalue="JUnit.Main.test_timeOut" />
+        <item itemvalue="JUnit.Main.test1" />
+        <item itemvalue="Application.BinaryTree" />
+        <item itemvalue="JUnit.DateParserDemo.parserDemo" />
+        <item itemvalue="JUnit.DateParserDemo.testParseLongShort" />
       </list>
     </recent_temporary>
   </component>
@@ -299,39 +352,15 @@
       <workItem from="1577085299239" duration="3123000" />
       <workItem from="1578296006084" duration="725000" />
     </task>
+    <task id="LOCAL-00001" summary="DDD">
+      <created>1589023365424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589023365424</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="Q692_test1 - 2019.11.05 at 09h 17m 18s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 09h 24m 41s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 09h 26m 00s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 09h 28m 44s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 09h 53m 48s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 10h 06m 54s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 10h 11m 36s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Q692_test1 - 2019.11.05 at 10h 21m 54s.xml">
-      <configuration name="Q692.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashMapDemo_tt - 2020.01.06 at 15h 33m 53s.xml">
-      <configuration name="HashMapDemo.tt" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashMapDemo_tt - 2020.01.06 at 15h 34m 56s.xml">
-      <configuration name="HashMapDemo.tt" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="563154000" />
@@ -348,7 +377,20 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="DDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="DDD" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="628" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589362364049">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="628" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589362364049" />
+    <state x="739" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1591581330179">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581330179" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586855871814">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -357,38 +399,84 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="650" y="374" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586855967534" />
-    <state x="546" y="112" width="1299" height="816" key="CommitChangelistDialog2" timestamp="1586853661447">
+    <state x="546" y="112" width="1299" height="816" key="CommitChangelistDialog2" timestamp="1589023361314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="546" y="112" width="1299" height="816" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586853661447" />
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom" timestamp="1588997111129">
+    <state x="546" y="112" width="1299" height="816" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589023361314" />
+    <state width="1877" height="287" key="GridCell.Tab.0.bottom" timestamp="1591581472420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588997111129" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center" timestamp="1588997111129">
+    <state width="1877" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581472420" />
+    <state width="1877" height="287" key="GridCell.Tab.0.center" timestamp="1591581472420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588997111129" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left" timestamp="1588997111129">
+    <state width="1877" height="287" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581472420" />
+    <state width="1877" height="287" key="GridCell.Tab.0.left" timestamp="1591581472420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588997111129" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right" timestamp="1588997111129">
+    <state width="1877" height="287" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581472420" />
+    <state width="1877" height="287" key="GridCell.Tab.0.right" timestamp="1591581472420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588997111129" />
-    <state x="681" y="83" width="582" height="864" key="StructurePopup" timestamp="1587030584416">
+    <state width="1877" height="287" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581472420" />
+    <state width="1877" height="395" key="GridCell.Tab.1.bottom" timestamp="1591236375895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="83" width="582" height="864" key="StructurePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587030584416" />
+    <state width="1877" height="395" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591236375895" />
+    <state width="1877" height="395" key="GridCell.Tab.1.center" timestamp="1591236375895">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="395" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591236375895" />
+    <state width="1877" height="395" key="GridCell.Tab.1.left" timestamp="1591236375895">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="395" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591236375895" />
+    <state width="1877" height="395" key="GridCell.Tab.1.right" timestamp="1591236375895">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="395" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591236375895" />
+    <state x="2460" y="263" key="IDE.errors.dialog" timestamp="1591064241899">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2460" y="263" key="IDE.errors.dialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1591064241899" />
+    <state x="617" y="242" key="RollbackChangesDialog" timestamp="1591581162427">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="617" y="242" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591581162427" />
+    <state x="2381" y="162" width="1243" height="716" key="SettingsEditor" timestamp="1591064250795">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" width="1243" height="716" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591062957910" />
+    <state x="2381" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1591064250795" />
+    <state x="2601" y="83" width="582" height="864" key="StructurePopup" timestamp="1591081401848">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="83" width="582" height="864" key="StructurePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590718399428" />
+    <state x="2601" y="83" width="582" height="864" key="StructurePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1591081401848" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1589023563560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589023563560" />
     <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1588990056061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588990056061" />
-    <state width="1278" height="723" key="javadoc.popup.new" timestamp="1586861328736">
+    <state width="1278" height="723" key="javadoc.popup.new" timestamp="1590993943033">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1278" height="723" key="javadoc.popup.new/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586861328736" />
+    <state width="1278" height="723" key="javadoc.popup.new/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590993943033" />
+    <state x="334" y="214" key="new project wizard" timestamp="1591062303941">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="214" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591062303941" />
+    <state x="552" y="178" key="scopes" timestamp="1590566568392">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="scopes/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590566568392" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591235324815">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591235324815" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -554,93 +642,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>javaStudy</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: junit:junit:4.12</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
