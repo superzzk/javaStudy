@@ -52,17 +52,23 @@ public class TimeTest {
 	}
 
 
-	@Data
-	@AllArgsConstructor
-	private static class TestData {
+	public static class TestData {
 		String value;
 		Date time;
+
+		public TestData(String value, Date time) {
+			this.value = value;
+			this.time = time;
+		}
 	}
 
-	@Data
-	@AllArgsConstructor
-	private static class TestJson {
+	public static class TestJson {
 		String value;
 		String time;
+
+		public TestJson(String value, String time) {
+			this.value = value;
+			this.time = time;
+		}
 	}
 }
