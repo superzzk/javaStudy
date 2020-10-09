@@ -1,7 +1,6 @@
 package util.concurrent.executor;
 
 import org.junit.Test;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.util.concurrent.*;
 

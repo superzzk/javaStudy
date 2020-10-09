@@ -1,4 +1,4 @@
-package util.concurrent.semaphor;
+package util.concurrent.synchronization.semaphore;
 
 import org.apache.commons.lang3.concurrent.TimedSemaphore;
 import org.junit.Test;

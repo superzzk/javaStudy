@@ -71,6 +71,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.8</version>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>3.0.6</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,8 +85,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.13</source>
+                    <target>1.13</target>
                 </configuration>
             </plugin>
         </plugins>

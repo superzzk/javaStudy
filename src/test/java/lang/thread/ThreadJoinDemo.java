@@ -1,20 +1,20 @@
-package com.baeldung.thread.join;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.logging.Logger;
+package lang.thread;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Demonstrates Thread.join behavior.
  *
  */
-public class ThreadJoinUnitTest {
+public class ThreadJoinDemo {
 
-    final static Logger LOGGER = Logger.getLogger(ThreadJoinUnitTest.class.getName());
+    final static Logger LOGGER = Logger.getLogger(ThreadJoinDemo.class.getName());
 
     class SampleThread extends Thread {
         public int processingCount = 0;
@@ -40,6 +40,7 @@ public class ThreadJoinUnitTest {
         }
     }
 
+    //线程没有启动
     @Test
     public void givenNewThread_whenJoinCalled_returnsImmediately() throws InterruptedException {
         Thread t1 = new SampleThread(0);
@@ -61,6 +62,7 @@ public class ThreadJoinUnitTest {
         assertFalse(t2.isAlive());
     }
 
+    //join的等待时间不会造成线程终止
     @Test
     public void givenStartedThread_whenTimedJoinCalled_waitsUntilTimedout() 
       throws InterruptedException {

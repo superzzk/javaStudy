@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.yield;
+package lang.thread;
 
 public class ThreadYield {
     public static void main(String[] args) {
