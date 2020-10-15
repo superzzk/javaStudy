@@ -1,5 +1,7 @@
 package algorithm.sort;
 
+import org.junit.Test;
+
 /**
  * MergeSort(arr[], l,  r)
  * If r > l

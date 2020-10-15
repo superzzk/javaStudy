@@ -1,5 +1,7 @@
 package algorithm.sort;
 
+import java.util.Arrays;
+
 /*
 Like Merge Sort, QuickSort is a Divide and Conquer algorithm.
 It picks an element as pivot and partitions the given array around the picked pivot.
@@ -29,7 +31,7 @@ quickSort(arr[], low, high)
 	}
 }
 */
-public class QuickSort2 {
+public class QuickSort {
 	/* This function takes last element as pivot, places the pivot element at its correct
        position in sorted array, and places all smaller (smaller than pivot) to left of
        pivot and all greater elements to right of pivot */
@@ -77,26 +79,17 @@ public class QuickSort2 {
 		}
 	}
 
-	/* A utility function to print array of size n */
-	static void printArray(int arr[])
-	{
-		int n = arr.length;
-		for (int i=0; i<n; ++i)
-			System.out.print(arr[i]+" ");
-		System.out.println();
-	}
-
 	// Driver program
 	public static void main(String args[])
 	{
 		int arr[] = {10, 7, 8, 9, 1, 5};
 		int n = arr.length;
 
-		QuickSort2 ob = new QuickSort2();
+		QuickSort ob = new QuickSort();
 		ob.sort(arr, 0, n-1);
 
 		System.out.println("sorted array");
-		printArray(arr);
+		Arrays.toString(arr);
 	}
 }
 

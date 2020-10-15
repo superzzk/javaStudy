@@ -1,38 +1,10 @@
 package algorithm.sort;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
-public class QuickSort {
-
-    private static void quickSort_1(int[] data, int start, int end) {
-        if (data == null || start < 0 || end > data.length - 1) {
-            throw new IllegalArgumentException("Invalid Parameters");
-        }
-        if (start == end) return;
-        int index = partition(data, start, end);
-        if (index > start) {
-            quickSort_1(data, start, index - 1);
-        }
-        if (index < end) {
-            quickSort_1(data, index + 1, end);
-        }
-    }
-
-    private static int partition(int[] data, int start, int end) {
-        int index = start + (int)(Math.random() * (end - start + 1));
-        swap(data, index, end);
-        int small = start - 1;
-        for (index = start; index < end; index++) {
-            if (data[index] < data[end]) {
-                small++;
-                if (small != index) {
-                    swap(data, index, small);
-                }
-            }
-        }
-        swap(data, small + 1, end);
-        return small + 1;
-    }
+public class QuickSortDemo {
 
     private static void swap(int[] data, int i, int j){
         if(i==j)
@@ -42,12 +14,8 @@ public class QuickSort {
         data[j] = temp;
     }
 
-
-    public static void main(String[] args){
-        test2();
-    }
-
-    private static void test1(){
+    @Test
+    public void test1(){
         int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
         qsort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
@@ -72,7 +40,8 @@ public class QuickSort {
     }
 
 
-    private static void test2(){
+    @Test
+    public void test2(){
         int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
         qsort2(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
@@ -91,5 +60,35 @@ public class QuickSort {
         swap(nums,left,end);
         qsort2(nums, start, left - 1);
         qsort2(nums,left+1,end);
+    }
+
+
+    @Test
+    public void test3(){
+        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
+//        int[] arr = {10,7,2,4};
+        qSort(arr, 0, arr.length);
+        System.out.println(Arrays.toString(arr));
+    }
+    public void qSort(int[] nums, int start, int end){
+
+        if(start>=end)
+            return;
+        int left = start;
+        int right = end-1;
+
+        int target = nums[right];
+        int index = start-1;
+        for(int i=start; i<end; i++){
+            if(nums[i]<target){
+                index++;
+                swap(nums, index, i);
+            }
+        }
+        swap(nums, ++index, right);
+
+        qSort(nums, start, index);
+        qSort(nums, index+1, end);
+
     }
 }
