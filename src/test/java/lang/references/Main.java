@@ -1,7 +1,5 @@
 package lang.references;
 
-import com.sun.istack.internal.Nullable;
-
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
@@ -156,7 +154,7 @@ public class Main{
 		byte[] mega = new byte[1000];
 		private HeavyList next = null;
 
-		public HeavyList(int number, @Nullable HeavyList prev) {
+		public HeavyList(int number, HeavyList prev) {
 			for (int i = 0; i < mega.length; i++) {
 				mega[i] = (byte) (number % 256);
 			}

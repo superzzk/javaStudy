@@ -1,5 +1,8 @@
 package util.regex;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import javax.print.DocFlavor;
 import java.util.regex.Pattern;
 
@@ -10,28 +13,31 @@ public class RegexDemo {
 	private static Pattern dateFrmtPtrn =
 			Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)");
 
+	private static Pattern urlPatter = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
 
-	public static void main(String args[]){
-		//commonPattern();
+	@Test
+	public void test_name_pattern(){
+		Assert.assertTrue(usrNamePtrn.matcher("java2novice").matches());
+		Assert.assertFalse(usrNamePtrn.matcher("cric").matches());
+		Assert.assertFalse(usrNamePtrn.matcher("JAVA2NOVICE").matches());
+		Assert.assertFalse(usrNamePtrn.matcher("java.2.novice").matches());
+		Assert.assertTrue(usrNamePtrn.matcher("java_2-novice").matches());
+	}
 
-		System.out.println("Is 'java2novice' a valid user name? "
-				+usrNamePtrn.matcher("java2novice").matches());     //true
-		System.out.println("Is 'cric' a valid user name? "
-				+usrNamePtrn.matcher("cric").matches());            //false
-		System.out.println("Is 'JAVA2NOVICE' a valid user name? "
-				+usrNamePtrn.matcher("JAVA2NOVICE").matches());     //false
-		System.out.println("Is 'java.2.novice' a valid user name? "
-				+usrNamePtrn.matcher("java.2.novice").matches());   //false
-		System.out.println("Is 'java_2-novice' a valid user name? "
-				+usrNamePtrn.matcher("java_2-novice").matches());   //true
+	@Test
+	public void test_email_pattern(){
+		Assert.assertTrue(emailNamePtrn.matcher("java2novice@gmail.com").matches());
+		Assert.assertFalse(emailNamePtrn.matcher("cric*7*&@yahoo.com").matches());
+		Assert.assertFalse(emailNamePtrn.matcher("JAVA2NOVICE.gmail.com").matches());
+	}
 
-		System.out.println("Is 'java2novice@gmail.com' a valid email address? "
-				+emailNamePtrn.matcher("java2novice@gmail.com").matches()); //true
-		System.out.println("Is 'cric*7*&@yahoo.com' a valid email address? "
-				+emailNamePtrn.matcher("cric*7*&@yahoo.com").matches());    //false
-		System.out.println("Is 'JAVA2NOVICE.gmail.com' a valid email address? "
-				+emailNamePtrn.matcher("JAVA2NOVICE.gmail.com").matches()); //false
+	@Test
+	public void test_url_pattern(){
+		Assert.assertTrue(urlPatter.matcher("http://localhost:99").matches());
+	}
 
+	@Test
+	public void test_date_pattern(){
 		System.out.println("Is '03/04/2012' a valid date format? "
 				+dateFrmtPtrn.matcher("03/04/2012").matches());     //true
 		System.out.println("Is '12/23/2012' a valid date format? "
