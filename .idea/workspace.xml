@@ -2,146 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ebcfd9-6c40-4b28-88f2-4965bdf519e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithm/sort/MergeSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithm/sort/QuickSort2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/FinalizedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/MyObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/PhantomRefExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/PhantomRefExample2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/PhantomReferenceDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/SoftVsNormal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/SoftVsWeakVsNormal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/references/WeakVsNormal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lang/thread/UncaughtExceptionHandlerDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/nio/ByteBufferDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/executor/ExecutorExceptionHandlerDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/executor/ExtendedExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/executor/TimeOutThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/datetime/InstantDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/datetime/LocalDataDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/timer/TimerDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/designpattern/concurrent/ActiveObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/VolatileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/VolatileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/classloader/ClassLoaderDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/classloader/ClassLoaderDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/classloader/DifferentClassLoaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/classloader/DifferentClassLoaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/proxy/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/proxy/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/proxy/RequestCostInvocationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/proxy/RequestCostInvocationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/proxy/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/proxy/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lang/proxy/UserServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/proxy/UserServiceProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/Example1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/thread/Example1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/Example2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lang/thread/Example2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/ExecutorDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/ExecutorDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/FutureWithExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/FutureWithExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/TaskThreadDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/TaskThreadDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/AccountWithSyncUsingLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/AccountWithSyncUsingLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/AccountWithSyncUsingSemaphore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/AccountWithSyncUsingSemaphore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/AccountWithoutSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/AccountWithoutSync.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/ConsumerProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/ConsumerProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/ConsumerProducerUsingBlockingQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/ConsumerProducerUsingBlockingQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/ThreadCooperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/ThreadCooperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/count_down_latch/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/count_down_latch/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/count_down_latch/CountDownLatchDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/count_down_latch/CountDownLatchDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/count_down_latch/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/count_down_latch/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/cyclic_barrier/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/cyclic_barrier/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/cyclic_barrier/CyclicBarrierDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/cyclic_barrier/CyclicBarrierDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/cyclic_barrier/TourGuideTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/cyclic_barrier/TourGuideTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/cyclic_barrier/TravelTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/cyclic_barrier/TravelTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/semaphore/MyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/semaphore/MyThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/semaphore/SemaphoreDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/semaphore/SemaphoreDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/semaphore/SemaphoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/semaphore/SemaphoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/semaphore/SemaphoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/semaphore/SemaphoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thread/synchronization/synchronousqueue/SynchronousQueueDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/concurrent/synchronization/synchronousqueue/SynchronousQueueDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ArraysDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/ArraysDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Base64Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/Base64Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/ArrayDequeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/ArrayDequeDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/CheckIfArraySorted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/CheckIfArraySorted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/CollectionsDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/CollectionsDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/EnumSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/EnumSetDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/HashMapAndTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/HashMapAndTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/IntersectionOfTwoLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/IntersectionOfTwoLists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/LinkedHashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/LinkedHashMapDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/collection/TreeMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/collection/TreeMapDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/not_null/BaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/not_null/BaseRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/not_null/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/not_null/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/not_null/QueryUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/not_null/QueryUserRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/regex/GroupDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/regex/GroupDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/regex/LinkGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/regex/LinkGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/regex/RegexDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/regex/RegexDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/javaStudy.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/VolatileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/classloader/ClassLoaderDemo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/classloader/ClassLoaderDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/classloader/DifferentClassLoaderTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/classloader/DifferentClassLoaderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/proxy/IUserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/proxy/RequestCostInvocationHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/proxy/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang/proxy/UserServiceProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/Example1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/Example2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/Example3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/ExecutorDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/ExtendingExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/FutureWithExecutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/PrintChar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/PrintNum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/TaskThreadDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingLock$Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingLock$AddAPennyTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingLock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore$Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore$AddAPennyTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithSyncUsingSemaphore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithoutSync$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithoutSync$Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithoutSync$AddAPennyTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/AccountWithoutSync.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$Buffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$ConsumerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer$ProducerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducerUsingBlockingQueue$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducerUsingBlockingQueue$ConsumerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducerUsingBlockingQueue$ProducerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ConsumerProducerUsingBlockingQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$DepositTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation$WithdrawTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/ThreadCooperation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/count_down_latch/Boss.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/count_down_latch/CountDownLatchDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/count_down_latch/Worker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/CyclicBarrierDemo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/CyclicBarrierDemo$TaskThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/CyclicBarrierDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/TourGuideTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/cyclic_barrier/TravelTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/semaphore/MyThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/semaphore/SemaphoreDemo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/semaphore/SemaphoreDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/semaphore/SemaphoreService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/thread/synchronization/semaphore/SemaphoreTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/ArraysDemo$ReSortComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/ArraysDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Base64Demo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/ArrayDequeDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/CheckIfArraySorted.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/CollectionsDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/EnumSetDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/HashMapAndTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/IntersectionOfTwoLists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/LinkedHashMapDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/Season.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/collection/TreeMapDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/not_null/BaseRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/not_null/Demo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/not_null/QueryUserRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/javaStudy.kotlin_module" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +47,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
