@@ -1,4 +1,4 @@
-package algorithm.sort;
+package algorithm.sort.heap;
 
 /**
  * Heap sort is a comparison based sorting technique based on Binary Heap data structure.
@@ -68,9 +68,23 @@ package algorithm.sort;
  * 2. k largest(or smallest) elements in an array(https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/)
  *
  * Heap sort algorithm has limited uses because Quicksort and Mergesort are better in practice.
- * Nevertheless, the Heap data structure itself is enormously used. See Applications of Heap Data Structure(https://www.geeksforgeeks.org/applications-of-heap-data-structure/)
+ * Nevertheless, the Heap data structure itself is enormously used.
+ * See Applications of Heap Data Structure(https://www.geeksforgeeks.org/applications-of-heap-data-structure/)
  * */
 public class HeapSort {
+
+	// Driver program
+	public static void main(String args[])
+	{
+		int arr[] = {12, 11, 13, 5, 6, 7};
+		int n = arr.length;
+
+		HeapSort ob = new HeapSort();
+		ob.sort(arr);
+
+		System.out.println("Sorted array is");
+		printArray(arr);
+	}
 
 	public void sort(int arr[])
 	{
@@ -130,16 +144,5 @@ public class HeapSort {
 		System.out.println();
 	}
 
-	// Driver program
-	public static void main(String args[])
-	{
-		int arr[] = {12, 11, 13, 5, 6, 7};
-		int n = arr.length;
 
-		HeapSort ob = new HeapSort();
-		ob.sort(arr);
-
-		System.out.println("Sorted array is");
-		printArray(arr);
-	}
 }

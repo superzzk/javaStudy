@@ -6,6 +6,7 @@ target/
 
 
 # IntelliJ project files
+.idea/
 .idea
 *.iml
 out

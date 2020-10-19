@@ -14,12 +14,17 @@ public class LocalDataDemo {
 	public void demo1(){
 		// 获取当前日期
 		LocalDate now = LocalDate.now();
+		System.out.println(now);
+		System.out.println(now.toString().replace("-",""));
 		// 设置日期
 		LocalDate now2 = LocalDate.of(2099, 2, 28);
+		System.out.println(now2);
 		// 解析日期，格式必须是yyyy-MM-dd
 		LocalDate now3 = LocalDate.parse("2018-01-12");
+		System.out.println(now3);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String formatRs = now.format(dtf);
+		System.out.println(formatRs);
 		// 取本月第一天
 		LocalDate firstDay = now.with(TemporalAdjusters.firstDayOfMonth());
 		LocalDate firstDay2 = now.withDayOfMonth(1);
