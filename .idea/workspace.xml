@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ebcfd9-6c40-4b28-88f2-4965bdf519e5" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/dynamic/Dynamic.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/heap/kLargest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/leecode/Solution.java" afterDir="false" />
@@ -14,6 +15,49 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/algorithm/sort/HeapSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/heap/HeapSort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/util/datetime/InstantDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/datetime/InstantDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/util/datetime/LocalDataDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/datetime/LocalDataDemo.java" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/src/main/java/designpattern/concurrent/ActiveObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/HeapSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/MergeSortDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/QuickSortRandomPivot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/FileNotFoundExceptionUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/filesystem/jndi/LookupFSJNDI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/filesystem/jndi/LookupFSJNDIIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/BufferedReaderExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/FileReaderExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/FilesReadLinesExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/JavaReadFromFileUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/ReadLargeFileUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/readfile/ScannerExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/unzip/UnzipFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/writefile/JavaWriteToFileUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/zip/ZipDirectory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/zip/ZipFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/zip/ZipMultipleFiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/[12]整数转罗马数字.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/leecode/leetcode/editor/cn/doc/zheng-shu-zhuan-luo-ma-shu-zi-by-leetcode.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/nio/ListFiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/filesystem/test.find" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/readfile/fileTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/readfile/fileTestTokenizer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/readfile/fileTestUtf8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/readfile/sampleNumberFile.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/io/readfile/sampleTextFile.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/nio/listFilesUnitTestFolder/country.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/nio/listFilesUnitTestFolder/employee.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/nio/listFilesUnitTestFolder/students.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/nio/listFilesUnitTestFolder/test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algorithm/sort/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/MergeSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algorithm/sort/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/QuickSortDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algorithm/sort/QuickSort2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/algorithm/sort/QuickSort.java" afterDir="false" />
+>>>>>>> aa97168c3e4891b778d16190400baa8751ca8a06
+>>>>>>> c802c68e8bdc5c5195a4c88cc3019420f656edaa
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
