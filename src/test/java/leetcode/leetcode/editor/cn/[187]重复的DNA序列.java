@@ -12,10 +12,14 @@
 // Related Topics 位运算 哈希表
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<String> findRepeatedDnaSequences(String s) {
+import java.util.List;
 
+class RepeatedDNA {
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public List<String> findRepeatedDnaSequences(String s) {
+            return null;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
+}

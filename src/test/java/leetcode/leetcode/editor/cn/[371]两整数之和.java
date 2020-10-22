@@ -1,4 +1,4 @@
-//不使用运算符 + 和 - ，计算两整数 a 、b 之和。 
+package leetcode.leetcode.editor.cn;//不使用运算符 + 和 - ，计算两整数 a 、b 之和。
 //
 // 示例 1: 
 //
@@ -12,11 +12,13 @@
 //输出: 1 
 // Related Topics 位运算
 
-
+class TwoIntegerSum{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int getSum(int a, int b) {
-
+        return 0;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
+
+}
