@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
@@ -180,4 +181,37 @@ public class UnsafeDemo {
 		}
 	}
 
+	/**
+	 * arrayBaseOffset方法可以获取数组第一个元素的偏移地址。
+	 * arrayIndexScale方法可以获取数组的转换因子，也就是数组中元素的增量地址。
+	 * 将arrayBaseOffset与arrayIndexScale配合使用，可以定位数组中每个元素在内存中的位置。
+	 * */
+	@Test
+	public void locate_array_element() {
+		Unsafe UNSAFE = get_an_instance();
+
+		byte[] data = new byte[10];
+		System.out.println(Arrays.toString(data));
+		int byteArrayBaseOffset = UNSAFE.arrayBaseOffset(byte[].class);
+		System.out.println(byteArrayBaseOffset);
+
+		UNSAFE.putByte(data, byteArrayBaseOffset, (byte) 1);
+		UNSAFE.putByte(data, byteArrayBaseOffset + 5, (byte) 5);
+		System.out.println(Arrays.toString(data));
+
+		// objects
+		String[] objects = new String[10];
+		objects[0] = "hello";
+		System.out.println(Arrays.toString(objects));
+
+		int objectArrayBaseOffset = UNSAFE.arrayBaseOffset(String[].class);
+		System.out.println(objectArrayBaseOffset);
+
+		// will crash
+//		UNSAFE.putObject(objects, objectArrayBaseOffset + 1 , "world");
+
+		int indexScale = UNSAFE.arrayIndexScale(String[].class);
+		UNSAFE.putObject(objects, objectArrayBaseOffset + indexScale , "world");
+		System.out.println(Arrays.toString(objects));
+	}
 }
