@@ -40,12 +40,15 @@ package leetcode.leetcode.editor.cn;
 // 👍 595 👎 0
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class SlidingWindowMaximum{
     public static void main(String[] args) {
         Solution solution = new SlidingWindowMaximum().new Solution();
-        
+        int[] nums = {1, 3, -1, -3, 5 ,3, 6, 7};
+        int[] res = solution.maxSlidingWindow(nums, 3);
+        System.out.println(Arrays.toString(res));
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -58,15 +61,29 @@ class Solution {
 //        if(nums.length==0 && k>nums.length)
 //            return new int[0];
         List<Integer> res = new ArrayList<>();
-        for(int i=0; i<k; i++){
-
-        }
-        int i=0;
-        while (i + k < nums.length) {
-
+        int max = max(nums, 0, k - 1);
+        res.add(max);
+        int i=1;
+        while (i + k < nums.length +1) {
+            int temp = nums[i-1];
+            if(temp==max) {
+                max = max(nums, i, i + k - 1);
+            }else{
+                max = Math.max(nums[i + k - 1], max);
+            }
+            res.add(max);
+            i++;
         }
 
         return res.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    private int max(int[] nums, int start, int end) {
+        int max = nums[start];
+        for (int i = start+1; i <= end; i++) {
+            max = Math.max(max, nums[i]);
+        }
+        return max;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
