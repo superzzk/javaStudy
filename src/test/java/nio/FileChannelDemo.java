@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-public class ChannelDemo {
+public class FileChannelDemo {
 
 	public void demo1() throws IOException {
 		RandomAccessFile aFile = new RandomAccessFile("data/nio-data.txt", "rw");

@@ -1,12 +1,17 @@
 package util.concurrent.synchronization.count_down_latch;
 
+import org.junit.Test;
+
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchDemo {
 
-    public static void main(String[] args) {
+    @Test
+    public void demo() {
         ExecutorService executor = Executors.newCachedThreadPool();
 
         CountDownLatch latch = new CountDownLatch(3);
@@ -23,6 +28,51 @@ public class CountDownLatchDemo {
         executor.execute(boss);
 
         executor.shutdown();
+    }
+
+    class Boss implements Runnable {
+
+        private CountDownLatch downLatch;
+
+        public Boss(CountDownLatch downLatch){
+            this.downLatch = downLatch;
+        }
+
+        public void run() {
+            System.out.println("老板正在等所有的工人干完活......");
+            try {
+                this.downLatch.await();
+            } catch (InterruptedException e) {
+            }
+            System.out.println("工人活都干完了，老板开始检查了！");
+        }
+
+    }
+
+    class Worker implements Runnable{
+
+        private CountDownLatch downLatch;
+        private String name;
+
+        public Worker(CountDownLatch downLatch, String name){
+            this.downLatch = downLatch;
+            this.name = name;
+        }
+
+        public void run() {
+            this.doWork();
+            try{
+                TimeUnit.SECONDS.sleep(new Random().nextInt(10));
+            }catch(InterruptedException ie){
+            }
+            System.out.println(this.name + "活干完了！");
+            this.downLatch.countDown();
+        }
+
+        private void doWork(){
+            System.out.println(this.name + "正在干活!");
+        }
+
     }
 
 }
