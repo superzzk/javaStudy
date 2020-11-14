@@ -14,11 +14,16 @@
 //   2     1         2                 3 
 // Related Topics 树 动态规划
 
+class Solution96{
+    public static void main(String[] args) {
+        Solution solution = new Solution96().new Solution();
 
+    }
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution96 {
+class Solution {
     public int numTrees(int n) {
         return 0;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
+}
