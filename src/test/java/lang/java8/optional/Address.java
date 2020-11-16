@@ -1,4 +1,4 @@
-package java8.optional;
+package lang.java8.optional;
 
 import com.google.common.base.Preconditions;
 

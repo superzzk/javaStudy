@@ -1,4 +1,4 @@
-package java8.lambda;
+package lang.java8.lambda;
 
 /**
  * @program: javaStudy

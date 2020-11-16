@@ -1,4 +1,4 @@
-package java8.completable_future;
+package lang.java8.completable_future;
 
 import java.util.ArrayList;
 import java.util.Arrays;

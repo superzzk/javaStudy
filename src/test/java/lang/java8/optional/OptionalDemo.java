@@ -1,6 +1,8 @@
-package java8.optional;
+package lang.java8.optional;
 
-import org.apache.commons.lang3.ObjectUtils;
+import org.checkerframework.common.value.qual.StaticallyExecutable;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,11 +10,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class OptionalDemo {
-    public static void main(String args[]) {
-        test3();
-    }
 
-    private static void test1(){
+    @Test
+    public void test_of_ofNullable_orElse_get(){
         Integer value1 = null;
         Integer value2 = 10;
 
@@ -24,7 +24,7 @@ public class OptionalDemo {
         System.out.println(sum(a,b));
     }
 
-    private static Integer sum(Optional<Integer> a, Optional<Integer> b) {
+    private Integer sum(Optional<Integer> a, Optional<Integer> b) {
         //Optional.isPresent - checks the value is present or not
 
         System.out.println("First parameter is present: " + a.isPresent());
@@ -39,7 +39,8 @@ public class OptionalDemo {
         return value1 + value2;
     }
 
-    private static void test2(){
+    @Test
+    public void test_orElseThrow(){
         Integer value1 = 10;
         Integer value2 = null;
 
@@ -51,20 +52,14 @@ public class OptionalDemo {
         }
     }
 
-    /**
-     * orElseThrow
-     */
-    private static String toS(Integer i) throws Exception {
+    private String toS(Integer i) throws Exception {
         return Optional.ofNullable(i)
                 .map(String::valueOf)
                 .orElseThrow(()->new Exception("i is null"));
     }
 
-    /**
-     * orElse
-     * orElseGet
-     */
-    private static void test3(){
+    @Test
+    public void test_orElse_orElseGet(){
         List<String> names = Arrays.asList("Mal", "Wash", "Kaylee", "Inara",
                 "Zoë", "Jayne", "Simon", "River", "Shepherd Book");
         Optional<String> first = names.stream()
@@ -80,4 +75,15 @@ public class OptionalDemo {
                 )
         );
     }
+
+	@Test
+	public void test_map_flatMap() {
+		Assert.assertEquals(Optional.of(Optional.of("STRING")),
+				Optional.of("string").map(s -> Optional.of("STRING"))
+		);
+
+		Assert.assertEquals(Optional.of("STRING"),
+				Optional.of("string").flatMap(s -> Optional.of("STRING"))
+		);
+	}
 }

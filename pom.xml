@@ -81,7 +81,17 @@
             <artifactId>rxjava</artifactId>
             <version>3.0.6</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <version>3.4.0</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Context Libraries -->
         <dependency>
             <groupId>com.sun.messaging.mq</groupId>

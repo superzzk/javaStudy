@@ -1,4 +1,4 @@
-package java8.methodref;
+package lang.java8.methodref;
 
 /**
  * @program: javaStudy
