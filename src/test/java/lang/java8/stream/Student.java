@@ -1,4 +1,4 @@
-package util.stream;
+package lang.java8.stream;
 
 public class Student implements Comparable<Student> {
     private int id;

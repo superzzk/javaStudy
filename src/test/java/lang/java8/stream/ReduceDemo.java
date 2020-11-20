@@ -1,4 +1,4 @@
-package util.stream;
+package lang.java8.stream;
 
 import org.junit.Test;
 
@@ -8,7 +8,33 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ReduceDemo {
+
+	@Test
+	public void givenStreamValues_whenReducedWithPrefixingOperation() {
+		String result = Stream.of("hello", "world")
+				.reduce("", (a, b) -> b + "-" + a);
+
+		assertThat(result).isEqualTo("world-hello-");
+	}
+
+	private String combineWithoutTrailingDash(String a, String b) {
+		if (a.isEmpty()) {
+			return b;
+		}
+		return b + "-" + a;
+	}
+
+	@Test
+	public void givenStreamValues_whenReducedWithPrefixingMethodReference_thenHasNoTrailingDash() {
+		String result = Stream.of("hello", "world")
+				.reduce("", this::combineWithoutTrailingDash);
+
+		assertThat(result).isEqualTo("world-hello");
+	}
+
 	@Test
 	public void demo1(){
 		Optional accResult = Stream.of(1, 2, 3, 4)
