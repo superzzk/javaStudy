@@ -6,6 +6,8 @@ import org.junit.Test;
 import javax.print.DocFlavor;
 import java.util.regex.Pattern;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class RegexDemo {
 	private static Pattern usrNamePtrn = Pattern.compile("^[a-z0-9_-]{6,14}$");
 	private static Pattern emailNamePtrn = Pattern.compile(
@@ -48,7 +50,8 @@ public class RegexDemo {
 				+dateFrmtPtrn.matcher("3/4/2012").matches());       //true
 	}
 
-	public static void test1(){
+	@Test
+	public void test1(){
 		System.out.println(Pattern.matches(".s", "as"));//true (2nd char is s)
 		System.out.println(Pattern.matches(".s", "mk"));//false (2nd char is not s)
 		System.out.println(Pattern.matches(".s", "mst"));//false (has more than 2 char)
@@ -123,7 +126,8 @@ public class RegexDemo {
 		System.out.println(Pattern.matches("[789]{1}\\d{9}", "3853038949"));//false (starts from 3)
 	}
 
-	public static void commonPattern(){
+	@Test
+	public void commonPattern(){
 		String blankLine = "^$";
 		String cityState = ".*, [A-Z][A-Z]";        //City, State abbreviation.
 		//Zip Code. Five digits, followed by an optional hyphen and four additional digits.
@@ -141,6 +145,31 @@ public class RegexDemo {
 		String date2 = "[A-Z][a-z][a-z] [0-9][0-9]*, [0-9]{4}";
 
 
+	}
+
+
+	/**
+	 * Lookahead and Lookbehind Zero-Length Assertions
+	 * */
+	@Test
+	public void wordMatch() {
+		String[] words = {"hello", "Baeldung"};
+		String inputString = "hello there, Baeldung";
+		String wholeInput = "helloBaeldung";
+		final boolean result = containsWordsPatternMatch(inputString, words);
+		assertThat(result).isTrue();
+	}
+
+	public static boolean containsWordsPatternMatch(String inputString, String[] words) {
+
+		StringBuilder regexp = new StringBuilder();
+		for (String word : words) {
+			regexp.append("(?=.*").append(word).append(")");
+		}
+		System.out.println(regexp.toString());
+		Pattern pattern = Pattern.compile(regexp.toString());
+
+		return pattern.matcher(inputString).find();
 	}
 
 
