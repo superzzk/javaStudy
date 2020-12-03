@@ -16,6 +16,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <javaassist.version>3.21.0-GA</javaassist.version>
+        <sun.tools.version>1.8.0</sun.tools.version>
     </properties>
 
     <dependencies>

@@ -1,7 +1,7 @@
 package com.zzk.study;
 
 /**
- *
+ * -javaagent:D:/study/javaStudy/agent/target/agent-1.0-SNAPSHOT.jar
  */
 public class Main {
 	public static void main(String[] args) {
