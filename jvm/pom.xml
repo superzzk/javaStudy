@@ -14,6 +14,8 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <sun.tools.version>1.8.0</sun.tools.version>
     <asm.version>8.0.1</asm.version>
+    <jol-core.version>0.10</jol-core.version>
+    <assertj.version>3.6.1</assertj.version>
   </properties>
 
   <dependencies>
@@ -50,9 +52,20 @@
       <version>3.27.0-GA</version>
     </dependency>
     <dependency>
+      <groupId>org.openjdk.jol</groupId>
+      <artifactId>jol-core</artifactId>
+      <version>${jol-core.version}</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
