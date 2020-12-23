@@ -18,8 +18,6 @@ public class InstantDemo {
 		System.out.println(later);
 		Instant earlier = now.minusSeconds(3);
 		System.out.println(earlier);
-
-
 	}
 
 	private String formatDateStr(Instant instant){

@@ -1,12 +1,16 @@
 package zzk.study.java.core.util.time;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.TemporalField;
 import java.util.Date;
+
+import static java.time.ZoneOffset.UTC;
 
 public class LocalDataDemo {
 
@@ -14,8 +18,21 @@ public class LocalDataDemo {
 	public void demo1(){
 		// 获取当前日期
 		LocalDate now = LocalDate.now();
+
 		System.out.println(now);
 		System.out.println(now.toString().replace("-",""));
+		System.out.println("当前时间用long表示:"+OffsetDateTime.now().toEpochSecond());
+		System.out.println("当前时间用long表示:"+LocalDateTime.now().toEpochSecond(OffsetDateTime.now().getOffset()));
+		;
+		System.out.println("当前时间用long表示:"+(new Date()).toInstant().getEpochSecond());
+
+		long todayBeginTime = now.atStartOfDay().toEpochSecond(OffsetDateTime.now().getOffset());
+		System.out.println("今日起始用long表示:"+todayBeginTime);
+		long yesterdayBeginTime = now.minusDays(1).atStartOfDay().toEpochSecond(OffsetDateTime.now().getOffset());
+		System.out.println("昨日起始用long表示:"+ yesterdayBeginTime);
+
+		Assert.assertEquals(86400L, todayBeginTime - yesterdayBeginTime);
+
 		// 设置日期
 		LocalDate now2 = LocalDate.of(2099, 2, 28);
 		System.out.println(now2);
