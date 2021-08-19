@@ -1,4 +1,4 @@
-package apache.commons.configuration;
+package com.zzk.study.commons.configuration;
 
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
