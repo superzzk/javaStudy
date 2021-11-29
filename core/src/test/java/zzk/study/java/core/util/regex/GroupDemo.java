@@ -1,6 +1,5 @@
 package zzk.study.java.core.util.regex;
 
-import org.checkerframework.common.value.qual.StaticallyExecutable;
 import org.junit.Test;
 
 import java.io.Console;

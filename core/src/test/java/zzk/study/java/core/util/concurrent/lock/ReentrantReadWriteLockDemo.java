@@ -1,9 +1,13 @@
 package zzk.study.java.core.util.concurrent.lock;
 
+import org.junit.Test;
+
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 读写锁Demo
@@ -15,10 +19,42 @@ import java.util.concurrent.locks.ReadWriteLock;
  */
 public class ReentrantReadWriteLockDemo {
 
-    class MyObject {
-        private Object object;
+    @Test
+    public void demo() throws InterruptedException {
+        final OneIntegerCache oneIntegerCache = new OneIntegerCache();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        for (int i = 0; i < 3; i++) {
+            executorService.execute(() -> {
+                for (int j = 0; j < 3; j++) {
+                    try {
+                        oneIntegerCache.put(new Random().nextInt(1000));//写操作
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
 
-        private ReadWriteLock lock = new java.util.concurrent.locks.ReentrantReadWriteLock();
+        for (int i = 0; i < 3; i++) {
+            executorService.execute(() -> {
+                for (int j = 0; j < 3; j++) {
+                    try {
+                        oneIntegerCache.get();//多个线程读取操作
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+        executorService.awaitTermination(10, TimeUnit.SECONDS);
+        executorService.shutdown();
+    }
+
+    static class OneIntegerCache {
+        private Integer object;
+
+        private ReadWriteLock lock = new ReentrantReadWriteLock();
 
         public void get() throws InterruptedException {
             lock.readLock().lock();//上读锁
@@ -31,7 +67,7 @@ public class ReentrantReadWriteLockDemo {
             }
         }
 
-        public void put(Object object) throws InterruptedException {
+        public void put(Integer object) throws InterruptedException {
             lock.writeLock().lock();
             try {
                 System.out.println(Thread.currentThread().getName() + "wwww准备写数据");
@@ -44,33 +80,5 @@ public class ReentrantReadWriteLockDemo {
         }
     }
 
-    public static void main(String[] args) {
-        final MyObject myObject = new ReentrantReadWriteLockDemo().new MyObject();
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 3; i++) {
-            executorService.execute(() -> {
-                for (int j = 0; j < 3; j++) {
-                    try {
-                        myObject.put(new Random().nextInt(1000));//写操作
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
 
-        for (int i = 0; i < 3; i++) {
-            executorService.execute(() -> {
-                for (int j = 0; j < 3; j++) {
-                    try {
-                        myObject.get();//多个线程读取操作
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
-
-        executorService.shutdown();
-    }
 }

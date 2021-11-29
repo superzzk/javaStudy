@@ -6,6 +6,9 @@ import zzk.study.java.core.util.concurrent.blockingqueue.SimpleBlockingQueue;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 实现一个简答的线程池
+ * */
 public class SimpleThreadPool {
 	private SimpleBlockingQueue taskQueue = null;
 	private List<PoolThread> threads = new ArrayList<PoolThread>();

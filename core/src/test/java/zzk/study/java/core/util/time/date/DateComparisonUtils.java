@@ -1,7 +1,5 @@
 package zzk.study.java.core.util.time.date;
 
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -46,8 +44,6 @@ public class DateComparisonUtils {
                 && calendar1.get(Calendar.DAY_OF_MONTH) == calendar2.get(Calendar.DAY_OF_MONTH);
     }
 
-    public static boolean isSameDayUsingApacheCommons(Date date1, Date date2) {
-        return DateUtils.isSameDay(date1, date2);
-    }
+
 
 }

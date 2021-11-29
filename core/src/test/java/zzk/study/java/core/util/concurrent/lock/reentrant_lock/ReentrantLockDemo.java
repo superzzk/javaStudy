@@ -2,6 +2,8 @@ package zzk.study.java.core.util.concurrent.lock.reentrant_lock;
 
 import org.junit.Test;
 
+import java.time.chrono.ThaiBuddhistEra;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -13,8 +15,10 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLockDemo {
 
     @Test
-    public void demo() {
-        Depot depot = new Depot();
+    public void demo() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(5);
+        Depot depot = new Depot(latch);
+
         Producer producer = new Producer(depot);
         Customer customer = new Customer(depot);
 
@@ -23,6 +27,8 @@ public class ReentrantLockDemo {
         customer.consume(90);
         customer.consume(150);
         producer.produce(110);
+
+        latch.await();
     }
 
     @Test
@@ -44,14 +50,65 @@ public class ReentrantLockDemo {
         }
     }
 
+    // ? 如何测试公平锁和非公平锁，以下两个用例测不出来
+    @Test
+    public void non_fair_lock() throws InterruptedException {
+        ReentrantLock lock = new ReentrantLock(false);
+
+        Thread[] threadArray = new Thread[30];
+        for (int i=0; i<30; i++) {
+            threadArray[i] = new Thread(() -> {
+                System.out.println(Thread.currentThread().getName()+"启动");
+                try {
+                    lock.lock();
+                    System.out.println(Thread.currentThread().getName() +"获得了锁");
+                }finally {
+                    lock.unlock();
+                }
+            });
+        }
+        lock.lock();
+        for (int i=0; i<30; i++) {
+            threadArray[i].start();
+        }
+        lock.unlock();
+        Thread.sleep(200);
+    }
+
+    @Test
+    public void fair_lock() throws InterruptedException {
+        ReentrantLock lock = new ReentrantLock(true);
+
+        Thread[] threadArray = new Thread[30];
+        for (int i=0; i<30; i++) {
+            threadArray[i] = new Thread(() -> {
+                System.out.println(Thread.currentThread().getName()+"启动");
+                try {
+                    lock.lock();
+                    System.out.println(Thread.currentThread().getName() +"获得了锁");
+                }finally {
+                    lock.unlock();
+                }
+            });
+        }
+        lock.lock();
+        for (int i=0; i<30; i++) {
+            threadArray[i].start();
+        }
+        lock.unlock();
+        Thread.sleep(200);
+    }
+
 
     //仓库
     static class Depot {
         private int size;
         private Lock lock;
+        private CountDownLatch latch;
 
-        public Depot() {
+        public Depot(CountDownLatch latch) {
             this.size = 0;
+            this.latch = latch;
             this.lock = new ReentrantLock();
         }
 
@@ -63,6 +120,7 @@ public class ReentrantLockDemo {
             } finally {
                 lock.unlock();
             }
+            latch.countDown();
         }
 
         public void consume(int newSize) {
@@ -73,12 +131,14 @@ public class ReentrantLockDemo {
             } finally {
                 lock.unlock();
             }
+            latch.countDown();
         }
     }
 
     //生产者
     static class Producer {
         private Depot depot;
+
 
         public Producer(Depot depot) {
             this.depot = depot;

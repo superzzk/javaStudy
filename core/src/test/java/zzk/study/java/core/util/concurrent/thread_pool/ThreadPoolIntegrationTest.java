@@ -1,10 +1,11 @@
 package zzk.study.java.core.util.concurrent.thread_pool;
 
-import com.google.common.collect.Sets;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -145,7 +146,7 @@ public class ThreadPoolIntegrationTest {
 
 		TreeNode(int value, TreeNode... children) {
 			this.value = value;
-			this.children = Sets.newHashSet(children);
+			this.children = new HashSet(Arrays.asList(children));
 		}
 
 		public int getValue() {

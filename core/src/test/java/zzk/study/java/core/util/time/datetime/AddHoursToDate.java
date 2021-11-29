@@ -1,7 +1,5 @@
 package zzk.study.java.core.util.time.datetime;
 
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -48,7 +46,5 @@ public class AddHoursToDate {
         return instant.minus(hours, ChronoUnit.HOURS);
     }
 
-    public Date addHoursWithApacheCommons(Date date, int hours) {
-        return DateUtils.addHours(date, hours);
-    }
+
 }
