@@ -12,6 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 public class MutexUnitTest {
 
     // @Test
@@ -20,7 +22,7 @@ public class MutexUnitTest {
     public void givenUnsafeSequenceGenerator_whenRaceCondition_thenUnexpectedBehavior() throws Exception {
         int count = 1000;
         Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGenerator(), count);
-        Assert.assertNotEquals(count, uniqueSequences.size());
+        assertNotEquals(count, uniqueSequences.size());
     }
 
     @Test

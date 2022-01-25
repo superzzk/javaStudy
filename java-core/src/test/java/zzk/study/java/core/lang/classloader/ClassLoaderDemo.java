@@ -1,17 +1,15 @@
 package zzk.study.java.core.lang.classloader;
 
+import org.junit.Test;
+
 /**
  * @author zhangzhongkun
  * @since 2019-08-08 14:51
  **/
 public class ClassLoaderDemo {
-    public static void main(String[] args) {
-        ClassLoaderDemo demo = new ClassLoaderDemo();
-        demo.test2();
 
-    }
-
-    private void test1(){
+    @Test
+    public void test1(){
         ClassLoader cl1 = getClass().getClassLoader();
         System.out.println(cl1);
         ClassLoader cl2 = cl1.getParent();
@@ -20,7 +18,8 @@ public class ClassLoaderDemo {
         System.out.println(cl3);
     }
 
-    private void test2(){
+    @Test
+    public void test2(){
         ClassLoader cl1 = Thread.currentThread().getContextClassLoader();
         System.out.println(cl1);
 

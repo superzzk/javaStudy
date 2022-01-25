@@ -1,8 +1,7 @@
 package zzk.study.java.core.util.concurrent;
 
-import org.junit.FixMethodOrder;
+import lombok.SneakyThrows;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,7 +9,23 @@ import java.util.concurrent.Phaser;
 
 import static junit.framework.TestCase.assertEquals;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+/**
+ * The Phaser allows us to build logic in which threads need to wait on the barrier before going to the next step of execution.
+ *
+ * To participate in the coordination, the thread needs to register() itself with the Phaser instance.
+ * Note that this only increases the number of registered parties, and we can't check whether the current thread is registered –
+ * we'd have to subclass the implementation to supports this.
+ *
+ * The thread signals that it arrived at the barrier by calling the arriveAndAwaitAdvance(), which is a blocking method.
+ * When the number of arrived parties is equal to the number of registered parties, the execution of the program will continue,
+ * and the phase number will increase. We can get the current phase number by calling the getPhase() method.
+ *
+ * When the thread finishes its job, we should call the arriveAndDeregister() method to signal that the current thread should
+ * no longer be accounted for in this particular phase.
+ *
+ * @author zhangzhongkun02
+ * @date 2021/12/6
+ * */
 public class PhaserUnitTest {
 
     @Test
@@ -18,6 +33,9 @@ public class PhaserUnitTest {
         //given
         ExecutorService executorService = Executors.newCachedThreadPool();
         Phaser ph = new Phaser(1);
+        // equivalent to this
+//        Phaser ph = new Phaser();
+//        ph.register();
         assertEquals(0, ph.getPhase());
 
         //when
@@ -25,7 +43,9 @@ public class PhaserUnitTest {
         executorService.submit(new LongRunningAction("thread-2", ph));
         executorService.submit(new LongRunningAction("thread-3", ph));
 
-        //then
+        //we've initialized our Phaser with 1 and called register() three more times.
+        // Now, three action threads have announced that they've arrived at the barrier,
+        // so one more call of arriveAndAwaitAdvance() is needed – the one from the main thread:
         ph.arriveAndAwaitAdvance();
         assertEquals(1, ph.getPhase());
 
@@ -35,7 +55,7 @@ public class PhaserUnitTest {
         ph.arriveAndAwaitAdvance();
         assertEquals(2, ph.getPhase());
 
-
+        //When the deregistration causes the number of registered parties to become zero, the Phaser is terminated
         ph.arriveAndDeregister();
     }
     static class LongRunningAction implements Runnable {
@@ -48,16 +68,14 @@ public class PhaserUnitTest {
             ph.register();
         }
 
+        @SneakyThrows
         @Override
         public void run() {
             System.out.println("This is phase " + ph.getPhase());
             System.out.println("Thread " + threadName + " before long running action");
             ph.arriveAndAwaitAdvance();
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+            Thread.sleep(20);
             ph.arriveAndDeregister();
         }
     }

@@ -1,8 +1,6 @@
 package zzk.study.java.core.util.concurrent.transferqueue;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import java.util.concurrent.*;
 
@@ -16,7 +14,6 @@ import static junit.framework.TestCase.assertEquals;
  * This means that, when the producer sends a message to the consumer using the transfer() method,
  * the producer will stay blocked until the message is consumed.
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TransferQueueIntegrationTest {
 
     @Test

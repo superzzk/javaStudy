@@ -45,6 +45,7 @@ public class Demo {
 		System.out.println(ls);
 	}
 
+
 	@Test
 	public void givenIterable_whenConvertedToStream_thenNotNull() {
 		Iterable<String> iterable = Arrays.asList("Testing", "Iterable", "conversion", "to", "Stream");

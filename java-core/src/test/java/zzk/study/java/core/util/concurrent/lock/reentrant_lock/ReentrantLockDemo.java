@@ -1,11 +1,15 @@
 package zzk.study.java.core.util.concurrent.lock.reentrant_lock;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.chrono.ThaiBuddhistEra;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * 当并发量很小的时候，使用synchronized关键字的效率比Lock的效率高一点，而当并发量很高的时候，
@@ -36,17 +40,44 @@ public class ReentrantLockDemo {
         ReentrantLock lock = new ReentrantLock();
 
         try {
-            Thread t = new Thread();
-            System.out.println("     " + t.getThreadGroup());
-            System.out.println("     " + t.isInterrupted());
-            System.out.println("     " + t.getStackTrace());
-
-            assert !lock.isHeldByCurrentThread();
+            Assert.assertFalse(lock.isHeldByCurrentThread());
             lock.lock();
-
-            System.out.println(" after sleep(1500) Is held by Current Thread - " + lock.isHeldByCurrentThread());
+            Assert.assertTrue(lock.isHeldByCurrentThread());
         } finally {
             lock.unlock();
+        }
+    }
+
+    @Test
+    public void givenReentrantLock_whenLockAndUnlock_thenCheckHoldCountAndIsLocked() throws InterruptedException {
+        ReentrantLock reentrantLock = new ReentrantLock();
+        try {
+            reentrantLock.lock();
+            assertEquals(1, reentrantLock.getHoldCount());
+            assertTrue(reentrantLock.isLocked());
+        } finally {
+            reentrantLock.unlock();
+            assertEquals(0, reentrantLock.getHoldCount());
+            assertFalse(reentrantLock.isLocked());
+        }
+    }
+
+    @Test
+    public void givenReentrantLock_whenLockMultipleTimes_thenUnlockMultipleTimesToRelease() throws InterruptedException {
+        ReentrantLock reentrantLock = new ReentrantLock();
+        try {
+            reentrantLock.lock();
+            reentrantLock.lock();
+            assertEquals(2, reentrantLock.getHoldCount());
+            assertEquals(true, reentrantLock.isLocked());
+        } finally {
+            reentrantLock.unlock();
+            assertEquals(1, reentrantLock.getHoldCount());
+            assertEquals(true, reentrantLock.isLocked());
+
+            reentrantLock.unlock();
+            assertEquals(0, reentrantLock.getHoldCount());
+            assertEquals(false, reentrantLock.isLocked());
         }
     }
 

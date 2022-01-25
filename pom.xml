@@ -106,9 +106,10 @@
 
         <!-- test -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -189,5 +190,45 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>repository.springframework.maven.release</id>
+            <name>Spring Framework Maven Release Repository</name>
+            <url>http://maven.springframework.org/milestone/</url>
+        </repository>
+        <repository>
+            <id>org.springframework</id>
+            <url> http://maven.springframework.org/snapshot</url>
+        </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Maven MILESTONE Repository</name>
+            <url>http://repo.spring.io/libs-milestone</url>
+        </repository>
+        <repository>
+            <id>spring-release</id>
+            <name>Spring Maven RELEASE Repository</name>
+            <url>http://repo.spring.io/libs-release</url>
+        </repository>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <layout>default</layout>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 </project>
