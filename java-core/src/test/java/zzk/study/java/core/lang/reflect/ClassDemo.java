@@ -97,7 +97,7 @@ public class ClassDemo {
     }
 
     @Test
-    public void newInstanceTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public void newInstanceTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
         //无法创建非static内部类
         assertThrows(InstantiationException.class, ()->{
                 Class.forName("zzk.study.java.core.lang.reflect.ClassDemo$DemoClass").newInstance();
@@ -105,6 +105,7 @@ public class ClassDemo {
 
         final Object o = Class.forName("zzk.study.java.core.lang.reflect.ClassDemo$StaticDemoClass").newInstance();
         assertTrue(o instanceof StaticDemoClass);
+
     }
 
     @Test

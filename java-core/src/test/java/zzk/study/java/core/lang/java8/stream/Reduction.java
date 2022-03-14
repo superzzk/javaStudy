@@ -1,35 +1,33 @@
 package zzk.study.java.core.lang.java8.stream;
 
+import org.junit.Test;
+
 import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-/**
- * @program: javaStudy
- * @author: zhangzhongkun
- * @create: 2019-06-13 08:47
- **/
 public class Reduction {
-    public static void main(String[] args) {
-        test2();
-    }
     /**
      * count, sum, average, max, min
      */
-    private static void test1(){
+    @Test
+    private void demo1(){
         String[] strings = "this is an array of strings".split(" ");
         long count = Arrays.stream(strings)
                 .map(String::length)
                 .count();
         System.out.println("There are " + count + " strings");
+
         int totalLength = Arrays.stream(strings)
                 .mapToInt(String::length)
                 .sum();
         System.out.println("The total length is " + totalLength);
+
         OptionalDouble ave = Arrays.stream(strings)
                 .mapToInt(String::length)
                 .average();
         System.out.println("The average length is " + ave);
+
         OptionalInt max = Arrays.stream(strings)
                 .mapToInt(String::length)
                 .max();
@@ -39,11 +37,11 @@ public class Reduction {
         System.out.println("The max and min lengths are " + max + " and " + min);
     }
 
-    private static void test2(){
+    @Test
+    private void demo2(){
         /*
         * In the lambda expression, you can think of the first argument of the binary operator
-            as an accumulator, and the second argument as the value of each element in the
-            stream.
+            as an accumulator, and the second argument as the value of each element in the stream.
         * */
         int sum = IntStream.rangeClosed(1, 10)
                 .reduce((x, y) -> x + y).orElse(0);

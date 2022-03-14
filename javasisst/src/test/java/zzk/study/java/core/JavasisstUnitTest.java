@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class JavasisstUnitTest {
 
     @Test
-    public void givenJavasisstAPI_whenConstructClass_thenGenerateAClassFile() throws CannotCompileException, IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public void givenJavasisstAPI_whenConstructClass_thenGenerateAClassFile() throws CannotCompileException, IOException {
         // given
         String classNameWithPackage = "com.baeldung.JavassistGeneratedClass";
         ClassFile cf = new ClassFile(false, classNameWithPackage, null);

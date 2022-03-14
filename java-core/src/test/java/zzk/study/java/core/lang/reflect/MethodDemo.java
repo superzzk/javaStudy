@@ -30,11 +30,23 @@ public class MethodDemo {
         m = c.getClass().getMethod("noArgument");
         Assert.assertEquals(void.class, m.getReturnType());
 
+    }
+
+    @Test
+    public void invoke_private_test() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        DemoClass c = new DemoClass();
         //无法获取private方法
         Assertions.assertThrows(NoSuchMethodException.class, () -> {
             c.getClass().getMethod("privateMethod");
         });
 
+        final Method privateMethod = c.getClass().getDeclaredMethod("privateMethod");
+        Assertions.assertThrows(IllegalAccessException.class, () -> {
+            privateMethod.invoke(c);
+        });
+        privateMethod.setAccessible(true);
+        final Object ret = privateMethod.invoke(c);
+        Assertions.assertEquals(0, ret);
     }
 
 

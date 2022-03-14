@@ -9,7 +9,7 @@ public class Base64Demo {
     public static void main(String args[]) {
 
         try {
-            // Encode using basic encoder
+            // Encode using zzk.study.java.core.basic encoder
             String base64encodedString = Base64.getEncoder().encodeToString("TutorialsPoint?java8".getBytes("utf-8"));
             System.out.println("Base64 Encoded String (Basic) :" + base64encodedString);
             // Decode
