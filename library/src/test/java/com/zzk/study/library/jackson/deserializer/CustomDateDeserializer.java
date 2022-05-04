@@ -1,4 +1,4 @@
-package com.zzk.study.jackson.deserializer;
+package com.zzk.study.library.jackson.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

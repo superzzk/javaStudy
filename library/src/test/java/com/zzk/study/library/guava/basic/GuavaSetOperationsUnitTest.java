@@ -1,4 +1,4 @@
-package com.zzk.study.guava.basic;
+package com.zzk.study.library.guava.basic;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;

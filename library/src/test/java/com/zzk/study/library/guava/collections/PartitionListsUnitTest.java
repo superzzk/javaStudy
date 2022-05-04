@@ -1,9 +1,5 @@
-package com.zzk.study.guava.collections;
+package com.zzk.study.library.guava.collections;
 
-import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.stream;
+package zzk.study.java.core.java8.stream;
 
 import java.util.*;
 import java.util.stream.Collectors;

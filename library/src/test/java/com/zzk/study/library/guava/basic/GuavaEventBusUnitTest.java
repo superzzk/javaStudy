@@ -1,4 +1,4 @@
-package com.zzk.study.guava.basic;
+package com.zzk.study.library.guava.basic;
 
 import com.google.common.eventbus.DeadEvent;
 import com.google.common.eventbus.EventBus;

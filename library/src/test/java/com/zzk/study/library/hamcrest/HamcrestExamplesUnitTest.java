@@ -1,4 +1,4 @@
-package com.zzk.study.hamcrest;
+package com.zzk.study.library.hamcrest;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;

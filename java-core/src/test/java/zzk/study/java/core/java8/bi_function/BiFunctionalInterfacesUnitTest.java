@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.bi_function;
+package zzk.study.java.core.java8.bi_function;
 
 import org.junit.Test;
 

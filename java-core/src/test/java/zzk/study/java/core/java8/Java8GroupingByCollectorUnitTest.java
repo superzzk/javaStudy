@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8;
+package zzk.study.java.core.java8;
 
 import org.junit.Test;
 
@@ -10,24 +10,26 @@ import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
+import static zzk.study.java.core.java8.Java8GroupingByCollectorUnitTest.BlogPostType.*;
+
 public class Java8GroupingByCollectorUnitTest {
 
 	private static final List<BlogPost> posts =
 			Arrays.asList(
-					new BlogPost("News item 1", "Author 1", BlogPostType.NEWS, 15),
-					new BlogPost("Tech review 1", "Author 2", BlogPostType.REVIEW, 5),
-					new BlogPost("Programming guide", "Author 1", BlogPostType.GUIDE, 20),
-					new BlogPost("News item 2", "Author 2", BlogPostType.NEWS, 35),
-					new BlogPost("Tech review 2", "Author 1", BlogPostType.REVIEW, 15));
+					new BlogPost("News item 1", "Author 1", NEWS, 15),
+					new BlogPost("Tech review 1", "Author 2", REVIEW, 5),
+					new BlogPost("Programming guide", "Author 1", GUIDE, 20),
+					new BlogPost("News item 2", "Author 2", NEWS, 35),
+					new BlogPost("Tech review 2", "Author 1", REVIEW, 15));
 
 	@Test
 	public void givenAListOfPosts_whenGroupedByType_thenGetAMapBetweenTypeAndPosts() {
 		Map<BlogPostType, List<BlogPost>> postsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType));
 
-		assertEquals(2, postsPerType.get(BlogPostType.NEWS).size());
-		assertEquals(1, postsPerType.get(BlogPostType.GUIDE).size());
-		assertEquals(2, postsPerType.get(BlogPostType.REVIEW).size());
+		assertEquals(2, postsPerType.get(NEWS).size());
+		assertEquals(1, postsPerType.get(GUIDE).size());
+		assertEquals(2, postsPerType.get(REVIEW).size());
 	}
 
 	@Test
@@ -35,9 +37,9 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, String> postsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, mapping(BlogPost::getTitle, joining(", ", "Post titles: [", "]"))));
 
-		assertEquals("Post titles: [News item 1, News item 2]", postsPerType.get(BlogPostType.NEWS));
-		assertEquals("Post titles: [Programming guide]", postsPerType.get(BlogPostType.GUIDE));
-		assertEquals("Post titles: [Tech review 1, Tech review 2]", postsPerType.get(BlogPostType.REVIEW));
+		assertEquals("Post titles: [News item 1, News item 2]", postsPerType.get(NEWS));
+		assertEquals("Post titles: [Programming guide]", postsPerType.get(GUIDE));
+		assertEquals("Post titles: [Tech review 1, Tech review 2]", postsPerType.get(REVIEW));
 	}
 
 	@Test
@@ -45,11 +47,11 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, Integer> likesPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, summingInt(BlogPost::getLikes)));
 
-		assertEquals(50, likesPerType.get(BlogPostType.NEWS)
+		assertEquals(50, likesPerType.get(NEWS)
 				.intValue());
-		assertEquals(20, likesPerType.get(BlogPostType.REVIEW)
+		assertEquals(20, likesPerType.get(REVIEW)
 				.intValue());
-		assertEquals(20, likesPerType.get(BlogPostType.GUIDE)
+		assertEquals(20, likesPerType.get(GUIDE)
 				.intValue());
 	}
 
@@ -58,9 +60,9 @@ public class Java8GroupingByCollectorUnitTest {
 		EnumMap<BlogPostType, List<BlogPost>> postsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, () -> new EnumMap<>(BlogPostType.class), toList()));
 
-		assertEquals(2, postsPerType.get(BlogPostType.NEWS).size());
-		assertEquals(1, postsPerType.get(BlogPostType.GUIDE).size());
-		assertEquals(2, postsPerType.get(BlogPostType.REVIEW).size());
+		assertEquals(2, postsPerType.get(NEWS).size());
+		assertEquals(1, postsPerType.get(GUIDE).size());
+		assertEquals(2, postsPerType.get(REVIEW).size());
 	}
 
 	@Test
@@ -68,9 +70,9 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, Set<BlogPost>> postsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, toSet()));
 
-		assertEquals(2, postsPerType.get(BlogPostType.NEWS).size());
-		assertEquals(1, postsPerType.get(BlogPostType.GUIDE).size());
-		assertEquals(2, postsPerType.get(BlogPostType.REVIEW).size());
+		assertEquals(2, postsPerType.get(NEWS).size());
+		assertEquals(1, postsPerType.get(GUIDE).size());
+		assertEquals(2, postsPerType.get(REVIEW).size());
 	}
 
 	@Test
@@ -78,9 +80,9 @@ public class Java8GroupingByCollectorUnitTest {
 		ConcurrentMap<BlogPostType, List<BlogPost>> postsPerType = posts.parallelStream()
 				.collect(groupingByConcurrent(BlogPost::getType));
 
-		assertEquals(2, postsPerType.get(BlogPostType.NEWS).size());
-		assertEquals(1, postsPerType.get(BlogPostType.GUIDE).size());
-		assertEquals(2, postsPerType.get(BlogPostType.REVIEW).size());
+		assertEquals(2, postsPerType.get(NEWS).size());
+		assertEquals(1, postsPerType.get(GUIDE).size());
+		assertEquals(2, postsPerType.get(REVIEW).size());
 	}
 
 	@Test
@@ -88,11 +90,11 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, Double> averageLikesPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, averagingInt(BlogPost::getLikes)));
 
-		assertEquals(25, averageLikesPerType.get(BlogPostType.NEWS)
+		assertEquals(25, averageLikesPerType.get(NEWS)
 				.intValue());
-		assertEquals(20, averageLikesPerType.get(BlogPostType.GUIDE)
+		assertEquals(20, averageLikesPerType.get(GUIDE)
 				.intValue());
-		assertEquals(10, averageLikesPerType.get(BlogPostType.REVIEW)
+		assertEquals(10, averageLikesPerType.get(REVIEW)
 				.intValue());
 	}
 
@@ -101,11 +103,11 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, Long> numberOfPostsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, counting()));
 
-		assertEquals(2, numberOfPostsPerType.get(BlogPostType.NEWS)
+		assertEquals(2, numberOfPostsPerType.get(NEWS)
 				.intValue());
-		assertEquals(1, numberOfPostsPerType.get(BlogPostType.GUIDE)
+		assertEquals(1, numberOfPostsPerType.get(GUIDE)
 				.intValue());
-		assertEquals(2, numberOfPostsPerType.get(BlogPostType.REVIEW)
+		assertEquals(2, numberOfPostsPerType.get(REVIEW)
 				.intValue());
 	}
 
@@ -114,14 +116,14 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, Optional<BlogPost>> maxLikesPerPostType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, maxBy(comparingInt(BlogPost::getLikes))));
 
-		assertTrue(maxLikesPerPostType.get(BlogPostType.NEWS).isPresent());
-		assertEquals(35, maxLikesPerPostType.get(BlogPostType.NEWS).get().getLikes());
+		assertTrue(maxLikesPerPostType.get(NEWS).isPresent());
+		assertEquals(35, maxLikesPerPostType.get(NEWS).get().getLikes());
 
-		assertTrue(maxLikesPerPostType.get(BlogPostType.GUIDE).isPresent());
-		assertEquals(20, maxLikesPerPostType.get(BlogPostType.GUIDE).get().getLikes());
+		assertTrue(maxLikesPerPostType.get(GUIDE).isPresent());
+		assertEquals(20, maxLikesPerPostType.get(GUIDE).get().getLikes());
 
-		assertTrue(maxLikesPerPostType.get(BlogPostType.REVIEW).isPresent());
-		assertEquals(15, maxLikesPerPostType.get(BlogPostType.REVIEW)
+		assertTrue(maxLikesPerPostType.get(REVIEW).isPresent());
+		assertEquals(15, maxLikesPerPostType.get(REVIEW)
 				.get()
 				.getLikes());
 	}
@@ -132,23 +134,23 @@ public class Java8GroupingByCollectorUnitTest {
 				.collect(groupingBy(BlogPost::getAuthor, groupingBy(BlogPost::getType)));
 
 		assertEquals(1, map.get("Author 1")
-				.get(BlogPostType.NEWS)
+				.get(NEWS)
 				.size());
 		assertEquals(1, map.get("Author 1")
-				.get(BlogPostType.GUIDE)
+				.get(GUIDE)
 				.size());
 		assertEquals(1, map.get("Author 1")
-				.get(BlogPostType.REVIEW)
+				.get(REVIEW)
 				.size());
 
 		assertEquals(1, map.get("Author 2")
-				.get(BlogPostType.NEWS)
+				.get(NEWS)
 				.size());
 		assertEquals(1, map.get("Author 2")
-				.get(BlogPostType.REVIEW)
+				.get(REVIEW)
 				.size());
 		assertNull(map.get("Author 2")
-				.get(BlogPostType.GUIDE));
+				.get(GUIDE));
 	}
 
 	@Test
@@ -156,7 +158,7 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<BlogPostType, IntSummaryStatistics> likeStatisticsPerType = posts.stream()
 				.collect(groupingBy(BlogPost::getType, summarizingInt(BlogPost::getLikes)));
 
-		IntSummaryStatistics newsLikeStatistics = likeStatisticsPerType.get(BlogPostType.NEWS);
+		IntSummaryStatistics newsLikeStatistics = likeStatisticsPerType.get(NEWS);
 
 		assertEquals(2, newsLikeStatistics.getCount());
 		assertEquals(50, newsLikeStatistics.getSum());
@@ -170,14 +172,14 @@ public class Java8GroupingByCollectorUnitTest {
 		Map<Tuple, List<BlogPost>> postsPerTypeAndAuthor = posts.stream()
 				.collect(groupingBy(post -> new Tuple(post.getType(), post.getAuthor())));
 
-		List<BlogPost> result = postsPerTypeAndAuthor.get(new Tuple(BlogPostType.GUIDE, "Author 1"));
+		List<BlogPost> result = postsPerTypeAndAuthor.get(new Tuple(GUIDE, "Author 1"));
 
 		assertThat(result.size()).isEqualTo(1);
 
 		BlogPost blogPost = result.get(0);
 
 		assertThat(blogPost.getTitle()).isEqualTo("Programming guide");
-		assertThat(blogPost.getType()).isEqualTo(BlogPostType.GUIDE);
+		assertThat(blogPost.getType()).isEqualTo(GUIDE);
 		assertThat(blogPost.getAuthor()).isEqualTo("Author 1");
 	}
 

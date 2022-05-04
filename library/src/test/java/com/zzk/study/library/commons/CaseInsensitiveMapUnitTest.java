@@ -1,4 +1,4 @@
-package com.zzk.study.commons;
+package com.zzk.study.library.commons;
 
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.junit.Test;

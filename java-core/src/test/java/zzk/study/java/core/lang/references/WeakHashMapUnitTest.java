@@ -1,4 +1,4 @@
-package com.baeldung.map.weakhashmap;
+package zzk.study.java.core.lang.references;
 
 
 import org.junit.Test;

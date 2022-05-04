@@ -1,4 +1,4 @@
-package com.zzk.study.jackson.serializer;
+package com.zzk.study.library.jackson.serializer;
 
 import java.util.Date;
 

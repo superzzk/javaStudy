@@ -51,18 +51,14 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 // 👍 93 👎 0
 
 import com.zzk.study.leetcode.leetcode.editor.cn.util.TreeUtils;
-import scala.collection.immutable.$colon$colon;
 
-import javax.swing.*;
-import java.util.Arrays;
-
-class BinarySearchTreeToGreaterSumTree{
+class Q1038_BinarySearchTreeToGreaterSumTree{
     public static void main(String[] args) {
         test3();
     }
 
     public static void test1(){
-        Solution solution = new BinarySearchTreeToGreaterSumTree().new Solution();
+        Solution solution = new Q1038_BinarySearchTreeToGreaterSumTree().new Solution();
         TreeNode root = new TreeNode(3);
         TreeNode node1 = new TreeNode(2);
         TreeNode node2 = new TreeNode(4);
@@ -76,7 +72,7 @@ class BinarySearchTreeToGreaterSumTree{
     }
 
     public static void test2(){
-        Solution solution = new BinarySearchTreeToGreaterSumTree().new Solution();
+        Solution solution = new Q1038_BinarySearchTreeToGreaterSumTree().new Solution();
         TreeNode root = new TreeNode(1);
         TreeNode node1 = new TreeNode(0);
         TreeNode node2 = new TreeNode(2);
@@ -88,7 +84,7 @@ class BinarySearchTreeToGreaterSumTree{
     }
 
     public static void test3() {
-        Solution solution = new BinarySearchTreeToGreaterSumTree().new Solution();
+        Solution solution = new Q1038_BinarySearchTreeToGreaterSumTree().new Solution();
         Integer[] arr = {4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8};
         TreeNode head = TreeUtils.arrayToBTree(arr);
         solution.bstToGst(head);

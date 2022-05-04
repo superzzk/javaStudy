@@ -1,4 +1,4 @@
-package com.zzk.study.junit;
+package com.zzk.study.library.junit;
 
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
-package com.zzk.study.jackson;
+package com.zzk.study.library.jackson;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zzk.study.jackson.deserializer.EventWithDeserializer;
+import com.zzk.study.library.jackson.deserializer.EventWithDeserializer;
 import org.junit.Test;
 
 import java.io.IOException;

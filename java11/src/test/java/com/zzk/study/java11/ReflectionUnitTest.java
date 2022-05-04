@@ -1,8 +1,6 @@
-package com.baeldung.reflection;
+package com.zzk.study.java11;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class ReflectionUnitTest {
 
@@ -291,5 +289,101 @@ public class ReflectionUnitTest {
         }
         return methodNames;
     }
+
+    public interface Locomotion {
+        String getLocomotion();
+    }
+
+    public interface Eating {
+        String eats();
+    }
+
+
+    public abstract class Animal implements Eating {
+
+        public static final String CATEGORY = "domestic";
+
+        private String name;
+
+        public Animal(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        protected abstract String getSound();
+
+    }
+
+
+    public class Goat extends Animal implements Locomotion {
+
+        public Goat(String name) {
+            super(name);
+        }
+
+        @Override
+        protected String getSound() {
+            return "bleat";
+        }
+
+        @Override
+        public String getLocomotion() {
+            return "walks";
+        }
+
+        @Override
+        public String eats() {
+            return "grass";
+        }
+
+    }
+
+    public class Bird extends Animal {
+        private boolean walks;
+
+        public Bird() {
+            super("bird");
+        }
+
+        public Bird(String name, boolean walks) {
+            super(name);
+            setWalks(walks);
+        }
+
+        public Bird(String name) {
+            super(name);
+        }
+
+        @Override
+        public String eats() {
+            return "grains";
+        }
+
+        @Override
+        protected String getSound() {
+            return "chaps";
+        }
+
+        public boolean walks() {
+            return walks;
+        }
+
+        public void setWalks(boolean walks) {
+            this.walks = walks;
+        }
+    }
+
+    public class Person {
+        private String name;
+        private int age;
+    }
+
 
 }

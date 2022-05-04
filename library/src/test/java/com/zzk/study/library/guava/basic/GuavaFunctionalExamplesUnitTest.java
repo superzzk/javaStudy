@@ -1,4 +1,4 @@
-package com.zzk.study.guava.basic;
+package com.zzk.study.library.guava.basic;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;

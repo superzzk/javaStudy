@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.lambda;
+package zzk.study.java.core.java8.lambda;
 
 import javax.swing.*;
 import java.util.Arrays;

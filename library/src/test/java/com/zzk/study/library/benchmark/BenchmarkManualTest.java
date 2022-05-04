@@ -1,4 +1,4 @@
-package com.zzk.study.jmh.benchmark;
+package com.zzk.study.library.benchmark;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
@@ -20,7 +20,7 @@ public class BenchmarkManualTest
 
     Options opt = new OptionsBuilder()
       // Specify which benchmarks to run.
-      // You can be more specific if you'd like to run only one com.zzk.study.jmh.benchmark per test.
+      // You can be more specific if you'd like to run only one com.zzk.study.library.benchmark per test.
       .include(this.getClass().getName() + ".*")
       // Set the following options as needed
       .mode (Mode.AverageTime)

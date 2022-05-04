@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8;
+package zzk.study.java.core.java8;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import static java.util.Arrays.sort;
 import static org.junit.Assert.assertTrue;
 
 public class Java8ComparatorUnitTest {
@@ -53,7 +54,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenComparing_thenSortedByName() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
-        Arrays.sort(employees, employeeNameComparator);
+        sort(employees, employeeNameComparator);
          System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByName));
     }
@@ -63,7 +64,7 @@ public class Java8ComparatorUnitTest {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName, (s1, s2) -> {
             return s2.compareTo(s1);
         });
-        Arrays.sort(employees, employeeNameComparator);
+        sort(employees, employeeNameComparator);
          System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
@@ -72,7 +73,7 @@ public class Java8ComparatorUnitTest {
     public void whenReversed_thenSortedByNameDesc() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Comparator<Employee> employeeNameComparatorReversed = employeeNameComparator.reversed();
-        Arrays.sort(employees, employeeNameComparatorReversed);
+        sort(employees, employeeNameComparatorReversed);
          System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
@@ -80,7 +81,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenComparingInt_thenSortedByAge() {
         Comparator<Employee> employeeAgeComparator = Comparator.comparingInt(Employee::getAge);
-        Arrays.sort(employees, employeeAgeComparator);
+        sort(employees, employeeAgeComparator);
          System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByAge));
     }
@@ -88,7 +89,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenComparingLong_thenSortedByMobile() {
         Comparator<Employee> employeeMobileComparator = Comparator.comparingLong(Employee::getMobile);
-        Arrays.sort(employees, employeeMobileComparator);
+        sort(employees, employeeMobileComparator);
         // System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByMobile));
     }
@@ -96,7 +97,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenComparingDouble_thenSortedBySalary() {
         Comparator<Employee> employeeSalaryComparator = Comparator.comparingDouble(Employee::getSalary);
-        Arrays.sort(employees, employeeSalaryComparator);
+        sort(employees, employeeSalaryComparator);
         // System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesBySalary));
     }
@@ -104,7 +105,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenNaturalOrder_thenSortedByName() {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> naturalOrder();
-        Arrays.sort(employees, employeeNameComparator);
+        sort(employees, employeeNameComparator);
         // System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByName));
     }
@@ -112,7 +113,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenReverseOrder_thenSortedByNameDesc() {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> reverseOrder();
-        Arrays.sort(employees, employeeNameComparator);
+        sort(employees, employeeNameComparator);
         // System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
@@ -121,7 +122,7 @@ public class Java8ComparatorUnitTest {
     public void whenNullsFirst_thenSortedByNameWithNullsFirst() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Comparator<Employee> employeeNameComparator_nullFirst = Comparator.nullsFirst(employeeNameComparator);
-        Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullFirst);
+        sort(employeesArrayWithNulls, employeeNameComparator_nullFirst);
          System.out.println(Arrays.toString(employeesArrayWithNulls));
         assertTrue(Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsFirst));
     }
@@ -130,7 +131,7 @@ public class Java8ComparatorUnitTest {
     public void whenNullsLast_thenSortedByNameWithNullsLast() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Comparator<Employee> employeeNameComparator_nullLast = Comparator.nullsLast(employeeNameComparator);
-        Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullLast);
+        sort(employeesArrayWithNulls, employeeNameComparator_nullLast);
         // System.out.println(Arrays.toString(employeesArrayWithNulls));
         assertTrue(Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsLast));
     }
@@ -139,7 +140,7 @@ public class Java8ComparatorUnitTest {
     public void whenThenComparing_thenSortedByAgeName() {
         Comparator<Employee> employee_Age_Name_Comparator = Comparator.comparing(Employee::getAge).thenComparing(Employee::getName);
 
-        Arrays.sort(someMoreEmployees, employee_Age_Name_Comparator);
+        sort(someMoreEmployees, employee_Age_Name_Comparator);
         // System.out.println(Arrays.toString(someMoreEmployees));
         assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByAgeName));
     }
@@ -148,7 +149,7 @@ public class Java8ComparatorUnitTest {
     public void whenThenComparing_thenSortedByNameAge() {
         Comparator<Employee> employee_Name_Age_Comparator = Comparator.comparing(Employee::getName).thenComparingInt(Employee::getAge);
 
-        Arrays.sort(someMoreEmployees, employee_Name_Age_Comparator);
+        sort(someMoreEmployees, employee_Name_Age_Comparator);
         // System.out.println(Arrays.toString(someMoreEmployees));
         assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
     }

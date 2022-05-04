@@ -1,13 +1,11 @@
-package com.zzk.study.guava.collections;
+package com.zzk.study.library.guava.collections;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.*;
-import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.contains;

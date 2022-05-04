@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.optional;
+package zzk.study.java.core.java8.optional;
 
 import org.junit.Test;
 import org.slf4j.Logger;

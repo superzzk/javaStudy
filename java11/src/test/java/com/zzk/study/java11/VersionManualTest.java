@@ -1,4 +1,4 @@
-package com.baeldung.version;
+package com.zzk.study.java11;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.assertj.core.api.Assertions;

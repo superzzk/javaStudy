@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.stream;
+package zzk.study.java.core.java8.stream;
 
 import org.junit.Before;
 import org.junit.Test;

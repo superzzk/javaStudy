@@ -1,14 +1,12 @@
-package com.baeldung.reflection;
+package com.zzk.study.java11;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.*;
 
 public class OperationsUnitTest {
 
@@ -73,5 +71,26 @@ public class OperationsUnitTest {
 
         assertThat(result, equalTo(7.0));
     }
+
+    public static class Operations {
+
+        public double publicSum(int a, double b) {
+            return a + b;
+        }
+
+        public static double publicStaticMultiply(float a, long b) {
+            return a * b;
+        }
+
+        private boolean privateAnd(boolean a, boolean b) {
+            return a && b;
+        }
+
+        protected int protectedMax(int a, int b) {
+            return a > b ? a : b;
+        }
+
+    }
+
 
 }

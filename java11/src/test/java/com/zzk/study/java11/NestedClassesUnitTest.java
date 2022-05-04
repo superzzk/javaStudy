@@ -1,4 +1,4 @@
-package com.baeldung.features;
+package com.zzk.study.java11;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +33,22 @@ class NestedClassesUnitTest {
           .collect(Collectors.toSet());
         assertThat(nestedMembers).contains(MainClass.class.getName(), MainClass.NestedClass.class.getName());
     }
+
+    public static class MainClass {
+
+        private static boolean mainPrivateMethod() {
+            return true;
+        }
+
+        public static class NestedClass {
+
+            boolean nestedPublicMethod() {
+                return mainPrivateMethod();
+            }
+
+        }
+
+    }
+
 
 }

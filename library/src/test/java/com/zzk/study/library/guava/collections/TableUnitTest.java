@@ -1,4 +1,4 @@
-package com.zzk.study.guava.collections;
+package com.zzk.study.library.guava.collections;
 
 import static org.assertj.core.api.Assertions.*;
 import java.util.List;

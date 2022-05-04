@@ -1,6 +1,6 @@
-package zzk.study.java.core.lang.java8.stream;
+package zzk.study.java.core.java8.stream;
 
-import zzk.study.java.core.lang.java8.NumberUtils;
+import zzk.study.java.core.java8.NumberUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

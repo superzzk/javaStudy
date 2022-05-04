@@ -1,6 +1,7 @@
-package zzk.study.java.core.nio;
+package zzk.study.java.core.nio.filecopy;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,10 +10,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Objects;
 
-final class FileCopy {
+public class FileCopy {
 
-    private FileCopy() {
-        throw new IllegalStateException("FileCopy can't instantiate.");
+    @Test
+    public void demo() throws IOException {
+        FileCopy.copy("/Users/kun/test/from/hhh","/Users/kun/test/to");
     }
 
     public static void copy(final String src, final String target) throws IOException {

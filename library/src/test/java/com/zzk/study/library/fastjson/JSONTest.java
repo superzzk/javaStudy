@@ -1,4 +1,4 @@
-package com.zzk.study.fastjson;
+package com.zzk.study.library.fastjson;
 
 import java.util.ArrayList;
 import java.util.HashMap;

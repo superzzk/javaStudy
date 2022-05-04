@@ -27,9 +27,9 @@
     <dependency>
       <groupId>com.sun</groupId>
       <artifactId>tools</artifactId>
-      <version>${sun.tools.version}</version>
+      <version>1.8</version>
       <scope>system</scope>
-      <systemPath>D:/soft/develop/Java/jdk1.8.0_91/lib/tools.jar</systemPath>
+      <systemPath>/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/lib/tools.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>org.ow2.asm</groupId>

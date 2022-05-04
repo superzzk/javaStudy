@@ -2,7 +2,7 @@
 //
 //import com.google.common.hash.HashCode;
 //import com.google.common.hash.Hashing;
-//import org.com.zzk.study.commons.codec.digest.DigestUtils;
+//import org.com.zzk.study.library.commons.codec.digest.DigestUtils;
 //import org.junit.Test;
 //
 //import javax.xml.bind.DatatypeConverter;

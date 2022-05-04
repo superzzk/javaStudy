@@ -63,6 +63,7 @@ package com.zzk.study.leetcode;//Roman numerals are represented by seven differe
 // Related Topics Hash Table Math String 👍 3005 👎 3942
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -76,14 +77,22 @@ public class Q12_Integer_to_Roman {
         StringBuilder res = new StringBuilder();
         while(num>0){
             for (int i = 0; i < values.length; i++) {
-                if(num>values[i]){
+                if(num>=values[i]){
                     res.append(symbols[i]);
                     num -= values[i];
+                    break;
                 }
             }
         }
 
         return res.toString();
+    }
+
+    @Test
+    public void test(){
+        Q12_Integer_to_Roman problem = new Q12_Integer_to_Roman();
+        Assert.assertEquals("III", problem.intToRoman(3));
+        Assert.assertEquals("XX", problem.intToRoman(20));
     }
 
     private void iterate(StringBuilder res, int num){

@@ -1,12 +1,10 @@
-package com.zzk.study.guava.preconditions;
+package com.zzk.study.library.guava.preconditions;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.google.common.base.Preconditions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class PreconditionsTest {
     /**

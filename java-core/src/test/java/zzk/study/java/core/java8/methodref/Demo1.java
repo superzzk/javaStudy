@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.methodref;
+package zzk.study.java.core.java8.methodref;
 
 /**
  * @program: javaStudy
@@ -19,16 +19,22 @@ public class Demo1 {
         System.out.println("Original string: " + inStr);
         System.out.println("String reserved: " + outStr);
     }
-}
 
-class MyStringOps {
+    public interface StringFunc {
+        String func(String n);
+    }
 
-    //静态方法： 反转字符串
-    public static String strReverse(String str) {
-        String result = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            result += str.charAt(i);
+    static class MyStringOps {
+
+        //静态方法： 反转字符串
+        public static String strReverse(String str) {
+            String result = "";
+            for (int i = str.length() - 1; i >= 0; i--) {
+                result += str.charAt(i);
+            }
+            return result;
         }
-        return result;
     }
 }
+
+

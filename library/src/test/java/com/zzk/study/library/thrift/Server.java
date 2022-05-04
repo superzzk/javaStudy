@@ -1,4 +1,4 @@
-package com.zzk.study.thrift;
+package com.zzk.study.library.thrift;
 
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;

@@ -1,4 +1,4 @@
-//Given an array nums of n integers, return an array of all the unique 
+package com.zzk.study.leetcode.leetcode.editor.en;//Given an array nums of n integers, return an array of all the unique
 //quadruplets [nums[a], nums[b], nums[c], nums[d]] such that: 
 //
 // 
@@ -35,10 +35,14 @@
 // Related Topics Array Two Pointers Sorting 👍 5958 👎 680
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        
+        List<List<Integer>> res = new ArrayList<>();
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

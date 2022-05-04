@@ -15,7 +15,7 @@ package com.zzk.study.leetcode.leetcode.editor.cn;//给定一个整数数组 num
 import org.junit.Test;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Q327 {
     public int countRangeSum(int[] nums, int lower, int upper) {
         int count=0;
         for(int i=0;i<nums.length;i++){

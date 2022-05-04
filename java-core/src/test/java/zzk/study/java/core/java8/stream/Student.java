@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8.stream;
+package zzk.study.java.core.java8.stream;
 
 public class Student implements Comparable<Student> {
     private int id;

@@ -2,11 +2,8 @@ package zzk.study.java.core.lang.reflect;
 
 import lombok.val;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import zzk.study.java.core.lang.java8.stream.Demo;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 

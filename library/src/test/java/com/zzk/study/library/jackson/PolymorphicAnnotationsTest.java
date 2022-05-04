@@ -1,4 +1,4 @@
-package com.zzk.study.jackson;
+package com.zzk.study.library.jackson;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

@@ -1,6 +1,7 @@
 package zzk.study.java.core.util.concurrent;
 
 import org.checkerframework.dataflow.qual.TerminatesExecution;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,16 +51,23 @@ public class ConcurrentHashMpaDemo {
 	public void test_merge() {
 		ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
 		map.put("X", "x");
-		System.out.println("1st ==> " + map);
-		System.out.println("2nd ==> " + map.merge("X", "x", (v1, v2) -> null));
-		System.out.println("3rd ==> " + map);
+		Assert.assertEquals("x", map.get("X"));
+
+		map.merge("X", "x", (v1, v2) -> null);
+		Assert.assertNull(map.get("X"));
+
 		map.put("Y", "y");
 		map.put("X", "x1");
-		System.out.println("4th ==> " + map.merge("X", "x1", (v1, v2) -> "z"));
-		System.out.println("5th ==> " + map);
-		System.out.println("6th ==> " + map.merge(
-				"X", "x2", (v1, v2) -> v2.concat("z")));
-		System.out.println("7th ==> " + map);
+		map.merge("X", "x1", (v1, v2) -> "z");
+		Assert.assertEquals("z", map.get("X"));
+
+		//如果map中没有，则直接使用value
+		map.merge("Z", "z", (v1, v2) -> "sth");
+		Assert.assertEquals("z", map.get("Z"));
+
+		//BiFunction中传入的2个参数是新旧value
+		map.merge("X", "x2", (v1, v2) -> v2.concat("z"));
+		Assert.assertEquals("x2z", map.get("X"));
 	}
 
 	@Test

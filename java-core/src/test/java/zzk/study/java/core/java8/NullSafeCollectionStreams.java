@@ -1,4 +1,4 @@
-package zzk.study.java.core.lang.java8;
+package zzk.study.java.core.java8;
 
 import org.junit.Test;
 

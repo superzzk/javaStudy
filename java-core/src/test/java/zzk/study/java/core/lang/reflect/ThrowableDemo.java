@@ -1,6 +1,5 @@
 package zzk.study.java.core.lang.reflect;
 
-import kafka.log.Log;
 import org.junit.Test;
 
 /**

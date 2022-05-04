@@ -19,11 +19,13 @@
         <module>library</module>
         <module>leetcode</module>
         <module>spring</module>
+        <module>java11</module>
     </modules>
 
     <properties>
         <logback.version>1.2.3</logback.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <avaitility.version>1.7.0</avaitility.version>
     </properties>
 
     <dependencies>
@@ -149,7 +151,12 @@
             <version>3.18.0</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
         <dependency>

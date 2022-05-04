@@ -1,11 +1,11 @@
-package com.zzk.study.jackson;
+package com.zzk.study.library.jackson;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.zzk.study.jackson.serializer.EventWithSerializer;
-import com.zzk.study.jackson.serializer.EventWithoutSerializer;
+import com.zzk.study.library.jackson.serializer.EventWithSerializer;
+import com.zzk.study.library.jackson.serializer.EventWithoutSerializer;
 import org.junit.Test;
 
 import java.text.ParseException;

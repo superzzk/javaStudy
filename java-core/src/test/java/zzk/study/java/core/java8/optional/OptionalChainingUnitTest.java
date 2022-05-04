@@ -1,10 +1,9 @@
-package zzk.study.java.core.lang.java8.optional;
+package zzk.study.java.core.java8.optional;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 

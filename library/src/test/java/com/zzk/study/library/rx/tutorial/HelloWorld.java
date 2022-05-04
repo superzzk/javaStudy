@@ -1,4 +1,4 @@
-package com.zzk.study.rx.tutorial;
+package com.zzk.study.library.rx.tutorial;
 
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;

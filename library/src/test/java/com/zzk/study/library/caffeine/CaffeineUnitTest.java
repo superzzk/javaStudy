@@ -1,17 +1,17 @@
-package com.baeldung.caffeine;
+package com.zzk.study.library.caffeine;
 
-import static org.junit.Assert.*;
+import com.github.benmanes.caffeine.cache.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Nonnull;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.github.benmanes.caffeine.cache.*;
+import static org.junit.Assert.*;
 
 public class CaffeineUnitTest {
 
@@ -142,4 +142,31 @@ public class CaffeineUnitTest {
         Assert.assertEquals(1, cache.stats().hitCount());
         Assert.assertEquals(1, cache.stats().missCount());
     }
+
+    final static class DataObject {
+        private final String data;
+
+        private static int objectCounter = 0;
+        private static final Logger log = LoggerFactory.getLogger(DataObject.class);
+
+        private DataObject(String data) {
+            this.data = data;
+        }
+
+        public String getData() {
+            return data;
+        }
+
+        @Override
+        public String toString() {
+            return "DataObject{" + "data='" + data + '\'' + '}';
+        }
+
+        public static DataObject get(String data) {
+            objectCounter++;
+            log.info("Init DataObject#{} with '{}'", objectCounter, data);
+            return new DataObject(data);
+        }
+    }
+
 }

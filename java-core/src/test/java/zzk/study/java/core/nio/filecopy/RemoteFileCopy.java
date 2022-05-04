@@ -1,10 +1,10 @@
-package zzk.study.java.core.nio;
+package zzk.study.java.core.nio.filecopy;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -16,49 +16,46 @@ import java.util.Objects;
 
 public class RemoteFileCopy {
 
-    final class FileReader {
+    final String FROM = "/Users/kun/test/from/hhh";
+    final String TO = "/Users/kun/test/to/hhh";
+    final String LOCAL_IP = "192.168.1.22";
 
-        private final FileChannel channel;
-        private final FileSender sender;
 
-        FileReader(final FileSender sender, final String path) throws IOException {
-            if (Objects.isNull(sender) || StringUtils.isEmpty(path)) {
-                throw new IllegalArgumentException("sender and path required");
-            }
+    @Test
+    public void startReceiver() throws IOException {
+        FileWriter writer = new FileWriter(TO);
+        FileReceiver receiver = new FileReceiver(8888, writer, Paths.get(FROM).toFile().length());
+        receiver.receive();
 
-            this.sender = sender;
-            this.channel = FileChannel.open(Paths.get(path), StandardOpenOption.READ);
-        }
+    }
 
-        void read() throws IOException {
-            try {
-                transfer();
-            } finally {
-                close();
-            }
-        }
-
-        void close() throws IOException {
-            this.sender.close();
-            this.channel.close();
-        }
-
-        private void  transfer() throws IOException {
-            this.sender.transfer(this.channel, 0l, this.channel.size());
-        }
+    @Test
+    public void startSender() throws IOException {
+        FileSender sender = new FileSender(8888, FROM);
+        sender.send();
     }
 
     final class FileSender {
 
         private final InetSocketAddress hostAddress;
+        private final FileChannel channel;
         private SocketChannel client;
 
-        FileSender(final int port) throws IOException {
-            this.hostAddress = new InetSocketAddress(port);
+        public FileSender(final int port, String path) throws IOException {
+            this.hostAddress = new InetSocketAddress(InetAddress.getByName(LOCAL_IP), port);
+            this.channel = FileChannel.open(Paths.get(path), StandardOpenOption.READ);
             this.client = SocketChannel.open(this.hostAddress);
         }
 
-        void transfer(final FileChannel channel, long position, long size) throws IOException {
+        public void send() throws IOException {
+            try {
+                transfer(this.channel, 0l, this.channel.size());
+            } finally {
+                close();
+            }
+        }
+
+        private void transfer(final FileChannel channel, long position, long size) throws IOException {
             assert !Objects.isNull(channel);
 
             while (position < size) {
@@ -70,8 +67,9 @@ public class RemoteFileCopy {
             return this.client;
         }
 
-        void close() throws IOException {
+        private void close() throws IOException {
             this.client.close();
+            this.channel.close();
         }
     }
 
@@ -87,12 +85,11 @@ public class RemoteFileCopy {
             this.size = size;
         }
 
-        void receive() throws IOException {
+        public void receive() throws IOException {
             SocketChannel channel = null;
 
             try (final ServerSocketChannel serverSocketChannel = ServerSocketChannel.open()) {
-                init(serverSocketChannel);
-
+                serverSocketChannel.bind(new InetSocketAddress(this.port));
                 channel = serverSocketChannel.accept();
 
                 doTransfer(channel);
@@ -109,12 +106,6 @@ public class RemoteFileCopy {
             assert !Objects.isNull(channel);
 
             this.fileWriter.transfer(channel, this.size);
-        }
-
-        private void init(final ServerSocketChannel serverSocketChannel) throws IOException {
-            assert !Objects.isNull(serverSocketChannel);
-
-            serverSocketChannel.bind(new InetSocketAddress(this.port));
         }
     }
 
@@ -143,7 +134,7 @@ public class RemoteFileCopy {
             assert !Objects.isNull(buffer);
 
             int bytesWritten = 0;
-            while(buffer.hasRemaining()) {
+            while (buffer.hasRemaining()) {
                 bytesWritten += this.channel.write(buffer, position + bytesWritten);
             }
 

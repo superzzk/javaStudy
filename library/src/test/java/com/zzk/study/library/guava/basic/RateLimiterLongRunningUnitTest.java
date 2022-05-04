@@ -1,4 +1,4 @@
-package com.zzk.study.guava.basic;
+package com.zzk.study.library.guava.basic;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.junit.Test;

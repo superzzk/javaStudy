@@ -1,15 +1,19 @@
-package com.baeldung.akka;
+package com.zzk.study.library.akka;
 
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import akka.testkit.TestKit;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import scala.concurrent.duration.Duration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -100,5 +104,199 @@ public class AkkaActorsUnitTest {
             " sheets containing Lorem Ipsum passages, and more recently with\n" +
             " desktop publishing software like Aldus PageMaker including\n" +
             "versions of Lorem Ipsum.";
+
+    public class MyActor extends AbstractActor {
+
+        private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+        @Override
+        public void postStop() {
+            log.info("Stopping actor {}", this);
+        }
+
+        public Receive createReceive() {
+            return receiveBuilder()
+                    .matchEquals("printit", p -> {
+                        System.out.println("The address of this actor is: " + getSelf());
+                        getSender().tell("Got Message", getSelf());
+                    })
+                    .build();
+        }
+    }
+
+    public static class FirstActor extends AbstractActor {
+
+        private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+        public static Props props() {
+            return Props.create(FirstActor.class);
+        }
+
+        @Override
+        public void preStart() {
+            log.info("Actor started");
+        }
+
+        @Override
+        public void postStop() {
+            log.info("Actor stopped");
+        }
+
+        // Messages will not be handled
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+                    .build();
+        }
+    }
+
+    public static class PrinterActor extends AbstractActor {
+
+        private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+        public static Props props(String text) {
+            return Props.create(PrinterActor.class, text);
+        }
+
+        public static final class PrintFinalResult {
+            Integer totalNumberOfWords;
+
+            public PrintFinalResult(Integer totalNumberOfWords) {
+                this.totalNumberOfWords = totalNumberOfWords;
+            }
+        }
+
+        @Override
+        public void preStart() {
+            log.info("Starting PrinterActor {}", this);
+        }
+
+        @Override
+        public void postStop() {
+            log.info("Stopping PrinterActor {}", this);
+        }
+
+
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+                    .match(PrinterActor.PrintFinalResult.class,
+                            r -> {
+                                log.info("Received PrintFinalResult message from " + getSender());
+                                log.info("The text has a total number of {} words", r.totalNumberOfWords);
+                            })
+                    .build();
+        }
+    }
+
+    public static class ReadingActor extends AbstractActor {
+
+        private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+        private String text;
+
+        public ReadingActor(String text) {
+            this.text = text;
+        }
+
+        public static Props props(String text) {
+            return Props.create(ReadingActor.class, text);
+        }
+
+        public static final class ReadLines {
+        }
+
+        @Override
+        public void preStart() {
+            log.info("Starting ReadingActor {}", this);
+        }
+
+        @Override
+        public void postStop() {
+            log.info("Stopping ReadingActor {}", this);
+        }
+
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+                    .match(ReadLines.class, r -> {
+
+                        log.info("Received ReadLines message from " + getSender());
+
+                        String[] lines = text.split("\n");
+                        List<CompletableFuture> futures = new ArrayList<>();
+
+                        for (int i = 0; i < lines.length; i++) {
+                            String line = lines[i];
+                            ActorRef wordCounterActorRef = getContext().actorOf(Props.create(WordCounterActor.class), "word-counter-" + i);
+
+                            CompletableFuture<Object> future =
+                                    ask(wordCounterActorRef, new WordCounterActor.CountWords(line), 1000).toCompletableFuture();
+                            futures.add(future);
+                        }
+
+                        Integer totalNumberOfWords = futures.stream()
+                                .map(CompletableFuture::join)
+                                .mapToInt(n -> (Integer) n)
+                                .sum();
+
+                        ActorRef printerActorRef = getContext().actorOf(Props.create(PrinterActor.class), "Printer-Actor");
+                        printerActorRef.forward(new PrinterActor.PrintFinalResult(totalNumberOfWords), getContext());
+//                    printerActorRef.tell(new PrinterActor.PrintFinalResult(totalNumberOfWords), getSelf());
+
+                    })
+                    .build();
+        }
+    }
+
+    public static class WordCounterActor extends AbstractActor {
+
+        private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+        public static final class CountWords {
+            String line;
+
+            public CountWords(String line) {
+                this.line = line;
+            }
+        }
+
+        @Override
+        public void preStart() {
+            log.info("Starting WordCounterActor {}", this);
+        }
+
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+                    .match(CountWords.class, r -> {
+                        try {
+                            log.info("Received CountWords message from " + getSender());
+                            int numberOfWords = countWordsFromLine(r.line);
+                            getSender().tell(numberOfWords, getSelf());
+                        } catch (Exception ex) {
+                            getSender().tell(new akka.actor.Status.Failure(ex), getSelf());
+                            throw ex;
+                        }
+                    })
+                    .build();
+        }
+
+        private int countWordsFromLine(String line) throws Exception {
+
+            if (line == null) {
+                throw new IllegalArgumentException("The text to process can't be null!");
+            }
+
+            int numberOfWords = 0;
+            String[] words = line.split(" ");
+            for (String possibleWord : words) {
+                if (possibleWord.trim().length() > 0) {
+                    numberOfWords++;
+                }
+            }
+            return numberOfWords;
+        }
+    }
 
 }

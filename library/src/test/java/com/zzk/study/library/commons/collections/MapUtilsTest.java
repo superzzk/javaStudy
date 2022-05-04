@@ -1,4 +1,4 @@
-package com.zzk.study.commons.collections;
+package com.zzk.study.library.commons.collections;
 
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;

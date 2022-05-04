@@ -1,4 +1,4 @@
-package com.zzk.study.bytebuddy;
+package com.zzk.study.library.bytebuddy;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
