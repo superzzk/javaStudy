@@ -1,0 +1,42 @@
+### 解题思路
+
+容器逆序遍历，
+- 时间复杂度：
+  1. O(1)，最好情况：容器最后1位不是9
+  2. O(N)，最坏情况：全为9
+- 空间复杂度：O(1).
+
+### 执行结果
+
+- 执行用时：0 ms, 在所有 C++ 提交中击败了100.00%的用户
+- 内存消耗：8.4 MB, 在所有 C++ 提交中击败了85.01%的用户
+- 通过测试用例：111 / 111
+
+### 代码
+
+* cpp
+
+```cpp
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        bool jia=true;//是否加1
+        for(auto i=digits.rbegin();i!=digits.rend();i++){//逆序迭代器遍历
+            if(jia){//当前要加1
+                *i=(*i+1)%10;//只能存0~9
+                if(*i==0){//若9+1=10溢出，jia为true，要进1
+                    jia=true;
+                }else{//不需要进1，立刻结束循环
+                    jia=false;
+                    break;
+                }
+            }
+        }
+        if(jia){//容器遍历完，还需要加1，则在容器头部插入1
+            digits.insert(digits.begin(),1);
+        }
+        return digits;
+    }
+};
+```
+

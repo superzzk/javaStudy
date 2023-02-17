@@ -46,6 +46,7 @@ public class QuickSortDemo {
         qsort2(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
+
     private static void qsort2(int[] nums, int start, int end){
         if(start>=end)
             return;
@@ -67,28 +68,28 @@ public class QuickSortDemo {
     public void test3(){
         int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
 //        int[] arr = {10,7,2,4};
-        qSort(arr, 0, arr.length);
+        qSort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
-    public void qSort(int[] nums, int start, int end){
 
-        if(start>=end)
+    public void qSort(int[] nums, int left, int right){
+        if(left >= right)
             return;
-        int left = start;
-        int right = end-1;
+        int pos = partition(nums, left, right);
 
-        int target = nums[right];
-        int index = start-1;
-        for(int i=start; i<end; i++){
-            if(nums[i]<target){
-                index++;
-                swap(nums, index, i);
-            }
-        }
-        swap(nums, ++index, right);
-
-        qSort(nums, start, index);
-        qSort(nums, index+1, end);
-
+        qSort(nums, left, pos-1);
+        qSort(nums,pos+1, right);
     }
+    private int partition(int[] nums, int left, int right) {
+        int pivot = right--;
+        while(left<right){
+            while(nums[left]<nums[pivot]) left++;
+            while(nums[right]>nums[pivot]) right--;
+            if(left < right)
+                swap(nums, left, right);
+        }
+        swap(nums, left, pivot);
+        return left;
+    }
+
 }

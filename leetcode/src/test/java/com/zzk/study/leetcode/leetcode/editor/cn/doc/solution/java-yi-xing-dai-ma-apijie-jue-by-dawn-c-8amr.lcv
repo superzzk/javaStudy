@@ -1,0 +1,13 @@
+调用`Integer.bitCount()`API，计算二进制下有多少个1。
+
+* 
+
+```
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        return Integer.bitCount(n);
+    }
+}
+```
+

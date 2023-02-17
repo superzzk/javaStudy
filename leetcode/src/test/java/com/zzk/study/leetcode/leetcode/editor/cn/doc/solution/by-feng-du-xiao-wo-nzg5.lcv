@@ -1,0 +1,84 @@
+> Problem: [66. 加一](https://leetcode.cn/problems/plus-one/description/)
+
+[TOC]
+
+# 思路
+
+> 讲述看到这一题的思路
+> 本题主要考虑的是，从个位数开始，当每一位数+1后等于10的情况；如果有加一后为10的情况，需要将结果归零，前面数往前进一位；如果没有直接加1；其次当出现999,9999等数字时，需要多一位，所以我们在新开辟堆区空间时，需要考虑到此情况；
+
+# 解题方法
+
+> 描述你的解题方法
+> 本题只要思路清晰了，按照此思路进行逐步敲代码即可；注意此题不能使用栈来解决，因为栈区每次运行完会将内存释放掉。开辟的堆区能将结果为我们所用；
+
+# 复杂度
+
+- 时间复杂度:
+
+> 添加时间复杂度, 示例：
+> O(1)
+
+- 空间复杂度:
+
+> 添加空间复杂度, 示例： $O(n)$
+> O(2)
+
+# Code4
+
+* []兄弟们，刚开始做题不要着急写代码，先把思路整理出来，按照思路写出框架，缺什么补什么；不要追求完美想着一次性把整个代码写出来；而且自己多去测试，才能加深对解题的思路；
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+void reserve1(int *arr, int size) {
+    int left = 0;
+    int right = size - 1;
+    while (left < right) {
+        char t = arr[left];
+        arr[left] = arr[right];
+        arr[right] = t;
+        left++;
+        right--;
+    }
+}
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* plusOne(int* digits, int digitsSize, int* returnSize){
+//将返回值置为0
+    *returnSize = 0;
+    //在堆中开辟了一块内存，大小为sizeof(int) * (digitsSize + 1)
+    //为什么加1：因为如果是999+1就会变成1000，那么需要多一位
+    int *res = malloc(sizeof(int) * (digitsSize + 1));
+    //carry：标记是否进1，默认情况就是加1
+    int carry = 1;
+    //逆序，从数字的个位数开始加一
+    for (int i = digitsSize - 1; i >= 0; --i) {
+        int tmp = digits[i];
+        //判断，当+1后的值等于10时，需要进1，那么carry置为1，
+        // 并加取余后的结果存入res堆内存中
+        if (tmp + carry >= 10) {
+            res[*returnSize] = (tmp + carry) % 10;
+            (*returnSize)++;
+            carry = 1;
+        } else {
+            //如果+1小于10，carry置为0，并将结果存入res堆内存中。
+            res[*returnSize] = (tmp + carry);
+            (*returnSize)++;
+            carry = 0;
+        }
+    }
+
+    //如果最后一次还在进1，说明99，999,9999这样的情况存在了，只需要给最高位置为1就可以了
+    if (carry == 1) {
+        res[*returnSize] = 1;
+        (*returnSize)++;
+    }
+    //对结果数组进行翻转，并返回
+    reserve1(res,*returnSize);
+    return res;
+}
+```
+

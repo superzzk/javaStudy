@@ -1,0 +1,22 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* cpp
+
+```cpp
+class Solution {
+public:
+    int largestPerimeter(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        for (int a = nums.size() -1; a >= 2; --a) {
+            int i = nums[a], j = nums[a-1], k = nums[a-2];
+            if(j + k > i) return i + j + k;
+        }
+        return 0;
+    }
+};
+```
+

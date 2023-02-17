@@ -12,7 +12,6 @@ public class PreconditionsTest {
       **/
     @Test
     public void test1() throws Exception {
-
         getPerson(8, "peida");
         getPerson(-9, "peida");
         getPerson(8, "");

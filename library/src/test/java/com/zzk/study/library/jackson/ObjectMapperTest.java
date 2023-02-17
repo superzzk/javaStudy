@@ -44,7 +44,10 @@ public class ObjectMapperTest {
 	public void readJsonNodeFromString() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = "{ \"color\" : \"Black\", \"type\" : \"FIAT\" }";
+
 		JsonNode jsonNode = objectMapper.readTree(json);
+		System.out.println(jsonNode);
+
 		String color = jsonNode.get("color").asText();
 		Assert.assertEquals(color,"Black");
 	}
@@ -54,6 +57,7 @@ public class ObjectMapperTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonCarArray =
 				"[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
+
 		List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
 		Assert.assertEquals(listCar.size(),2);
 	}
@@ -74,6 +78,7 @@ public class ObjectMapperTest {
 				= "{ \"color\" : \"Black\", \"type\" : \"Fiat\", \"year\" : \"1970\" }";
 		Car car = objectMapper.readValue(json, Car.class);
 	}
+
 	@Test
 	public void readObjFromJsonStringWithoutException() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -122,6 +127,7 @@ public class ObjectMapperTest {
 		// output: {"car":{"color":"yellow","type":"renault"},"datePurchased":"2016-07-03 11:43 AM CEST"}
 	}
 
+	// array and List
 	@Test
 	public void collections() throws IOException {
 		String jsonCarArray =

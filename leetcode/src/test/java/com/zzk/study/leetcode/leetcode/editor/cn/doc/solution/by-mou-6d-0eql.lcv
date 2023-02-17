@@ -1,0 +1,26 @@
+执行用时：
+56 ms
+, 在所有 Python3 提交中击败了
+63.03%
+的用户
+内存消耗：
+16 MB
+, 在所有 Python3 提交中击败了
+43.15%
+的用户
+通过测试用例：
+84 / 84
+
+* 
+
+```
+class Solution:
+    def largestPerimeter(self, nums: List[int]) -> int:
+        ans=sorted(nums)
+        n=len(nums)
+        for i in range(n-2):
+            if ans[n-2-i]+ans[n-3-i]>ans[n-1-i]:
+                return ans[n-1-i]+ans[n-2-i]+ans[n-3-i]
+        return 0
+```
+

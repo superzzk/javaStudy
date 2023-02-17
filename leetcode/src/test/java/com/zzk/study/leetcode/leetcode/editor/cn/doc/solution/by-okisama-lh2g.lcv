@@ -1,0 +1,11 @@
+![image.png](https://pic.leetcode-cn.com/1663862944-iUFokF-image.png)
+思路：
+
+* 
+
+```
+function hammingWeight(n: number): number {
+    return n.toString(2).split('0').join('').length
+};
+```
+

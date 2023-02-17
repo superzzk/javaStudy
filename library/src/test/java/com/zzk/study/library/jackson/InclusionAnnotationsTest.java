@@ -24,6 +24,7 @@ import static org.junit.Assert.assertThat;
  * */
 public class InclusionAnnotationsTest {
 
+	// @JsonIgnoreProperties
 	@Test
 	public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException {
 
@@ -35,6 +36,7 @@ public class InclusionAnnotationsTest {
 		assertThat(result, not(containsString("id")));
 	}
 
+	// @JsonIgnore
 	@Test
 	public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
 
@@ -46,6 +48,7 @@ public class InclusionAnnotationsTest {
 		assertThat(result, not(containsString("id")));
 	}
 
+	// @JsonIgnoreType
 	@Test
 	public void whenSerializingUsingJsonIgnoreType_thenCorrect() throws JsonProcessingException, ParseException {
 
@@ -60,6 +63,7 @@ public class InclusionAnnotationsTest {
 		assertThat(result, not(containsString("John")));
 	}
 
+	// @JsonInclude(JsonInclude.Include.NON_NULL)
 	@Test
 	public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException {
 		MyBean bean = new MyBean(1, null);
@@ -70,6 +74,8 @@ public class InclusionAnnotationsTest {
 		assertThat(result, not(containsString("name")));
 	}
 
+	// @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+	// private 属性也会检测
 	@Test
 	public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException {
 		PrivateBean bean = new PrivateBean(1, "My bean");

@@ -1,0 +1,19 @@
+### 解题思路
+
+![E42477F0-39BE-4B75-B5B3-55BAC2E23A1B.jpeg](https://pic.leetcode-cn.com/1664417233-vTtRMf-E42477F0-39BE-4B75-B5B3-55BAC2E23A1B.jpeg)
+
+`__builtin_popcount()` 可以知道n的二进制中 有多少个1
+
+### 代码
+
+* cpp
+
+```cpp
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        return __builtin_popcount(n);
+    }
+};
+```
+

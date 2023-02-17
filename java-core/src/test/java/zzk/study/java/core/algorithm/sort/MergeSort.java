@@ -1,5 +1,9 @@
 package zzk.study.java.core.algorithm.sort;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * MergeSort(arr[], l,  r)
  * If r > l
@@ -16,8 +20,7 @@ public class MergeSort {
 	// Merges two subarrays of arr[].
 	// First subarray is arr[l..m]
 	// Second subarray is arr[m+1..r]
-	void merge(int arr[], int l, int m, int r)
-	{
+	void merge(int arr[], int l, int m, int r) {
 		// Find sizes of two subarrays to be merged
 		int n1 = m - l + 1;
 		int n2 = r - m;
@@ -66,10 +69,8 @@ public class MergeSort {
 		}
 	}
 
-	// Main function that sorts arr[l..r] using
-	// merge()
-	void sort(int arr[], int l, int r)
-	{
+	// Main function that sorts arr[l..r] using merge()
+	void sort(int arr[], int l, int r) {
 		if (l < r) {
 			// Find the middle point
 			int m = (l + r) / 2;
@@ -84,8 +85,7 @@ public class MergeSort {
 	}
 
 	/* A utility function to print array of size n */
-	static void printArray(int arr[])
-	{
+	static void printArray(int arr[]) {
 		int n = arr.length;
 		for (int i = 0; i < n; ++i)
 			System.out.print(arr[i] + " ");
@@ -105,5 +105,51 @@ public class MergeSort {
 
 		System.out.println("\nSorted array");
 		printArray(arr);
+	}
+
+
+
+	@Test
+	public void demo()
+	{
+		int arr[] = { 12, 11, 13, 5, 6, 7 };
+
+		System.out.println("Given Array");
+		System.out.println(Arrays.toString(arr));
+
+		MergeSort ob = new MergeSort();
+		ob.sort2(arr, 0, arr.length - 1);
+
+		System.out.println("\nSorted array");
+		System.out.println(Arrays.toString(arr));
+	}
+
+	public void sort2(int[] nums, int left, int right){
+		if(left < right){
+			int mid = (right-left)/2;
+			sort(nums, left, mid);
+			sort(nums, mid, right);
+
+			merge2(nums, left, mid, right);
+		}
+	}
+
+	private void merge2(int[] nums, int left, int mid, int right) {
+		int[] L = Arrays.copyOfRange(nums, left, mid);
+		int[] R = Arrays.copyOfRange(nums, mid, right);
+
+		int index = left;
+		int l=0,r=0;
+		while(l<L.length && r<R.length){
+			if(L[l]<R[r]){
+				nums[index++] = L[l++];
+			}else{
+				nums[index++] = R[r++];
+			}
+		}
+		while(l<L.length)
+			nums[index++] = L[l++];
+		while(r<R.length)
+			nums[index++] = R[r++];
 	}
 }

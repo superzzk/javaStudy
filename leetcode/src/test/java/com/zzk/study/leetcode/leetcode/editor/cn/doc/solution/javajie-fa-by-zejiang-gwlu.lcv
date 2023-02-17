@@ -1,0 +1,75 @@
+> Problem: [40. 组合总和 II](https://leetcode.cn/problems/combination-sum-ii/description/)
+
+[TOC]
+
+# 思路
+
+> 回溯法, 但是这次数字不能重复取, 需要更改判断条件
+
+# 解题方法
+
+> 描述你的解题方法
+
+# 复杂度
+
+- 时间复杂度:
+
+> 添加时间复杂度, 示例： $O(n)$
+
+- 空间复杂度:
+
+> 添加空间复杂度, 示例： $O(n)$
+
+# Code
+
+* []
+
+```Java
+
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> combine = new ArrayList<>();
+        Arrays.sort(candidates);
+        List<int[]> numList = new ArrayList<>(); //用于存储数组中每个单独数字出现的次数
+        for (int candidate : candidates) {
+            int size = numList.size();
+            if (numList.isEmpty() || numList.get(size - 1)[0] != candidate) {
+                numList.add(new int[]{candidate, 1});
+            } else {
+                ++numList.get(size - 1)[1];
+            }
+        }
+        dfs(res, combine, numList, target, 0);
+        return res;
+    }
+
+    public void dfs(List<List<Integer>> res, List<Integer> combine, List<int[]> numList, int target, int idx) {
+        // 满足条件加入结果集
+        if(target == 0){
+            res.add(new ArrayList<>(combine));
+            return;
+        }
+
+        // 不满足条件直接进入下一次循环
+        if(idx == numList.size() || numList.get(idx)[0] > target){
+            return;
+        }
+
+        // 不取当前位置的数字, 直接下一个数字
+        dfs(res, combine, numList, target, idx+1);
+
+        int most = Math.min(target / numList.get(idx)[0], numList.get(idx)[1]);
+        for (int i = 1; i <= most; i++) {
+            combine.add(numList.get(idx)[0]);
+            // 取了i次当前位置数字, 每取一次需要去判断一次能不能满足
+            dfs(res, combine, numList, target - i*numList.get(idx)[0], idx+1);
+        }
+        for (int i = 0; i < most; i++) {
+            // 最终需要移除掉上面加入的当前位置数字
+            combine.remove(combine.size()-1);
+        }
+    }
+}
+```
+

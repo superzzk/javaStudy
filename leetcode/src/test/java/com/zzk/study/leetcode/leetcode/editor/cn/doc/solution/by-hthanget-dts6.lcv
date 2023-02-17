@@ -1,0 +1,41 @@
+#### 回溯
+
+深度优先遍历 : 对组合数组的每个数进行最大限度的递归。这个限度取决于 $target$ 的大小以及每个数出现的次数。为了便于计数，对组合数组排序。维护一个变量 $k$ ，统计 $s[i]$ 出现的次数，便于我们找到下一个不重复的数。每次递归之后，对现场进行恢复，以便下一次不重复的递归。
+
+提示 ： $path$ 保存组合数的路径， $target$ 保存剩余的目标数(总目标数 $-\ \sum path$ )， $u$ 表示当前递归到第几个数。
+
+* cpp
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> path;
+
+    vector<vector<int>> combinationSum2(vector<int>& c, int target) {
+        sort(c.begin(),c.end());
+        dfs(c,0,target);
+        return ans;
+    }
+    void dfs(vector<int> &c,int u ,int target){
+        if(0==target){
+            ans.push_back(path);
+            return;
+        }
+        if(c.size()==u) return;//当前路径无解
+        int k = u+1;
+        while(k<c.size()&&c[k]==c[u]) k++;//循环结束,k指向下一个数
+        int cnt = k-u;//c[u]出现的次数
+        for(int i = 0;i<=target && i/c[u] <= cnt;i+=c[u]){
+            dfs(c,k,target-i);
+            path.push_back(c[u]);
+        }
+        for(int i = 0;i<=target && i/c[u] <= cnt;i+=c[u]) path.pop_back();
+    }
+};
+```
+
+#### 致语
+
+理解思路很重要！
+欢迎读者在评论区留言，答主看到就会回复的。

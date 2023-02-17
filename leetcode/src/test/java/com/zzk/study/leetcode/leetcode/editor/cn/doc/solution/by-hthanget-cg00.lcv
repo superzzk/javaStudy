@@ -1,0 +1,37 @@
+#### 回溯
+
+深度优先遍历 : 对组合数组的每个数进行最大限度的递归。这个限度取决于 $target$ 的大小。每次递归之后，对现场进行恢复，以便下一次不重复的递归。
+
+提示 ： $path$ 保存组合数的路径， $target$ 保存剩余的目标数(总目标数 $-\ \sum path$ )， $u$ 表示当前递归到第几个数。
+
+* cpp
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> path;
+
+    vector<vector<int>> combinationSum(vector<int>& c, int target) {//记录path，回溯
+        dfs(c,0,target);
+        return ans;
+    }
+    void dfs(vector<int> &c,int u,int target){//u表示递归到当前第几个数
+        if(0==target){
+            ans.push_back(path);
+            return;
+        }
+        if(c.size()==u) return ;
+        for(int i = 0 ;i<=target;i+=c[u]){
+            dfs(c,u+1,target-i);
+            path.push_back(c[u]);
+        }
+        for(int i = 0 ;i<=target;i+=c[u]) path.pop_back();//回溯
+    }
+};
+```
+
+#### 致语
+
+理解思路很重要！
+欢迎读者在评论区留言，答主看到就会回复的。

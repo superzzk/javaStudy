@@ -1,0 +1,36 @@
+* 
+
+```
+class Solution {
+
+    List<List<Integer>> result = new ArrayList<>();
+    List<Integer> temp = new LinkedList<>();
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        backTracking(candidates, target, 0);
+        return result;
+    }
+   
+    private void backTracking(int[] candidates, int sum, int startIndex) {
+        if (sum == 0) {
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = startIndex; i < candidates.length; i++) {
+            //判断sum减去当前值是否大于0
+            if (candidates[i] <= sum) {
+                //去重操作
+                if (i > startIndex && candidates[i] == candidates[i - 1])
+                    continue;
+                temp.add(candidates[i]);
+                //回溯，在形参中减去当前值，开始索引加1
+                backTracking(candidates, sum - candidates[i], i + 1);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+
+}
+```
+

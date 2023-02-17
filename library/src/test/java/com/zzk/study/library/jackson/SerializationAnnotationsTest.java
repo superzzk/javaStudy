@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.zzk.study.library.jackson.serializer.CustomDateSerializer;
 import com.zzk.study.library.jackson.serializer.EventWithSerializer;
 import com.zzk.study.library.jackson.serializer.EventWithoutSerializer;
 import org.junit.Test;
@@ -30,6 +32,7 @@ import static org.junit.Assert.assertThat;
  * */
 public class SerializationAnnotationsTest {
 
+    // @JsonAnyGetter
     @Test
     public void whenSerializingUsingJsonAnyGetter_thenCorrect() throws JsonProcessingException {
 
@@ -38,11 +41,13 @@ public class SerializationAnnotationsTest {
         bean.add("attr2", "val2");
 
         String result = new ObjectMapper().writeValueAsString(bean);
+        System.out.println(result);
 
         assertThat(result, containsString("attr1"));
         assertThat(result, containsString("val1"));
     }
 
+    // @JsonGetter
     @Test
     public void whenSerializingUsingJsonGetter_thenCorrect() throws JsonProcessingException {
 
@@ -54,6 +59,7 @@ public class SerializationAnnotationsTest {
         assertThat(result, containsString("1"));
     }
 
+    // @JsonPropertyOrder({ "name", "id" })
     @Test
     public void whenSerializingUsingJsonPropertyOrder_thenCorrect() throws JsonProcessingException {
         MyBean2 bean = new MyBean2(1, "My bean");
@@ -65,10 +71,9 @@ public class SerializationAnnotationsTest {
         assertThat(result, containsString("1"));
     }
 
+    // @JsonRawValue
     @Test
-    public void whenSerializingUsingJsonRawValue_thenCorrect()
-            throws JsonProcessingException {
-
+    public void whenSerializingUsingJsonRawValue_thenCorrect() throws JsonProcessingException {
         RawBean bean = new RawBean("My bean", "{\"attr\":false}");
 
         String result = new ObjectMapper().writeValueAsString(bean);
@@ -82,37 +87,31 @@ public class SerializationAnnotationsTest {
         System.out.println(result);
     }
 
-
-
-
+    // @JsonValue
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect()
-            throws JsonProcessingException {
-
+    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
         String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
-        System.out.println(enumAsString);
+        System.out.println(enumAsString); // "Type A"
         assertThat(enumAsString, is("\"Type A\""));
     }
 
+    // @JsonRootName(value = "user")
     @Test
-    public void whenSerializingUsingJsonRootName_thenCorrect()
-            throws JsonProcessingException {
-
+    public void whenSerializingUsingJsonRootName_thenCorrect() throws JsonProcessingException {
         UserWithRoot user = new UserWithRoot(1, "John");
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
         String result = mapper.writeValueAsString(user);
-        System.out.println(result);
+        System.out.println(result); // {"user":{"id":1,"name":"John"}}
 
         assertThat(result, containsString("John"));
         assertThat(result, containsString("user"));
     }
 
+    // @JsonSerialize(using = CustomDateSerializer.class)
     @Test
-    public void whenSerializingUsingJsonSerialize_thenCorrect()
-            throws JsonProcessingException, ParseException {
-
+    public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
         String toParse = "20-12-2014 02:30:00";
@@ -133,7 +132,7 @@ public class SerializationAnnotationsTest {
         public String name;
         private Map<String, String> properties = new HashMap<>();
 
-        @JsonAnyGetter
+        @JsonAnyGetter(enabled = true)
         public Map<String, String> getProperties() {
             return properties;
         }
@@ -203,7 +202,6 @@ public class SerializationAnnotationsTest {
         private String name;
 
         // standard constructors
-
         TypeEnumWithValue(Integer id, String name) {
             this.id = id;
             this.name = name;

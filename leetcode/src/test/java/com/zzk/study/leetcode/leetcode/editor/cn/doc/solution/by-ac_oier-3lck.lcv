@@ -1,0 +1,50 @@
+## 模拟
+
+根据题意进行模拟即可。
+
+代码：
+
+* []
+
+```Java
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans = new int[2 * n];
+        for (int i = 0, j = n, k = 0; k < 2 * n; k++) {
+            ans[k] = k % 2 == 0 ? nums[i++] : nums[j++];
+        }
+        return ans;
+    }
+}
+```
+
+* []
+
+```Typescript
+function shuffle(nums: number[], n: number): number[] {
+    const ans = new Array<number>()
+    for (let i = 0, j = n, k = 0; k < 2 * n; k++) {
+        ans.push(k % 2 == 0 ? nums[i++] : nums[j++])
+    }
+    return ans
+};
+```
+
+* 时间复杂度：$O(n)$
+* 空间复杂度：$O(n)$
+
+---
+
+## 加餐
+
+**加餐一道其他题目 [关于 RMQ 的若干解法](https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247493262&idx=1&sn=2d8e192a5767b49b9a13a6192ab3b833) 🎉🎉**
+
+---
+
+## 最后
+
+**如果有帮助到你，请给题解点个赞和收藏，让更多的人看到 ~ ("▔□▔)/**
+
+也欢迎你 [关注我](https://oscimg.oschina.net/oscnet/up-19688dc1af05cf8bdea43b2a863038ab9e5.png) 和 加入我们的[「组队打卡」](https://leetcode-cn.com/u/ac_oier/)小群 ，提供写「证明」&「思路」的高质量题解。
+
+所有题解已经加入 [刷题指南](https://github.com/SharingSource/LogicStack-LeetCode/wiki)，欢迎 star 哦 ~

@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.Test;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -32,10 +34,31 @@ import static org.junit.Assert.assertThat;
  * <li> @JsonIdentityInfo indicates that Object Identity should be used when serializing/deserializing values
  * – for instance, to deal with infinite recursion type of problems.</li>
  * <li> @JsonFilter annotation specifies a filter to use during serialization.</li>
+ * <li>@JsonRawValue</li>
  * </ol>
- * */
+ */
 public class GeneralAnnotationsTest {
+	// @JsonRawValue
 	@Test
+	public void jsonRawValue() throws JsonProcessingException {
+
+		MyBean bean = new MyBean(1, "My bean");
+		String a = new ObjectMapper().writeValueAsString(bean);
+		System.out.println(a);
+	}
+
+	@Data
+	public static class BeanWithJsonRawValue {
+		@JsonRawValue
+		String rawValue;
+
+
+	}
+
+
+	// @JsonProperty("name")
+	@Test
+
 	public void whenUsingJsonProperty_thenCorrect() throws IOException {
 		MyBean bean = new MyBean(1, "My bean");
 
@@ -51,9 +74,9 @@ public class GeneralAnnotationsTest {
 		assertEquals("My bean", resultBean.getTheName());
 	}
 
+	// @JsonFormat
 	@Test
-	public void whenSerializingUsingJsonFormat_thenCorrect()
-			throws IOException, ParseException {
+	public void whenSerializingUsingJsonFormat_thenCorrect() throws IOException, ParseException {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 		df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -68,6 +91,7 @@ public class GeneralAnnotationsTest {
 		assertEquals(e.eventDate, date);
 	}
 
+	// @JsonUnwrapped
 	@Test
 	public void whenSerializingUsingJsonUnwrapped_thenCorrect() throws JsonProcessingException, ParseException {
 		UnwrappedUser.Name name = new UnwrappedUser.Name("John", "Doe");
@@ -79,6 +103,7 @@ public class GeneralAnnotationsTest {
 		assertThat(result, not(containsString("name")));
 	}
 
+	// @JsonView(Views.Public.class)
 	@Test
 	public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException {
 		Item item = new Item(2, "book", "John");
@@ -92,6 +117,7 @@ public class GeneralAnnotationsTest {
 		assertThat(result, not(containsString("John")));
 	}
 
+	// @JsonBackReference and @JsonIgnoreType
 	@Test
 	public void whenSerializingUsingJacksonReferenceAnnotation_thenCorrect() throws JsonProcessingException {
 		UserWithRef user = new UserWithRef(1, "John");
@@ -108,8 +134,10 @@ public class GeneralAnnotationsTest {
 		result = new ObjectMapper().writeValueAsString(user);
 		System.out.println(result);
 
+		assertThat(result, not(containsString("userItems")));
 	}
 
+	// @JsonIdentityInfo
 	@Test
 	public void whenSerializingUsingJsonIdentityInfo_thenCorrect() throws JsonProcessingException {
 		UserWithIdentity user = new UserWithIdentity(1, "John");
@@ -127,13 +155,13 @@ public class GeneralAnnotationsTest {
 		System.out.println(result);
 	}
 
+	// @JsonFilter("myFilter")
 	@Test
 	public void whenSerializingUsingJsonFilter_thenCorrect() throws JsonProcessingException {
 		BeanWithFilter bean = new BeanWithFilter(1, "My bean");
 
-		FilterProvider filters
-				= new SimpleFilterProvider().addFilter("myFilter",
-				SimpleBeanPropertyFilter.filterOutAllExcept("name"));
+		FilterProvider filters = new SimpleFilterProvider()
+				.addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name"));
 
 		String result = new ObjectMapper()
 				.writer(filters)
@@ -157,7 +185,8 @@ public class GeneralAnnotationsTest {
 			return name;
 		}
 
-		public MyBean() {}
+		public MyBean() {
+		}
 
 		public MyBean(int id, String name) {
 			this.id = id;
@@ -207,9 +236,13 @@ public class GeneralAnnotationsTest {
 			this.name = name;
 		}
 	}
+
 	public static class Views {
-		public static class Public {}
-		public static class Internal extends Public {}
+		public static class Public {
+		}
+
+		public static class Internal extends Public {
+		}
 	}
 
 	public static class Item {
@@ -228,6 +261,7 @@ public class GeneralAnnotationsTest {
 			this.ownerName = ownerName;
 		}
 	}
+
 	public static class ItemWithRef {
 		public int id;
 		public String itemName;
@@ -241,6 +275,7 @@ public class GeneralAnnotationsTest {
 			this.owner = owner;
 		}
 	}
+
 	public static class UserWithRef {
 		public int id;
 		public String name;
@@ -254,7 +289,7 @@ public class GeneralAnnotationsTest {
 		}
 
 		public void addItem(ItemWithRef item) {
-			if(userItems==null)
+			if (userItems == null)
 				userItems = new ArrayList<>();
 			userItems.add(item);
 		}
@@ -289,7 +324,7 @@ public class GeneralAnnotationsTest {
 		}
 
 		public void addItem(ItemWithIdentity item) {
-			if(userItems==null)
+			if (userItems == null)
 				userItems = new ArrayList<>();
 			userItems.add(item);
 		}

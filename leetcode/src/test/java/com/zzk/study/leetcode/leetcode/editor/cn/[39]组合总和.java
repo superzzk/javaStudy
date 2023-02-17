@@ -5,10 +5,8 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 //
 // 说明： 
 //
-// 
-// 所有数字（包括 target）都是正整数。 
+// 所有数字（包括 target）都是正整数。
 // 解集不能包含重复的组合。 
-// 
 //
 // 示例 1： 
 //
@@ -18,7 +16,6 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 //  [7],
 //  [2,2,3]
 //]
-// 
 //
 // 示例 2： 
 //
@@ -30,12 +27,10 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 //  [3,5]
 //] 
 //
-// 
 //
 // 提示： 
 //
-// 
-// 1 <= candidates.length <= 30 
+// 1 <= candidates.length <= 30
 // 1 <= candidates[i] <= 200 
 // candidate 中的每个元素都是独一无二的。 
 // 1 <= target <= 500 
@@ -43,10 +38,22 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 // Related Topics 数组 回溯算法 
 // 👍 1014 👎 0
 
+import org.junit.Test;
+
 import java.util.*;
 
 class CombinationSum {
-    public static void main(String[] args) {
+
+    public static void solution1Test() {
+        Solution1 solution = new CombinationSum().new Solution1();
+        List<List<Integer>> res = solution.combinationSum(new int[]{2, 3, 6, 7}, 7);
+        System.out.println(res);
+
+        solution.res.clear();
+        res = solution.combinationSum(new int[]{2, 3, 5}, 8);
+        System.out.println(res);
+    }
+    public static void solution2Test() {
         Solution solution = new CombinationSum().new Solution();
         List<List<Integer>> res = solution.combinationSum(new int[]{2, 3, 6, 7}, 7);
         System.out.println(res);
@@ -55,9 +62,34 @@ class CombinationSum {
         res = solution.combinationSum(new int[]{2, 3, 5}, 8);
         System.out.println(res);
     }
+    public static void main(String[] args) {
+        solution2Test();
+    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        List<List<Integer>> res = new ArrayList<>();
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            Arrays.sort(candidates);
+            combine(candidates, target, new ArrayList<>(), 0);
+            return res;
+        }
+
+        private void combine(int[] candidates, int target, List<Integer> temp, int index) {
+            if(target<0) return;
+            if (target == 0)
+                res.add(new ArrayList<>(temp));
+
+            for (int i = index; i < candidates.length; i++) {
+                temp.add(candidates[i]);
+                combine(candidates, target - candidates[i], temp, i);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+//leetcode submit region end(Prohibit modification and deletion)
+
+    class Solution1 {
         public Set<List<Integer>> res = new TreeSet<List<Integer>>((x, y)->{
             if(x.size()!=y.size())
                 return x.size() - y.size();
@@ -88,6 +120,4 @@ class CombinationSum {
             }
         }
     }
-//leetcode submit region end(Prohibit modification and deletion)
-
 }

@@ -24,6 +24,7 @@ import static org.junit.Assert.assertEquals;
  * */
 public class DeserializationAnnotationsTest {
 
+	// @JsonCreator
 	@Test
 	public void whenDeserializingUsingJsonCreator_thenCorrect() throws IOException {
 
@@ -51,10 +52,8 @@ public class DeserializationAnnotationsTest {
 	}
 
 	@Test
-	public void whenDeserializingUsingJsonAnySetter_thenCorrect()
-			throws IOException {
-		String json
-				= "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
+	public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws IOException {
+		String json = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
 
 		ExtendableBean bean = new ObjectMapper()
 				.readerFor(ExtendableBean.class)
@@ -89,67 +88,69 @@ public class DeserializationAnnotationsTest {
 				"20-12-2014 02:30:00", df.format(event.eventDate));
 	}
 
+	// @JsonAlias({ "fName", "f_name" })
 	@Test
 	public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
 		String json = "{\"fName\": \"John\", \"lastName\": \"Green\"}";
 		AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
 		assertEquals("John", aliasBean.getFirstName());
 	}
-}
-class BeanWithCreator {
-	public int id;
-	public String name;
 
-	@JsonCreator
-	public BeanWithCreator(
-			@JsonProperty("id") int id,
-			@JsonProperty("theName") String name) {
-		this.id = id;
-		this.name = name;
-	}
-}
+	static class BeanWithCreator {
+		public int id;
+		public String name;
 
-class BeanWithInject {
-	@JacksonInject
-	public int id;
-
-	public String name;
-}
-
-class ExtendableBean {
-	public String name;
-	private Map<String, String> properties;
-
-	@JsonAnySetter
-	public void add(String key, String value) {
-		properties.put(key, value);
+		@JsonCreator
+		public BeanWithCreator(
+				@JsonProperty("id") int id,
+				@JsonProperty("theName") String name) {
+			this.id = id;
+			this.name = name;
+		}
 	}
 
-	public Map<String, String> getProperties() {
-		return properties;
-	}
-}
+	static class BeanWithInject {
+		@JacksonInject
+		public int id;
 
-class MyBean {
-	public int id;
-	private String name;
-
-	@JsonSetter("name")
-	public void setTheName(String name) {
-		this.name = name;
+		public String name;
 	}
 
-	public String getTheName() {
-		return name;
+	public static class ExtendableBean {
+		public String name;
+		private Map<String, String> properties;
+
+		@JsonAnySetter
+		public void add(String key, String value) {
+			properties.put(key, value);
+		}
+
+		public Map<String, String> getProperties() {
+			return properties;
+		}
 	}
-}
 
-class AliasBean {
-	@JsonAlias({ "fName", "f_name" })
-	public String firstName;
-	public String lastName;
+	class MyBean {
+		public int id;
+		private String name;
 
-	public String getFirstName() {
-		return firstName;
+		@JsonSetter("name")
+		public void setTheName(String name) {
+			this.name = name;
+		}
+
+		public String getTheName() {
+			return name;
+		}
+	}
+
+	class AliasBean {
+		@JsonAlias({ "fName", "f_name" })
+		public String firstName;
+		public String lastName;
+
+		public String getFirstName() {
+			return firstName;
+		}
 	}
 }

@@ -48,7 +48,6 @@
       <artifactId>jcstress-core</artifactId>
       <version>${jcstress-core.version}</version>
     </dependency>
-
   </dependencies>
 
 </project>

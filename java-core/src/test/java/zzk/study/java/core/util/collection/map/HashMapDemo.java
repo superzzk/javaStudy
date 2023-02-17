@@ -28,6 +28,23 @@ public class HashMapDemo {
         Assert.assertNull(map.get(null));
         Assert.assertTrue(map.containsKey(null));
     }
+
+    @Test
+    public void test_merge(){
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "A");
+        map1.put("b", "B");
+        map1.put("c", "C");
+        //if key "a" exist, compute it
+        map1.merge("a", "A", (oldValue,value)->{
+            return "A plus";
+        });
+        //if key "z" not exist, put it
+        map1.merge("z", "Z", (oldValue,value)->{
+            return "A plus";
+        });
+        System.out.println(map1);
+    }
 }
 
 

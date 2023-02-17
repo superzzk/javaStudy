@@ -1,0 +1,21 @@
+* []
+
+```javascript
+/**
+ * @param {number[]} candies
+ * @param {number} extraCandies
+ * @return {boolean[]}
+ */
+var kidsWithCandies = function(candies, extraCandies) {
+    const maxCandies = Math.max(...candies)
+    const res = candies.map(num => {
+        if(num + extraCandies >= maxCandies) {
+            return true
+        } else {
+            return false
+        }
+    })
+    return res
+};
+```
+

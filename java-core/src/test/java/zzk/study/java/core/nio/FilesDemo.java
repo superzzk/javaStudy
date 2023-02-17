@@ -14,6 +14,12 @@ public class FilesDemo {
     private final String HOME = System.getProperty("user.home");
 
     @Test
+    public void currentPath(){
+        final Path path = Paths.get("");
+        System.out.println(path.toAbsolutePath());
+    }
+
+    @Test
     public void fileExist_regularFile() {
         System.out.println(HOME);
         final Path p = Paths.get(HOME);

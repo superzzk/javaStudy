@@ -1,0 +1,758 @@
+![image.png](https://pic.leetcode.cn/1669278289-Rcsqpp-image.png)
+
+公式如下：
+![IMG_20221120_163534.jpg](https://pic.leetcode.cn/1668933898-fFemQA-IMG_20221120_163534.jpg)
+
+第五个是快速阶乘，当m等于n时，A(n,n)就是n!。
+
+这4个公式中
+
+第一个，最慢。
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long temp1 = C(n - 1, m);
+        long temp2 = C(n - 1, m - 1);
+        b[(int) n][(int) m] = temp1 + temp2;
+        return temp1 + temp2;
+    }
+}
+```
+
+第二个，倒数第二慢。
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = C(n, k);
+            long temp2 = C(m, k);
+            long temp3 = C(n - k, m - k);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = n * C(n - 1, m - 1) / m;
+            return n * C(n - 1, m - 1) / m;
+        }
+    }
+}
+```
+
+第三个，第二快。
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+    static long c[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long temp1 = A(n, m);
+        long temp2 = A(m, m);
+        b[(int) n][(int) m] = temp1 / temp2;
+        return temp1 / temp2;
+    }
+
+    public static long A(long n, long m) {
+        if (c[(int) n][(int) m] != 0) {
+            return c[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (m == 0) {
+            return 1;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(n - k, k);
+            c[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            c[(int) n][(int) m] = A(n - 1, m - 1) * n;
+            return A(n - 1, m - 1) * n;
+        }
+    }
+}
+```
+
+第四个，最快。
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+    static long c[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(m, k);
+            long temp3 = C(n - k, m - k);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = n * C(n - 1, m - 1) / m;
+            return n * C(n - 1, m - 1) / m;
+        }
+    }
+
+    public static long A(long n, long m) {
+        if (c[(int) n][(int) m] != 0) {
+            return c[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (m == 0) {
+            return 1;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(n - k, k);
+            c[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            c[(int) n][(int) m] = A(n - 1, m - 1) * n;
+            return A(n - 1, m - 1) * n;
+        }
+    }
+}
+```
+
+大数据效果如下
+![image.png](https://pic.leetcode.cn/1668933837-rZBGjy-image.png)
+
+这里还有4个公式：
+![IMG_20221120_213822.jpg](https://pic.leetcode.cn/1668951537-UQYHZz-IMG_20221120_213822.jpg)
+![IMG_20221120_212547.jpg](https://pic.leetcode.cn/1668950973-WeQUlL-IMG_20221120_212547.jpg)
+
+第五个
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = C(n - m + k, k);
+            long temp2 = C(m, k);
+            long temp3 = C(n, m - k);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = (n - m + 1) * C(n, m - 1) / m;
+            return (n - m + 1) * C(n, m - 1) / m;
+        }
+    }
+}
+```
+
+第六个
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = C(n, k);
+            long temp2 = C(n - m, k);
+            long temp3 = C(n - k, m);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = (n) * C(n - 1, m) / (n - m);
+            return (n) * C(n - 1, m) / (n - m);
+        }
+    }
+}
+```
+
+第七个,也是最快的。
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+    static long c[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n - m + k, k);
+            long temp2 = A(m, k);
+            long temp3 = C(n, m - k);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = (n - m + 1) * C(n, m - 1) / m;
+            return (n - m + 1) * C(n, m - 1) / m;
+        }
+    }
+
+    public static long A(long n, long m) {
+        if (c[(int) n][(int) m] != 0) {
+            return c[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (m == 0) {
+            return 1;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(n - k, k);
+            c[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            c[(int) n][(int) m] = A(n - 1, m - 1) * n;
+            return A(n - 1, m - 1) * n;
+        }
+    }
+}
+```
+
+第八个
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+    static long c[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(n - m, k);
+            long temp3 = C(n - k, m);
+            b[(int) n][(int) m] = (temp1 * temp3) / temp2;
+            return (temp1 * temp3) / temp2;
+        } else {
+            b[(int) n][(int) m] = (n) * C(n - 1, m) / (n - m);
+            return (n) * C(n - 1, m) / (n - m);
+        }
+    }
+
+    public static long A(long n, long m) {
+        if (c[(int) n][(int) m] != 0) {
+            return c[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (m == 0) {
+            return 1;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = A(n, k);
+            long temp2 = A(n - k, k);
+            c[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            c[(int) n][(int) m] = A(n - 1, m - 1) * n;
+            return A(n - 1, m - 1) * n;
+        }
+    }
+}
+```
+
+还有3个公式
+![IMG_20221121_143444_204.jpg](https://pic.leetcode.cn/1669012526-nNVwRH-IMG_20221121_143444_204.jpg)
+![IMG_20221125_180414.jpg](https://pic.leetcode.cn/1669371583-jGYIpD-IMG_20221125_180414.jpg)
+
+第9个:
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long k = m;
+        long s = 0;
+        for(int i=0;i<=k;i++){
+            long temp1 = C(n-k, m-i);
+            long temp2 = C(k, i);
+            s=s+temp1*temp2;
+        }
+        b[(int) n][(int) m] = s;
+        return s; 
+    }
+}
+```
+
+第10个：
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long k = (m+1) / 2;
+        long s = 0;
+        for(int i=0;i<=n-m;i++){
+            long temp1 = C(n-k-i, m-k);
+            long temp2 = C(k-1+i, k-1);
+            s=s+temp1*temp2;
+        }
+        b[(int) n][(int) m] = s;
+        return s; 
+    }
+}
+```
+
+第11个
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long s = 0;
+        for(int i=0;i<=m;i++){
+            long temp1 = C(n-1-i, m-i);
+            s=s+temp1;
+        }
+        b[(int) n][(int) m] = s;
+        return s; 
+    }
+}
+```
+
+更高效的表达方法
+![3BCD5FDF305CA045B84C5AFFBBBD3963.jpg](https://pic.leetcode.cn/1669371891-vHJRjz-3BCD5FDF305CA045B84C5AFFBBBD3963.jpg)
+
+第12种
+
+* 
+
+```
+class Solution {
+    static long b[][] = new long[100][100];
+    static long c[][] = new long[100][100];
+    static long d[][] = new long[100][100];
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                row.add((int) C(i, j));
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+
+    public static long C(long n, long m) {
+        if (b[(int) n][(int) m] != 0) {
+            return b[(int) n][(int) m];
+        }
+        if (n == 0 || m == n || m == 0) {
+            return 1;
+        }
+        if (m == 1 || m == n - 1) {
+            return n;
+        }
+        if (m > n - m) {
+            b[(int) n][(int) m] = C(n, n - m);
+            return C(n, n - m);
+        }
+        long temp1 = A(n, m);
+        long temp2 = A(m, m);
+        b[(int) n][(int) m] = temp1 / temp2;
+        return temp1 / temp2;
+    }
+
+    public static long A(long n, long m) {
+        if (c[(int) n][(int) m] != 0) {
+            return c[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (m == 0) {
+            return 1;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = B(n, k);
+            long temp2 = B(n - 1, k);
+            c[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            c[(int) n][(int) m] = A(n - 1, m - 1) * n;
+            return A(n - 1, m - 1) * n;
+        }
+    }
+
+    public static long B(long n, long m) {
+        if (d[(int) n][(int) m] != 0) {
+            return d[(int) n][(int) m];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        if (m == 1) {
+            return n;
+        }
+        if (m % 2 == 0) {
+            long k = m / 2;
+            long temp1 = B(n, k);
+            long temp2 = B(n - 2 * k, k);
+            d[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        } else {
+            long temp1 = n;
+            long temp2 = B(n - 2, m - 1);
+            d[(int) n][(int) m] = temp1 * temp2;
+            return temp1 * temp2;
+        }
+    }
+}
+```
+

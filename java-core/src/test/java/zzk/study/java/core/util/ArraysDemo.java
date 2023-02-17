@@ -1,5 +1,8 @@
 package zzk.study.java.core.util;
 
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -61,4 +64,43 @@ public class ArraysDemo {
         ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(stringArray));
         System.out.println(arrayList);// [a, b, c, d, e]
     }
+
+    @Test
+    public void arrayCopy(){
+        String[] stringArray = { "a", "b", "c", "d", "e" };
+        final String[] result = Arrays.copyOf(stringArray, stringArray.length);
+        Assertions.assertArrayEquals(stringArray, result);
+    }
+
+    @Test
+    public void binarySearchDemo(){
+        String s = "abcde";
+        final char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        final int pos = Arrays.binarySearch(chars, 'c');
+        Assertions.assertEquals(2, pos);
+    }
+
+    @Test
+    public void aaa(){
+        System.out.println(canConstruct());
+    }
+
+    public boolean canConstruct() {
+        String ransomNote="aa";
+        String magazine = "aab";
+
+        char[] chars = magazine.toCharArray();
+        Arrays.sort(chars);
+
+        for(int i=0; i<ransomNote.length(); i++){
+            int pos = Arrays.binarySearch(chars, ransomNote.charAt(i));
+            if(pos<0)
+                return false;
+            chars[pos] = '0';
+        }
+
+        return true;
+    }
+
 }

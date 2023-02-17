@@ -1,0 +1,21 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* typescript
+
+```typescript
+function largestPerimeter(nums: number[]): number {
+    // 贪心：选取三个最大的，且满足两边之和大于第三边的。返回这三条边
+    nums.sort((a, b) => b - a);
+    for (let i = 0; i < nums.length - 2; i++) {
+        if (nums[i] < nums[i + 1] + nums[i + 2]) {
+            return nums[i] + nums[i + 1] + nums[i + 2];
+        }
+    }
+    return 0;
+}
+```
+

@@ -1,0 +1,26 @@
+### 解题思路
+
+多少是有点多于了
+
+### 代码
+
+* python3
+
+```python
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        max=0
+        for i in candies:
+            if i>max:
+                max=i
+        res=[]
+        b=True
+        f=False
+        for j in candies:
+            if j+extraCandies>=max:
+                res.append(b)
+            else:
+                res.append(f)
+        return res
+```
+

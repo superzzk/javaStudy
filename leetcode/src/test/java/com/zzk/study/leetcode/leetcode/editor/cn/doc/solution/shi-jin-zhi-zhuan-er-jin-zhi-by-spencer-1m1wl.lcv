@@ -1,0 +1,30 @@
+### 解题思路
+
+需要注意一点：输入之后的值会默认转成十进制，所以需要操作转成二进制，才会得到真正的目标值
+
+### 代码
+
+* php
+
+```php
+class Solution {
+    /**
+     * @param Integer $n
+     * @return Integer
+     */
+    function hammingWeight($n) {
+        $i = 0;
+        $num = 0;
+        $n = decbin($n);
+        while ($i < strlen($n)) {
+            if ($n[$i] == 1) {
+               
+                ++$num;
+            }
+            $i++;
+        }
+        return $num;
+    }
+}
+```
+

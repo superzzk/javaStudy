@@ -1,0 +1,46 @@
+> Problem: [191. 位1的个数](https://leetcode.cn/problems/number-of-1-bits/description/)
+
+[TOC]
+
+# 思路
+
+> 按组计算1的个数
+
+# 复杂度
+
+- 时间复杂度:
+
+> 添加时间复杂度, 示例： $O(1)$
+
+- 空间复杂度:
+
+> 添加空间复杂度, 示例： $O(1)$
+
+# Code
+
+* []
+
+```Swift
+
+class Solution {
+    func hammingWeight(_ n: Int) -> Int {
+        var n = n
+        n = n&0x55555555 + (n>>1)&0x55555555 // 每2位一组1的个数
+        n = n&0x33333333 + (n>>2)&0x33333333 // 每4位一组1的个数
+        n = n&0x0f0f0f0f + (n>>4)&0x0f0f0f0f // 每8位一组1的个数
+
+        // 注意:字母混合到一起代表"和"
+        // aaaaaaaa bbbbbbbb cccccccc dddddddd // 
+        //          aaaaaaaa bbbbbbbb cccccccc 右移8位
+        // -------- abababab -------- cdcdcdcd 相加
+        //                   -------- abababab 右移16位
+        //                   -------- abcdabcd 1的个数,最右边是有效位 最大是32个1,
+        //           即二进制   00000000 00000000 00000000 00100000
+        //            0x3f =   00000000 00000000 00000000 00111111
+        n = n + n>>8
+        n = n + n>>16
+        return n & 0x3f 
+    }
+}
+```
+
