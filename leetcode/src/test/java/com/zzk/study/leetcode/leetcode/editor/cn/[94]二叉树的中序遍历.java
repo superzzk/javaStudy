@@ -17,10 +17,7 @@ package com.zzk.study.leetcode.leetcode.editor.cn;//给定一个二叉树，返�
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * Definition for a binary tree node.
@@ -39,9 +36,10 @@ class Solution94 {
         TreeNode(int x) { val = x; }
     }
 
+
     public List<Integer> inorderTraversal(TreeNode root) {
 //        return recur(root);
-        return iterate(root);
+        return it2(root);
     }
 
     private List<Integer> recur(TreeNode root){
@@ -61,7 +59,23 @@ class Solution94 {
         recursive(root.right, result);
     }
 
-    private List<Integer> iterate(TreeNode root) {
+    private List<Integer> it1(TreeNode node) {
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            res.add(node.val);
+            node = node.right;
+        }
+
+        return res;
+    }
+    private List<Integer> it2(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         Deque<TreeNode> stack = new ArrayDeque<>();
         if(root==null)
@@ -84,6 +98,7 @@ class Solution94 {
 
         return result;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

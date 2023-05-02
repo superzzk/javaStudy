@@ -47,4 +47,16 @@ public class ArrayListDemo {
         assertEquals(secondList, Arrays.asList("M","W","K","T"));
 
     }
+
+    @Test
+    public void toArray() {
+        // list to array
+        List<Integer> l = new ArrayList<>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        Integer[] array = l.toArray(new Integer[0]);
+        System.out.println("list: " + l);
+        System.out.println("array: " + Arrays.toString(array));
+    }
 }

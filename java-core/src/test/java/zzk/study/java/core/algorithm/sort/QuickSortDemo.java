@@ -66,7 +66,8 @@ public class QuickSortDemo {
 
     @Test
     public void test3(){
-        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
+        int[] arr= {1,1,1,3,3,4,3,2,4,2};
+//        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
 //        int[] arr = {10,7,2,4};
         qSort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
@@ -86,9 +87,10 @@ public class QuickSortDemo {
             while(nums[left]<nums[pivot]) left++;
             while(nums[right]>nums[pivot]) right--;
             if(left < right)
-                swap(nums, left, right);
+                swap(nums, left++, right--);
         }
-        swap(nums, left, pivot);
+        if(left+1<nums.length)
+            swap(nums, left+1, pivot);
         return left;
     }
 

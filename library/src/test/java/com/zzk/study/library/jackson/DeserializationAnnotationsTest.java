@@ -37,6 +37,7 @@ public class DeserializationAnnotationsTest {
 		assertEquals("My bean", bean.name);
 	}
 
+	//InjectableValues
 	@Test
 	public void whenDeserializingUsingJsonInject_thenCorrect() throws IOException {
 		String json = "{\"name\":\"My bean\"}";

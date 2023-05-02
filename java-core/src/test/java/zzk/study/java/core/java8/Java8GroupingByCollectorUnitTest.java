@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
@@ -30,6 +31,13 @@ public class Java8GroupingByCollectorUnitTest {
 		assertEquals(2, postsPerType.get(NEWS).size());
 		assertEquals(1, postsPerType.get(GUIDE).size());
 		assertEquals(2, postsPerType.get(REVIEW).size());
+	}
+
+	@Test
+	public void grouping() {
+		final Map<Boolean, List<Integer>> collect = posts.stream().collect(partitioningBy(post -> post.getLikes() > 15,
+				mapping(BlogPost::getLikes, toList())));
+		System.out.println(collect);
 	}
 
 	@Test

@@ -14,12 +14,10 @@ import static org.apache.commons.text.StringEscapeUtils.escapeJava;
 public class StringEscapeDemo {
     @Test
     public void escapeTest() throws FileNotFoundException {
-        String a = """
-                {
-                    "name": "FunTester",
-                    "age": "30"
-                }
-                """;
+        String a = "{\n" +
+                "                    \"name\": \"FunTester\",\n" +
+                "                    \"age\": \"30\"\n" +
+                "                }";
         System.out.println(a);
         System.out.println(StringEscapeUtils.escapeJava(a));
     }

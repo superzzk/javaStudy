@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.zzk.study.library.jackson.serializer.CustomDateSerializer;
 import com.zzk.study.library.jackson.serializer.EventWithSerializer;
 import com.zzk.study.library.jackson.serializer.EventWithoutSerializer;
 import org.junit.Test;
@@ -16,9 +14,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+
 
 /**
  * <ol>

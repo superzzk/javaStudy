@@ -42,7 +42,7 @@
 //
 // Related Topics 深度优先搜索 广度优先搜索 数组 矩阵 👍 422 👎 0
 
-
+class Q733{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     int[] dx = {0, -1, 0, 1};
@@ -67,3 +67,4 @@ class Solution {
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
+}

@@ -1,5 +1,6 @@
 package com.zzk.study.library.fastjson;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import org.junit.Test;
 
 public class JSONTest {
@@ -16,7 +18,6 @@ public class JSONTest {
      * 通过传统方式自己拼接字符串JSON
      */
     public static void setJSON() {
-
         String str = "    { \"errorCode\": \"0\",\"errorMsg\": \"调用接口成功\",\"data\": [{\"userName\": \"余胜军\",\"position\": \"蚂蚁课堂创始人\",\"webAddres\": \"www.itmayiedu.com\"   },  {  \"userName\": \"周安旭\",  \"position\": \"蚂蚁课堂合伙人\",   \"webAddres\": \"www.itmayiedu.com\"  }    ]}";
         System.out.println(str);
     }
@@ -25,16 +26,18 @@ public class JSONTest {
      * 通过fastJSON封装JSON
      */
     @Test
-    public void setFastJSON() {
+    public void jsonObject() {
+        JSONObject user = new JSONObject();
+        user.put("userName", "余胜军");
+        user.put("position", "蚂蚁课堂创始人");
+        user.put("webAddres", "www.itmayiedu.com");
+
+        JSONArray dataArr = new JSONArray();
+        dataArr.add(user);
+
         JSONObject root = new JSONObject();
         root.put("errorCode", 0);
         root.put("errorMsg", "调用接口成功");
-        JSONArray dataArr = new JSONArray();
-        JSONObject userYushengjun = new JSONObject();
-        userYushengjun.put("userName", "余胜军");
-        userYushengjun.put("position", "蚂蚁课堂创始人");
-        userYushengjun.put("webAddres", "www.itmayiedu.com");
-        dataArr.add(userYushengjun);
         root.put("data", dataArr);
         System.out.println(JSONObject.toJSONString(root,true));
     }
@@ -43,21 +46,22 @@ public class JSONTest {
      * 通过map转换成json
      */
     @Test
-    public void setMapToJSON() {
-
+    public void mapToJsonString() {
         HashMap<String, Object> root = new HashMap<>();
         root.put("errorCode", 0);
         root.put("errorMsg", "调用接口成功");
 
-        List<Map<String, String>> dataArr = new ArrayList<>();
         Map<String, String> userYushengjun = new HashMap<>();
         userYushengjun.put("userName", "余胜军");
         userYushengjun.put("position", "蚂蚁课堂创始人");
         userYushengjun.put("webAddres", "www.itmayiedu.com");
+
         Map<String, String> itmayiedu = new HashMap<>();
         itmayiedu.put("userName", "余胜军1");
         itmayiedu.put("position", "蚂蚁课堂创始人1");
         itmayiedu.put("webAddres", "www.itmayiedu.com");
+
+        List<Map<String, String>> dataArr = new ArrayList<>();
         dataArr.add(itmayiedu);
         dataArr.add(userYushengjun);
         root.put("data", dataArr);
@@ -67,19 +71,26 @@ public class JSONTest {
     /**
      * 通过实体类转换JSON
      */
-    static public void setBeanToJSON() {
-
-        RootEntity rootEntity = new RootEntity();
-        rootEntity.setErrorCode("0");
-        rootEntity.setErrorMsg("调用接口成功");
-        List<UserEntity> data = new ArrayList<UserEntity>();
+    static public void beanToJson() {
         UserEntity userEntity = new UserEntity();
         userEntity.setPosition("蚂蚁课堂创始人");
         userEntity.setUserName("余胜军");
         userEntity.setWebAddres("itmayiedu.com");
+
+        List<UserEntity> data = new ArrayList<UserEntity>();
         data.add(userEntity);
+
+        RootEntity rootEntity = new RootEntity();
+        rootEntity.setErrorCode("0");
+        rootEntity.setErrorMsg("调用接口成功");
         rootEntity.setData(data);
         System.out.println(new JSONObject().toJSONString(rootEntity));
+    }
+
+    private HashMap<String, String> typeReference() {
+        String templateValue = "map string";
+        final Type type = new TypeReference<HashMap<String, String>>() {}.getType();
+        return JSONObject.parseObject(templateValue, type);
     }
 
     /**

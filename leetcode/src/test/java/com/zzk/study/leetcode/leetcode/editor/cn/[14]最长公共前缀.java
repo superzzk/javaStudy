@@ -30,26 +30,27 @@
 //
 // Related Topics 字典树 字符串 👍 2636 👎 0
 
-
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String longestCommonPrefix(String[] strs) {
-        String first = strs[0];
-        int index =0;
-        boolean same = true;
-        while(index < first.length()){
-            for (String str : strs) {
-                if (str.length()<=index || str.charAt(index) != first.charAt(index)) {
-                    same=false;
-                    break;
+class Q14 {
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public String longestCommonPrefix(String[] strs) {
+            String first = strs[0];
+            int index = 0;
+            boolean same = true;
+            while (index < first.length()) {
+                for (String str : strs) {
+                    if (str.length() <= index || str.charAt(index) != first.charAt(index)) {
+                        same = false;
+                        break;
+                    }
                 }
+                if (same)
+                    index++;
+                else
+                    break;
             }
-            if(same)
-                index++;
-            else
-                break;
+            return first.substring(0, index);
         }
-        return first.substring(0, index);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
+}

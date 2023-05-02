@@ -3,7 +3,6 @@ package zzk.study.java.core.nio;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.*;
 import java.util.UUID;
 
@@ -17,6 +16,10 @@ public class FilesDemo {
     public void currentPath(){
         final Path path = Paths.get("");
         System.out.println(path.toAbsolutePath());
+    }
+
+    public static Path getCurrentPath() {
+        return Paths.get("").toAbsolutePath();
     }
 
     @Test
