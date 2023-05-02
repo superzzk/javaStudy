@@ -19,7 +19,7 @@
     <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.version>2.11</scala.version>
-    <typesafe-akka.version>2.5.11</typesafe-akka.version>
+    <typesafe-akka.version>2.5.16</typesafe-akka.version>
   </properties>
 
   <dependencies>
