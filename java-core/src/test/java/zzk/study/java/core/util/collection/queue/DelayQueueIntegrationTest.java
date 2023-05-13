@@ -28,7 +28,6 @@ public class DelayQueueIntegrationTest {
         executor.awaitTermination(5, TimeUnit.SECONDS);
         executor.shutdown();
         assertEquals(consumer.numberOfConsumedElements.get(), numberOfElementsToProduce);
-
     }
 
     @Test

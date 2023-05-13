@@ -1,16 +1,11 @@
 package zzk.study.java.core.util.concurrent.executor;
 
-import lombok.SneakyThrows;
-import org.junit.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
+import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.*;
 
 /**
- * 这种方式捕获异常不成功，why???
- *
  * from doc:
  * Note: When actions are enclosed in tasks (such as FutureTask) either explicitly or via methods such as submit,
  * these task objects catch and maintain computational exceptions, and so they do not cause abrupt termination,
@@ -19,41 +14,83 @@ import java.util.concurrent.TimeUnit;
 public class ExecutorExceptionHandlerDemo {
 
 	@Test
-	public void test() throws InterruptedException {
-		final ThreadFactory factory = new ThreadFactory() {
+	public void notCatchException(){
+		ThreadPoolExecutor executor = new ThreadPoolExecutor(1,1,1,TimeUnit.MINUTES,new LinkedBlockingQueue<Runnable>());
+		executor.submit((Runnable) () -> {
+			throw new RuntimeException("Ouch! Got an error.");
+		});
+		executor.shutdown();
+	}
 
-			@Override
-			public Thread newThread(Runnable target) {
-				final Thread thread = new Thread(target);
-				System.out.println("Creating new worker thread");
-				thread.setName("test_thread");
-				thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-
-					@Override
-					public void uncaughtException(Thread t, Throwable e) {
-						System.out.println("Uncaught Exception" + t.toString());
-					}
-
-				});
-				return thread;
-			}
-
+	@Test
+	public void failed() throws InterruptedException {
+		final ThreadFactory factory = target -> {
+			final Thread thread = new Thread(target);
+			System.out.println("Creating new worker thread");
+			thread.setName("test_thread");
+			thread.setUncaughtExceptionHandler((t, e) -> System.out.println("Uncaught Exception" + t.toString()));
+			return thread;
 		};
 
 		final ExecutorService executor = Executors.newCachedThreadPool(factory);
-
-		executor.submit(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("thread running, thread name:"+Thread.currentThread().getName());
-				int a = 1 / 0;
-
-				System.out.println("after exception");
-				throw new RuntimeException("Ouch! Got an error.");
-			}
+		executor.submit((Runnable) () -> {
+			System.out.println("thread running, thread name:"+Thread.currentThread().getName());
+			int a = 1 / 0;
+			System.out.println("after exception");
+			throw new RuntimeException("Ouch! Got an error.");
 		});
-
 		executor.awaitTermination(3, TimeUnit.SECONDS);
+	}
 
+	@Test
+	public void catchException() {
+		ExtendedExecutor threadPool = new ExtendedExecutor();
+		threadPool.submit((Runnable) () -> {
+			throw new RuntimeException("Ouch! Got an error.");
+		});
+		threadPool.shutdown();
+	}
+
+	public class ExtendedExecutor extends ThreadPoolExecutor {
+		public ExtendedExecutor() {
+			super(  1, // core threads
+					1, // max threads
+					1, // timeout
+					TimeUnit.MINUTES, // timeout units
+					new LinkedBlockingQueue<Runnable>() // work queue
+			);
+		}
+
+		/* this doesn't work
+		protected void afterExecute(Runnable r, Throwable t) {
+			super.afterExecute(r, t);
+			if(t != null) {
+				System.out.println("Got an error: " + t);
+			} else {
+				System.out.println("Everything's fine--situation normal!");
+			}
+		}
+		*/
+
+		protected void afterExecute(Runnable r, Throwable t) {
+			super.afterExecute(r, t);
+			if (t == null && r instanceof Future<?>) {
+				try {
+					Future<?> future = (Future<?>) r;
+					if (future.isDone()) {
+						future.get();
+					}
+				} catch (CancellationException ce) {
+					t = ce;
+				} catch (ExecutionException ee) {
+					t = ee.getCause();
+				} catch (InterruptedException ie) {
+					Thread.currentThread().interrupt();
+				}
+			}
+			if (t != null) {
+				System.out.println(t);
+			}
+		}
 	}
 }

@@ -29,7 +29,7 @@ public class GuavaCollectionsExamplesUnitTest {
     // downcast a List<Parent> to a List<Child>
     // note: this is a workaround for non-covariant generified collections in Java
     @Test
-    public final void whenDowncastingGenerifiedCollectionToNewGenerifiedCollection_thenCastIsOK() {
+    public final void transform() {
         final class CastFunction<F, T extends F> implements Function<F, T> {
             @SuppressWarnings("unchecked")
             @Override
