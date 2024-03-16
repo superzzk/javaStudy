@@ -1,8 +1,10 @@
 package zzk.study.java.core.java8.stream;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
@@ -12,12 +14,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReduceDemo {
 
+	public static String getLastElementUsingReduce(List<String> valueList) {
+		Stream<String> stream = valueList.stream();
+		return stream.reduce((first, second) -> second).orElse(null);
+	}
+
+	public static Integer getInfiniteStreamLastElementUsingReduce() {
+		Stream<Integer> stream = Stream.iterate(0, i -> i + 1);
+		return stream.limit(20).reduce((first, second) -> second).orElse(null);
+	}
+
 	@Test
 	public void givenStreamValues_whenReducedWithPrefixingOperation() {
-		String result = Stream.of("hello", "world")
-				.reduce("", (a, b) -> b + "-" + a);
+		String result = Stream.of("hello", "world", "boy").reduce("", (a, b) -> b + "-" + a);
+		assertThat(result).isEqualTo("boy-world-hello-");
+	}
 
-		assertThat(result).isEqualTo("world-hello-");
+	@Test
+	public void only_one_element() {
+		String result = Stream.of("hello").reduce("1", (a, b) -> b + "-" + a);
+		assertThat(result).isEqualTo("hello-1");
 	}
 
 	private String combineWithoutTrailingDash(String a, String b) {
@@ -29,9 +45,7 @@ public class ReduceDemo {
 
 	@Test
 	public void givenStreamValues_whenReducedWithPrefixingMethodReference_thenHasNoTrailingDash() {
-		String result = Stream.of("hello", "world")
-				.reduce("", this::combineWithoutTrailingDash);
-
+		String result = Stream.of("hello", "world").reduce("", this::combineWithoutTrailingDash);
 		assertThat(result).isEqualTo("world-hello");
 	}
 

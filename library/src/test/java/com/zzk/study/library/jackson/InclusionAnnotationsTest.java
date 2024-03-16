@@ -3,13 +3,15 @@ package com.zzk.study.library.jackson;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.junit.Test;
 
 import java.text.ParseException;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * <ol>
@@ -34,6 +36,11 @@ public class InclusionAnnotationsTest {
 
 		assertThat(result, containsString("My bean"));
 		assertThat(result, not(containsString("id")));
+
+		// ignore后也会影响deserialization
+		String json = "{\"name\":\"My bean\", \"id\":1}";
+		final BeanWithIgnore beanWithIgnore = new ObjectMapper().readValue(result, BeanWithIgnore.class);
+		assertNotEquals(1, beanWithIgnore.getId());
 	}
 
 	// @JsonIgnore
@@ -86,8 +93,10 @@ public class InclusionAnnotationsTest {
 		assertThat(result, containsString("My bean"));
 	}
 
+	@Data
+	@NoArgsConstructor
 	@JsonIgnoreProperties({ "id" })
-	public class BeanWithIgnore {
+	public static class BeanWithIgnore {
 		public int id;
 		public String name;
 

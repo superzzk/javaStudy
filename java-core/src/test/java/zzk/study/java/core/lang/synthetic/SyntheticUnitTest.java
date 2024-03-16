@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
+ * https://www.baeldung.com/java-synthetic
  * Unit test for {@link SyntheticFieldDemo}, {@link SyntheticMethodDemo},
  * {@link SyntheticConstructorDemo} and {@link BridgeMethodDemo} classes.
  * 

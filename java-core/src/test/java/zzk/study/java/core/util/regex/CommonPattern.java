@@ -12,22 +12,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CommonPattern {
+	// user name
+	private static Pattern usrNamePtrn = Pattern.compile("^[a-z0-9_-]{6,14}$");
+	// email
 	private static Pattern emailNamePtrn = Pattern.compile(
 			"^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	// date
 	private static Pattern dateFrmtPtrn =
 			Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)");
-
+	// url
 	private static Pattern urlPatter = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
 
 	@Test
 	public void test_name_pattern(){
-		Pattern usrNamePtrn = Pattern.compile("^[a-z0-9_-]{6,14}$");
 		Assert.assertTrue(usrNamePtrn.matcher("java2novice").matches());
 		Assert.assertFalse(usrNamePtrn.matcher("java2novice-too-long").matches());
 		Assert.assertFalse(usrNamePtrn.matcher("cric").matches());
 		Assert.assertFalse(usrNamePtrn.matcher("JAVA2NOVICE").matches());
 		Assert.assertFalse(usrNamePtrn.matcher("java.2.novice").matches());
 		Assert.assertTrue(usrNamePtrn.matcher("java_2-novice").matches());
+	}
+
+	/**
+	 * matches会匹配整个字符串，如果只寻找字符串中是否存在某个regex，可使用find
+	 */
+	@Test
+	public void find(){
+		String content = "${aaa}";
+		Pattern placeHolderPattern = Pattern.compile("\\$\\{[^}]+}");
+		assertTrue(placeHolderPattern.matcher(content).find());
 	}
 
 	@Test
@@ -71,8 +84,6 @@ public class CommonPattern {
 		String date = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
 		//Date, in format such as "Jan 3, 2003"
 		String date2 = "[A-Z][a-z][a-z] [0-9][0-9]*, [0-9]{4}";
-
-
 	}
 
 	/**

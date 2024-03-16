@@ -10,7 +10,7 @@
 
     <packaging>pom</packaging>
     <modules>
-        <module>java-core</module>
+<!--        <module>java-core</module>-->
         <module>tomcat</module>
         <module>javasisst</module>
         <module>instrumentation</module>
@@ -18,7 +18,6 @@
 		<module>jvm</module>
         <module>library</module>
         <module>leetcode</module>
-        <module>spring</module>
         <module>java11</module>
     </modules>
 

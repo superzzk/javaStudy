@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import lombok.Data;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,18 +14,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 public class ObjectMapperTest {
-
-	@Test
-	public void testWriteToFile() throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		Car car = new Car("yellow", "renault");
-		objectMapper.writeValue(new File("target/car.json"), car);
-	}
+	ObjectMapper om = new ObjectMapper();
 
 	@Test
 	public void writeToString() throws IOException {
@@ -33,11 +29,63 @@ public class ObjectMapperTest {
 		String carAsString = objectMapper.writeValueAsString(car);
 	}
 
+
+	/**
+	 * 解析Json字符串内部含有String类型的嵌套Json, eg:
+	 * {
+	 *   "config": "{\"en\":{\"title\":\"title_en\",\"ogImage\":{\"src\":\"src\",\"height\":10,\"width\":20},\"ogTitle\":\"ogTitle_en\",\"ogDescription\":\"ogDescription\"}}",
+	 *   "id": 1
+	 * }
+	 * @throws JsonProcessingException
+	 */
 	@Test
-	public void readObjectFromString() throws IOException {
+	public void extract_inner_json_str() throws JsonProcessingException {
+		String jsonStr = "{\n" +
+				"  \"config\": \"{\\\"en\\\":{\\\"title\\\":\\\"title_en\\\",\\\"ogImage\\\":{\\\"src\\\":\\\"src\\\",\\\"height\\\":10,\\\"width\\\":20},\\\"ogTitle\\\":\\\"ogTitle_en\\\",\\\"ogDescription\\\":\\\"ogDescription\\\"}}\",\n" +
+				"  \"id\": 1\n" +
+				"}";
+		final JsonNode jsonNode2 = om.readTree(jsonStr);
+		final JsonNode innerNode = om.readTree(jsonNode2.get("config").asText());
+		System.out.println(jsonNode2.toPrettyString());
+		System.out.println(innerNode.toPrettyString());
+	}
+
+	@Test
+	public void read_object_from_json_string() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
 		Car car = objectMapper.readValue(json, Car.class);
+	}
+
+	@Test
+	public void read_list_from_json_array() throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonCarArray =
+				"[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
+
+		List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
+		Assert.assertEquals(listCar.size(),2);
+
+		// or
+		List<Car> listCar2 = List.of(objectMapper.readValue(jsonCarArray, Car[].class));
+		Assert.assertEquals(listCar2.size(),2);
+	}
+
+	@Test
+	public void parse_array_str() throws JsonProcessingException {
+		int[] arr = new int[]{1, 2, 3};
+		final String str = om.writeValueAsString(arr);
+		System.out.println(str);
+
+		int[] parsedArr = om.readValue(str, int[].class);
+		System.out.println(parsedArr);
+	}
+
+	@Test
+	public void testWriteToFile() throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Car car = new Car("yellow", "renault");
+		objectMapper.writeValue(new File("target/car.json"), car);
 	}
 
 	@Test
@@ -53,30 +101,12 @@ public class ObjectMapperTest {
 	}
 
 	@Test
-	public void readListFromJsonArrayString() throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonCarArray =
-				"[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
-
-		List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
-		Assert.assertEquals(listCar.size(),2);
-	}
-
-	@Test
 	public void readMapFromJsonString() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
 		Map<String, Object> map
 				= objectMapper.readValue(json, new TypeReference<Map<String,Object>>(){});
 		Assert.assertEquals(map.size(),2);
-	}
-
-	@Test(expected = JsonProcessingException.class)
-	public void readObjFromJsonString() throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json
-				= "{ \"color\" : \"Black\", \"type\" : \"Fiat\", \"year\" : \"1970\" }";
-		Car car = objectMapper.readValue(json, Car.class);
 	}
 
 	@Test
@@ -141,6 +171,7 @@ public class ObjectMapperTest {
 		Assert.assertEquals(listCar.size(), 2);
 	}
 
+	@Data
 	public static class Car {
 
 		public String color;

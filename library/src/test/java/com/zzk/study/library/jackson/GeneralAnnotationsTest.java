@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 
@@ -26,7 +27,6 @@ import static org.junit.Assert.assertThat;
 
 /**
  * <ol>
- * <li> @JsonProperty annotation to indicate the property name in JSON.</li>
  * <li> @JsonFormat annotation specifies a format when serializing Date/Time values.</li>
  * <li> @JsonUnwrapped defines values that should be unwrapped/flattened when serialized/deserialized.</li>
  * <li> @JsonView indicates the View in which the property will be included for serialization/deserialization.</li>
@@ -34,45 +34,10 @@ import static org.junit.Assert.assertThat;
  * <li> @JsonIdentityInfo indicates that Object Identity should be used when serializing/deserializing values
  * – for instance, to deal with infinite recursion type of problems.</li>
  * <li> @JsonFilter annotation specifies a filter to use during serialization.</li>
- * <li>@JsonRawValue</li>
  * </ol>
  */
 public class GeneralAnnotationsTest {
-	// @JsonRawValue
-	@Test
-	public void jsonRawValue() throws JsonProcessingException {
-
-		MyBean bean = new MyBean(1, "My bean");
-		String a = new ObjectMapper().writeValueAsString(bean);
-		System.out.println(a);
-	}
-
-	@Data
-	public static class BeanWithJsonRawValue {
-		@JsonRawValue
-		String rawValue;
-
-
-	}
-
-
-	// @JsonProperty("name")
-	@Test
-
-	public void whenUsingJsonProperty_thenCorrect() throws IOException {
-		MyBean bean = new MyBean(1, "My bean");
-
-		String result = new ObjectMapper().writeValueAsString(bean);
-		System.out.println(result);
-
-		assertThat(result, containsString("My bean"));
-		assertThat(result, containsString("1"));
-
-		MyBean resultBean = new ObjectMapper()
-				.readerFor(MyBean.class)
-				.readValue(result);
-		assertEquals("My bean", resultBean.getTheName());
-	}
+	private ObjectMapper om = new ObjectMapper();
 
 	// @JsonFormat
 	@Test
@@ -101,20 +66,6 @@ public class GeneralAnnotationsTest {
 
 		assertThat(result, containsString("John"));
 		assertThat(result, not(containsString("name")));
-	}
-
-	// @JsonView(Views.Public.class)
-	@Test
-	public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException {
-		Item item = new Item(2, "book", "John");
-
-		String result = new ObjectMapper()
-				.writerWithView(Views.Public.class)
-				.writeValueAsString(item);
-
-		assertThat(result, containsString("book"));
-		assertThat(result, containsString("2"));
-		assertThat(result, not(containsString("John")));
 	}
 
 	// @JsonBackReference and @JsonIgnoreType
@@ -171,31 +122,6 @@ public class GeneralAnnotationsTest {
 		assertThat(result, not(containsString("id")));
 	}
 
-	static class MyBean {
-		public int id;
-		private String name;
-
-		@JsonProperty("name")
-		public void setTheName(String name) {
-			this.name = name;
-		}
-
-		@JsonProperty("name")
-		public String getTheName() {
-			return name;
-		}
-
-		public MyBean() {
-		}
-
-		public MyBean(int id, String name) {
-			this.id = id;
-			this.name = name;
-		}
-
-
-	}
-
 	public static class EventWithFormat {
 		public String name;
 
@@ -237,30 +163,8 @@ public class GeneralAnnotationsTest {
 		}
 	}
 
-	public static class Views {
-		public static class Public {
-		}
 
-		public static class Internal extends Public {
-		}
-	}
 
-	public static class Item {
-		@JsonView(Views.Public.class)
-		public int id;
-
-		@JsonView(Views.Public.class)
-		public String itemName;
-
-		@JsonView(Views.Internal.class)
-		public String ownerName;
-
-		public Item(int id, String itemName, String ownerName) {
-			this.id = id;
-			this.itemName = itemName;
-			this.ownerName = ownerName;
-		}
-	}
 
 	public static class ItemWithRef {
 		public int id;

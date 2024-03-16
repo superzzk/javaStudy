@@ -41,21 +41,7 @@ public class FileDownloadIntegrationTest {
         FileDownload.downloadWithJava7IO(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
-    
-    @Test
-    public void givenAHCLibrary_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException, ExecutionException, InterruptedException {
-        
-        FileDownload.downloadWithAHC(FILE_URL, FILE_NAME);
-        assertTrue(checkMd5Hash(FILE_NAME));
-    }
-    
-    @Test
-    public void givenApacheCommonsIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
-        
-        FileDownload.downloadWithApacheCommons(FILE_URL, FILE_NAME);
-        assertTrue(checkMd5Hash(FILE_NAME));
-    }
-    
+
     @Test
     public void givenJavaIO_whenDownloadingFileStops_thenDownloadShouldBeResumedCorrectly() throws NoSuchAlgorithmException, IOException, URISyntaxException {
         

@@ -1,14 +1,23 @@
 package zzk.study.java.core.java8.stream;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class Demo1 {
 
-    /**
-     * 对比Java 7 和 8的操作
-     */
-    public static void main(String args[]) {
+    @Test
+    public void compare_java_7_and_8() {
         System.out.println("Using Java 7: ");
 
         // Count empty strings
@@ -85,6 +94,64 @@ public class Demo1 {
         //parallel processing
         count = strings.parallelStream().filter(string -> string.isEmpty()).count();
         System.out.println("Empty Strings: " + count);
+    }
+
+    @Test
+    public void test_map() {
+        List<String> myList = Stream.of("a", "b")
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+
+        assertEquals(asList("A", "B"), myList);
+    }
+
+    @Test
+    public void test_flatMap() {
+        //Suppose we have a list of lists of type String.
+
+        List<List<String>> nestedList = asList(
+                asList("one:one"),
+                asList("two:one", "two:two", "two:three"),
+                asList("three:one", "three:two", "three:three", "three:four"));
+
+        //In order to flatten this nested collection into a list of strings,
+        // we can use forEach together with a Java 8 method reference:
+        List<String> ls = new ArrayList<>();
+        nestedList.forEach(ls::addAll);
+        System.out.println(ls);
+
+        //or
+        ls = nestedList.stream().flatMap(Collection::stream).collect(Collectors.toList());
+        System.out.println(ls);
+    }
+
+
+
+    @Test
+    public void iterable_to_stream() {
+        Iterable<String> iterable = Arrays.asList("Testing", "Iterable", "conversion", "to", "Stream");
+        Assert.assertNotNull(StreamSupport.stream(iterable.spliterator(), false));
+    }
+
+    @Test
+    public void stream_use_twice_throw_exception() {
+        Stream<String> stringStream = Stream.of("A", "B", "C", "D");
+        Optional<String> result1 = stringStream.findAny();
+        System.out.println(result1.get());
+        Assertions.assertThrows(IllegalStateException.class, ()->stringStream.findFirst());
+    }
+
+    @Test
+    public void givenStream_whenUsingSupplier_thenNoExceptionIsThrown() {
+        try {
+            Supplier<Stream<String>> streamSupplier = () -> Stream.of("A", "B", "C", "D");
+            Optional<String> result1 = streamSupplier.get().findAny();
+            System.out.println(result1.get()); // A
+            Optional<String> result2 = streamSupplier.get().findFirst();
+            System.out.println(result2.get()); // A
+        } catch (IllegalStateException e) {
+            fail();
+        }
     }
 
     private static int getCountEmptyStringUsingJava7(List<String> strings) {

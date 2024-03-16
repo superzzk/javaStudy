@@ -1,5 +1,7 @@
 package zzk.study.java.core.net.download;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,8 +17,8 @@ import java.nio.file.StandardCopyOption;
 public class FileDownload {
 
     public static void downloadWithJavaIO(String url, String localFilename) {
-
-        try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream()); FileOutputStream fileOutputStream = new FileOutputStream(localFilename)) {
+        try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
+             FileOutputStream fileOutputStream = new FileOutputStream(localFilename)) {
 
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
@@ -29,7 +31,6 @@ public class FileDownload {
     }
 
     public static void downloadWithJava7IO(String url, String localFilename) {
-
         try (InputStream in = new URL(url).openStream()) {
             Files.copy(in, Paths.get(localFilename), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
@@ -38,7 +39,6 @@ public class FileDownload {
     }
 
     public static void downloadWithJavaNIO(String fileURL, String localFilename) throws IOException {
-
         URL url = new URL(fileURL);
         try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream()); 
             FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
@@ -48,42 +48,10 @@ public class FileDownload {
         }
     }
 
-//    public static void downloadWithApacheCommons(String url, String localFilename) {
-//
-//        int CONNECT_TIMEOUT = 10000;
-//        int READ_TIMEOUT = 10000;
-//        try {
-//            FileUtils.copyURLToFile(new URL(url), new File(localFilename), CONNECT_TIMEOUT, READ_TIMEOUT);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+    @Test
+    public void download_to_mem(){
+        String url = "http://mss.vip.sankuai.com:80/v1/mss_bc10d2fc3ee94a4bb81ee1fc1dce8a8a/magic/570533_0ca45a03-ef87-42ec-b37c-c96ac44da97b_1684357825556.txt";
 
-//    public static void downloadWithAHC(String url, String localFilename) throws ExecutionException, InterruptedException, IOException {
-//
-//        FileOutputStream stream = new FileOutputStream(localFilename);
-//        AsyncHttpClient client = Dsl.asyncHttpClient();
-//
-//        client.prepareGet(url)
-//            .execute(new AsyncCompletionHandler<FileOutputStream>() {
-//
-//                @Override
-//                public State onBodyPartReceived(HttpResponseBodyPart bodyPart) throws Exception {
-//                    stream.getChannel()
-//                        .write(bodyPart.getBodyByteBuffer());
-//                    return State.CONTINUE;
-//                }
-//
-//                @Override
-//                public FileOutputStream onCompleted(Response response) throws Exception {
-//                    return stream;
-//                }
-//            })
-//            .get();
-//
-//        stream.getChannel().close();
-//        client.close();
-//    }
 
+    }
 }
