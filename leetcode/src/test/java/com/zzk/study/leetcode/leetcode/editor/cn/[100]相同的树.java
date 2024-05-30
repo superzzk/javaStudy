@@ -38,21 +38,23 @@ package com.zzk.study.leetcode.leetcode.editor.cn;
 // Related Topics 树 深度优先搜索 广度优先搜索 二叉树 👍 932 👎 0
 
 
+import com.zzk.study.leetcode.explore.basic.algorithm.Tree;
+
 import java.util.Stack;
 
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 
@@ -61,40 +63,53 @@ class IsSameTree {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean isSameTree(TreeNode p, TreeNode q) {
-            if(p==null && q==null)
+            if (p == q)
                 return true;
-            if(p==null || q==null)
+            if (p == null || q == null)
                 return false;
-            Stack<TreeNode> stack1 = new Stack<>();
-            Stack<TreeNode> stack2 = new Stack<>();
-            stack1.push(p);
-            stack2.push(q);
-            while (!stack1.empty() && !stack2.empty()) {
-                final TreeNode n1 = stack1.pop();
-                final TreeNode n2 = stack2.pop();
-                if(n1.val!=n2.val) return false;
-                if((n1.left==null && n2.left!=null) || (n1.left!=null && n2.left==null)) return false;
-                if((n1.right==null && n2.right!=null) || (n1.right!=null && n2.right==null)) return false;
-                if (n1.left != null) {
-                    stack1.push(n1.left);
-                    stack2.push(n2.left);
+            Stack<TreeNode> stackp = new Stack<>();
+            Stack<TreeNode> stackq = new Stack<>();
+
+            stackp.push(p);
+            stackq.push(q);
+            while (!stackp.isEmpty() && !stackq.isEmpty()) {
+                p = stackp.pop();
+                q = stackq.pop();
+
+                if (p.val != q.val)
+                    return false;
+                if (p.left != null && q.left == null)
+                    return false;
+                if (p.left == null && q.left != null)
+                    return false;
+                if (p.right != null && q.right == null)
+                    return false;
+                if (p.right == null && q.right != null)
+                    return false;
+
+                if (p.left != null) {
+                    stackp.push(p.left);
+                    stackq.push(q.left);
                 }
-                if (n2.right != null) {
-                    stack1.push(n1.right);
-                    stack2.push(n2.right);
+                if (p.right != null) {
+                    stackp.push(p.right);
+                    stackq.push(q.right);
                 }
             }
-            return stack1.empty() && stack2.empty();
+
+            return stackp.isEmpty() && stackq.isEmpty();
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
-    class Solution2 {
+    class SolutionRecur {
         public boolean isSameTree(TreeNode p, TreeNode q) {
-            if(p==null && q==null) return true;
-            if(p==null || q==null)   return false;
-            if(p.val !=q.val) return false;
+            if (p == null && q == null) return true;
+            if (p == null || q == null) return false;
+            if (p.val != q.val) return false;
             return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
     }
+
+
 }

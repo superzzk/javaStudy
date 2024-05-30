@@ -36,26 +36,16 @@
 //
 // Related Topics 树 深度优先搜索 二叉搜索树 二叉树 👍 1894 👎 0
 
+import com.zzk.study.leetcode.leetcode.editor.cn.TreeNode;
 
+class Q98 {
 //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean isValidBST(TreeNode root) {
 
+
+    class Solution {
+        public boolean isValidBST(TreeNode root) {
+            return false;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
+}

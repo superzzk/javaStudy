@@ -32,16 +32,58 @@
 package com.zzk.study.leetcode.leetcode.editor.cn;
 
 
-class P207CourseSchedule{
-    public static void main(String[] args){
-        Solution solution = new P207CourseSchedule().new Solution();
-    }
+import java.util.*;
+
+class Q207CourseSchedule {
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        return false;
+    class Solution {
+        Set<Integer> checked = new HashSet<>();
+
+        public boolean canFinish(int numCourses, int[][] prerequisites) {
+            // 提前计算每个course的直接依赖
+            HashSet[] depends = new HashSet[numCourses];
+            for (int i = 0; i < numCourses; i++) {
+                depends[i] = new HashSet<>();
+            }
+            for (int i = 0; i < prerequisites.length; i++) {
+                depends[prerequisites[i][0]].add(prerequisites[i][1]);
+            }
+
+            for (int i = 0; i < prerequisites.length; i++) {
+                if (!checked.contains(prerequisites[i][0])) {
+                    int rt = dfs( prerequisites[i][0], new HashSet<>(), depends);
+                    if (rt == -1)
+                        return false;
+                    checked.add(prerequisites[i][0]);
+                }
+            }
+            return true;
+        }
+
+        private int dfs(int course, Set<Integer> path, HashSet[] depends) {
+            if (depends[course].isEmpty())
+                return 0;
+            for (Object o : depends[course]) {
+                int depend = (int) o;
+                if (path.contains(depend))
+                    return -1;
+                if(checked.contains(depend))
+                    continue;
+                path.add(depend);
+                int rt = dfs(depend, path, depends);
+                if (rt == -1)
+                    return -1;
+                path.remove(depend);
+                checked.add(depend);
+            }
+            checked.add(course);
+            return 0;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
+    public static void main(String[] args) {
+        Solution solution = new Q207CourseSchedule().new Solution();
+    }
 }

@@ -44,48 +44,32 @@ import java.util.*;
 
 class CombinationSum {
 
-    public static void solution1Test() {
-        Solution1 solution = new CombinationSum().new Solution1();
-        List<List<Integer>> res = solution.combinationSum(new int[]{2, 3, 6, 7}, 7);
-        System.out.println(res);
-
-        solution.res.clear();
-        res = solution.combinationSum(new int[]{2, 3, 5}, 8);
-        System.out.println(res);
-    }
-    public static void solution2Test() {
-        Solution solution = new CombinationSum().new Solution();
-        List<List<Integer>> res = solution.combinationSum(new int[]{2, 3, 6, 7}, 7);
-        System.out.println(res);
-
-        solution.res.clear();
-        res = solution.combinationSum(new int[]{2, 3, 5}, 8);
-        System.out.println(res);
-    }
-    public static void main(String[] args) {
-        solution2Test();
-    }
-
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         List<List<Integer>> res = new ArrayList<>();
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
             Arrays.sort(candidates);
-            combine(candidates, target, new ArrayList<>(), 0);
+            backtrack(candidates, target, new ArrayList<>(), 0);
             return res;
         }
 
-        private void combine(int[] candidates, int target, List<Integer> temp, int index) {
-            if(target<0) return;
-            if (target == 0)
+        private int backtrack(int[] candidates, int target, List<Integer> temp, int start) {
+            if(target<0)
+                return -1;
+            if(target==0) {
                 res.add(new ArrayList<>(temp));
-
-            for (int i = index; i < candidates.length; i++) {
-                temp.add(candidates[i]);
-                combine(candidates, target - candidates[i], temp, i);
-                temp.remove(temp.size() - 1);
+                return 0;
             }
+            for (int i = start; i < candidates.length; i++) {
+                temp.add(candidates[i]);
+                int rt = backtrack(candidates, target- candidates[i], temp, i);
+                temp.remove(temp.size() - 1);
+                if(rt == -1)
+                    break;
+            }
+            return 0;
         }
+
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
@@ -116,6 +100,26 @@ class CombinationSum {
             for (int i = start; i < candidates.length; i++) {
                 temp.add(candidates[i]);
                 combine(candidates, target - candidates[i], temp, start);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+    class Solution2 {
+        List<List<Integer>> res = new ArrayList<>();
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            Arrays.sort(candidates);
+            combine(candidates, target, new ArrayList<>(), 0);
+            return res;
+        }
+
+        private void combine(int[] candidates, int target, List<Integer> temp, int index) {
+            if(target<0) return;
+            if (target == 0)
+                res.add(new ArrayList<>(temp));
+
+            for (int i = index; i < candidates.length; i++) {
+                temp.add(candidates[i]);
+                combine(candidates, target - candidates[i], temp, i);
                 temp.remove(temp.size() - 1);
             }
         }

@@ -36,27 +36,28 @@ package com.zzk.study.leetcode.leetcode.editor.cn;//给定一个二叉树，判�
 // 
 // Related Topics 树 深度优先搜索
 
+class IsBalancedBinaryTree {
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean isBalanced(TreeNode root) {
+            if(root == null)
+                return true;
+            return height(root) != -1;
+        }
 
-//leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution110 {
-    public boolean isBalanced(TreeNode root) {
-        return false;
-    }
+        private int height(TreeNode root) {
+            if(root == null)
+                return 0;
+            int left = height(root.left);
+            int right = height(root.right);
+            if(left == -1 || right == -1)
+                return -1;
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
+            if(Math.abs(left -right) > 1)
+                return -1;
+            return 1 + Math.max(left, right);
+        }
+
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
+}

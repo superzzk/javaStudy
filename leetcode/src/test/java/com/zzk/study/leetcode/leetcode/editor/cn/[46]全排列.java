@@ -35,39 +35,67 @@
 //
 // Related Topics 数组 回溯 👍 2408 👎 0
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-class Q46{
+class Q46 {
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> intermediate = new ArrayList<>();
+
+        public List<List<Integer>> permute(int[] nums) {
+            dfs(nums, 0);
+            return res;
+        }
+
+        private void dfs(int[] nums, int index) {
+            if (index == nums.length)
+                res.add(new ArrayList<>(intermediate));
+
+            for (int i = index; i < nums.length; i++) {
+                swap(nums, index, i);
+                intermediate.add(nums[index]);
+                dfs(nums, index + 1);
+                intermediate.remove(intermediate.size() - 1);
+                swap(nums, i, index);
+            }
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+
+    }
+
+    //leetcode submit region end(Prohibit modification and deletion)
+    class SolutionBacktrack {
+        public List<List<Integer>> permute(int[] nums) {
+            List<List<Integer>> res = new ArrayList<>();
+            backtrack(nums, new ArrayList<>(), res);
+            return res;
+        }
+
+        private List<List<Integer>> backtrack(int[] nums, List<Integer> intermediate, List<List<Integer>> res) {
+            if (intermediate.size() == nums.length) {
+                res.add(new ArrayList<>(intermediate));
+                return res;
+            }
+            for (int i = 0; i < nums.length; i++) {
+                if (intermediate.contains(nums[i])) continue;
+                intermediate.add(nums[i]);
+                backtrack(nums, intermediate, res);
+                intermediate.remove(intermediate.size() - 1);
+            }
+            return res;
+        }
+    }
+
     public static void main(String[] args) {
-        Q46.Solution solution =new Q46().new Solution();
+        Q46.Solution solution = new Q46().new Solution();
         final List<List<Integer>> res = solution.permute(new int[]{1, 2, 3});
         System.out.println(res);
     }
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        backtrace(nums,new HashSet<>(),res, new ArrayList<>());
-        return res;
-    }
-
-    private void backtrace(int[] nums, Set<Integer> used, List<List<Integer>> result, List<Integer> intermediate) {
-        if(intermediate.size() == nums.length) {
-            result.add(new ArrayList<>(intermediate));
-            return;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if(used.contains(nums[i])) continue;
-            intermediate.add(nums[i]);
-            used.add(nums[i]);
-            backtrace(nums, used, result, intermediate);
-            intermediate.remove(intermediate.size()-1);
-            used.remove(nums[i]);
-        }
-    }
-}
-//leetcode submit region end(Prohibit modification and deletion)
 }

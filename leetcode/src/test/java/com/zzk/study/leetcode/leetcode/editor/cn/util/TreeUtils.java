@@ -44,6 +44,15 @@ public class TreeUtils {
         }
     }
 
+    public static void printBTreeInorder(TreeNode head) {
+        if (head != null) {
+            printBTreePre(head.left);
+            System.out.print(head.val);
+            printBTreePre(head.right);
+        }
+    }
+
+
     public static void printBTreeByLevel(TreeNode head) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(head);

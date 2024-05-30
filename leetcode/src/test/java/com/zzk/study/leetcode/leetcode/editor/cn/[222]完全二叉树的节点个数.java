@@ -17,27 +17,28 @@ package com.zzk.study.leetcode.leetcode.editor.cn;//给出一个完全二叉树�
 //输出: 6 
 // Related Topics 树 二分查找
 
-
-//leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 class Solution222 {
     class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
-    public int countNodes(TreeNode root) {
-        return 0;
+//leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+
+        public int countNodes(TreeNode root) {
+            if(root == null)
+                return 0;
+            int left = countNodes(root.left);
+            int right = countNodes(root.right);
+
+            return left + right + 1;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
+}
