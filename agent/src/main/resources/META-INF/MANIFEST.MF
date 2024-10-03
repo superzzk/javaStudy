@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
-Premain-Class: zzk.study.java.core.TransformerAgent
+Premain-Class: zzk.study.java.agent.TransformerAgent
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
+Agent-Class: zzk.study.java.agent.sample.SampleAgent

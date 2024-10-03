@@ -1,4 +1,4 @@
-package com.zzk.study.agent;
+package com.zzk.study.agent.demo01;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

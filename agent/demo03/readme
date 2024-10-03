@@ -1,6 +1,6 @@
-agent会在加载类前打印信息
+动态绑定到jvm上，打印已加载类
 
 使用方式：
-java -cp target/agent-demo02-1.0-SNAPSHOT.jar
-        -javaagent:target/agent-demo02-1.0-SNAPSHOT.jar=args
-        com.zzk.study.agent.demo02.App
+package jar
+首先运行App
+根据App执行时打印的pid，修改DynamicAgent变量，然后执行DynamicAgent

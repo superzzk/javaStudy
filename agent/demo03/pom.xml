@@ -7,13 +7,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>demo03</artifactId>
+    <artifactId>agent-demo03</artifactId>
     <packaging>jar</packaging>
 
-    <name>demo03</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -25,4 +25,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Agent-Class>com.zzk.study.agent.demo03.DynamicAgent</Agent-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

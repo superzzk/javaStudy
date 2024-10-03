@@ -7,13 +7,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>demo01</artifactId>
+    <artifactId>agent-demo01</artifactId>
     <packaging>jar</packaging>
 
-    <name>demo01</name>
-    <url>http://maven.apache.org</url>
-
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -25,4 +24,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Premain-Class>com.zzk.study.agent.demo01.Agent</Premain-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

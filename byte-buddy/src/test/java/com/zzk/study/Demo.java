@@ -1,4 +1,4 @@
-package com.zzk.study.library.bytebuddy;
+package com.zzk.study;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
@@ -9,21 +9,15 @@ import net.bytebuddy.implementation.FixedValue;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.implementation.bind.annotation.BindingPriority;
 import net.bytebuddy.matcher.ElementMatchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import static net.bytebuddy.matcher.ElementMatchers.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-/**
- * TODO:
- *
- * @author zhangzhongkun02
- * @date 2022/3/11 2:21 PM
- */
 public class Demo {
     @Test
     public void givenObject_whenToString_thenReturnHelloWorldString() throws InstantiationException, IllegalAccessException {

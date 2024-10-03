@@ -18,17 +18,18 @@ public class Agent {
         System.out.println("from agent");
         try {
             new AgentBuilder.Default()
-                    .type(hasSuperType(named("target.userType")))
+                    .type(hasSuperType(named("com.zzk.study.App")))
                     .transform(new AgentBuilder.Transformer() {
                         @Override
                         public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder, TypeDescription typeDescription, ClassLoader classLoader, JavaModule module, ProtectionDomain protectionDomain) {
                             try {
+                                System.out.println("Class was loaded: " + typeDescription.getCanonicalName());
                                 return builder
                                         .method(any())
                                         .intercept(MethodCall.invoke(
                                                         PrintStream.class.getMethod("println", String.class))
                                                 .onField(System.class.getField("out"))
-                                                .with("hello word")
+                                                .with("hello word from agent")
                                                 .andThen(SuperMethodCall.INSTANCE));
                             } catch (NoSuchMethodException | NoSuchFieldException e) {
                                 throw new RuntimeException(e);

@@ -1,7 +1,5 @@
-package com.zzk.study.agent;
-/**
- * java -cp:. -javaagent:/pathToJar=MyAgent zzk.study.java.agent.demo01.Agent
- */
+package com.zzk.study.agent.demo01;
+
 public class Agent {
     public static void premain(String args) {
         System.out.println("hello from: " +args);

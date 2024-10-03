@@ -1,13 +1,12 @@
-package com.zzk.study;
+package com.zzk.study.agent.demo03;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String[] args) throws InterruptedException {
+        long pid = ProcessHandle.current().pid();
+        System.out.println("Thread Id:" + pid);
+        while (true) {
+            System.out.println("from main");
+            Thread.sleep(2000);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package zzk.study.java.core;
+package zzk.study.java.agent;
 
 import static org.junit.Assert.assertTrue;
 
