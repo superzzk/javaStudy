@@ -1,2 +1,3 @@
 # javaStudy
-test
+
+A java study project
