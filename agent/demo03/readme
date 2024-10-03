@@ -1,0 +1,6 @@
+agent会在加载类前打印信息
+
+使用方式：
+java -cp target/agent-demo02-1.0-SNAPSHOT.jar
+        -javaagent:target/agent-demo02-1.0-SNAPSHOT.jar=args
+        com.zzk.study.agent.demo02.App

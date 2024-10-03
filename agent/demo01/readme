@@ -1,0 +1,13 @@
+这是一个静态的java agent样例
+Agent：包含一个premain方法，在main方法前调用
+
+注意：在pom中指定了Premain-Class，应该也可以通过直接编辑MANIFEST.MF文件，但是我在编辑了后，使用maven package后丢失了这部分内容，导致没有成功
+
+使用方式：
+java -cp agent-demo01-1.0-SNAPSHOT.jar
+    -javaagent:agent-demo01-1.0-SNAPSHOT.jar=MyAgent
+    com.zzk.study.agent.demo01.Application
+
+说明：
+1. 执行的类是Application
+2. 加载agent，首先会调用premain方法
